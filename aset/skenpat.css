@@ -44,25 +44,37 @@
             padding: 1rem 2rem;
         }
         .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        .logo i {
-            font-size: 2rem;
-            margin-right: 0.5rem;
-            color: var(--primary);
-        }
-        ligo {
-            position: relative;
-            bottom: 13px;
-            left: 32px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #FF7400;
-        }
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    flex-direction: row;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+.logo i {
+    font-size: 2rem;
+    margin-right: 0.5rem;
+    color: var(--primary);
+}
+.logo > div {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.main-logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+.ligo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #FF7400;
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+    /* Hapus position, left, bottom! */
+}
         nav ul {
             display: flex;
             list-style: none;
@@ -562,6 +574,14 @@
             font-size: 0.9rem;
         }
         /* Responsive */
+@media (max-width: 480px) {
+  .main-logo-text {
+    font-size: 1.1rem;
+  }
+  .ligo {
+    font-size: 0.75rem;
+  }
+}
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
