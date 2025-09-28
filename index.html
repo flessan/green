@@ -20,24 +20,20 @@
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
             --shadow-hover: 0 10px 15px rgba(0,0,0,0.1);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         html {
             scroll-behavior: smooth;
         }
-
         /* Header Styles */
         header {
             position: fixed;
@@ -48,7 +44,6 @@
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
         .header-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -57,7 +52,6 @@
             align-items: center;
             padding: 1rem 2rem;
         }
-
         .logo {
             display: flex;
             align-items: center;
@@ -65,31 +59,26 @@
             font-weight: 700;
             color: var(--primary);
         }
-
         .logo i {
             font-size: 2rem;
             margin-right: 0.5rem;
             color: var(--primary);
         }
-        
         .ligo {
-  position: absolute;
-  top: 49px;   /* koordinat Y */
-  left: 152px;  /* koordinat X */
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #FF7400;
-}
-
+            position: absolute;
+            top: 49px;
+            left: 218px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #FF7400;
+        }
         nav ul {
             display: flex;
             list-style: none;
         }
-
         nav ul li {
             margin-left: 1.5rem;
         }
-
         nav ul li a {
             text-decoration: none;
             color: var(--text);
@@ -97,7 +86,6 @@
             position: relative;
             transition: color 0.3s ease;
         }
-
         nav ul li a::after {
             content: '';
             position: absolute;
@@ -108,15 +96,12 @@
             background-color: var(--primary);
             transition: width 0.3s ease;
         }
-
         nav ul li a:hover {
             color: var(--primary);
         }
-
         nav ul li a:hover::after {
             width: 100%;
         }
-
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -129,13 +114,11 @@
             position: relative;
             overflow: hidden;
         }
-
         .hero-content {
             max-width: 800px;
             padding: 0 2rem;
             animation: fadeInUp 1s ease;
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -146,18 +129,15 @@
                 transform: translateY(0);
             }
         }
-
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
-
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
         }
-
         .cta-button {
             display: inline-block;
             background-color: var(--accent);
@@ -169,40 +149,34 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
         .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px rgba(0,0,0,0.2);
         }
-
         /* Floating Elements */
         .floating {
             position: absolute;
             opacity: 0.3;
             animation: float 6s ease-in-out infinite;
         }
-
         .floating-1 {
             top: 20%;
             left: 10%;
             font-size: 3rem;
             animation-delay: 0s;
         }
-
         .floating-2 {
             top: 60%;
             right: 10%;
             font-size: 2.5rem;
             animation-delay: 1s;
         }
-
         .floating-3 {
             bottom: 20%;
             left: 15%;
             font-size: 2rem;
             animation-delay: 2s;
         }
-
         @keyframes float {
             0% {
                 transform: translateY(0px);
@@ -214,18 +188,15 @@
                 transform: translateY(0px);
             }
         }
-
         /* Section Styles */
         section {
             padding: 5rem 0;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 2rem;
         }
-
         .section-title {
             text-align: center;
             font-size: 2.5rem;
@@ -233,7 +204,6 @@
             color: var(--primary);
             position: relative;
         }
-
         .section-title::after {
             content: '';
             position: absolute;
@@ -245,33 +215,27 @@
             background-color: var(--accent);
             border-radius: 2px;
         }
-
         /* About Section */
         .about {
             background-color: var(--bg-light);
         }
-
         .about-content {
             display: flex;
             gap: 3rem;
             align-items: center;
         }
-
         .about-text {
             flex: 3;
         }
-
         .about-visual {
             flex: 2;
             position: relative;
         }
-
         .about-visual img {
             width: 100%;
             border-radius: 10px;
             box-shadow: var(--shadow);
         }
-
         .about-visual::before {
             content: '';
             position: absolute;
@@ -283,13 +247,11 @@
             border-radius: 10px;
             z-index: -1;
         }
-
         .about h3 {
             font-size: 1.8rem;
             margin: 1.5rem 0 1rem;
             color: var(--primary);
         }
-
         .vision-mission {
             background-color: var(--bg-card);
             padding: 2rem;
@@ -297,37 +259,31 @@
             box-shadow: var(--shadow);
             margin-top: 2rem;
         }
-
         .vision-mission h4 {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--primary);
         }
-
         .vision-mission ul {
             list-style-type: none;
             padding-left: 0;
         }
-
         .vision-mission li {
             margin-bottom: 0.8rem;
             padding-left: 1.5rem;
             position: relative;
         }
-
         .vision-mission li::before {
             content: '🌱';
             position: absolute;
             left: 0;
         }
-
         /* Structure Section */
         .structure-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .structure-card {
             background-color: var(--bg-card);
             border-radius: 10px;
@@ -336,35 +292,29 @@
             text-align: center;
             transition: all 0.3s ease;
         }
-
         .structure-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
         }
-
         .structure-card i {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
         }
-
         .structure-card h4 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
             color: var(--primary-dark);
         }
-
         /* Programs Section */
         .programs {
             background-color: var(--bg-light);
         }
-
         .program-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .program-card {
             background-color: var(--bg-card);
             border-radius: 10px;
@@ -372,43 +322,35 @@
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
         }
-
         .program-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
         }
-
         .program-card-header {
             background-color: var(--primary);
             color: white;
             padding: 1.5rem;
             text-align: center;
         }
-
         .program-card-header i {
             font-size: 3rem;
             margin-bottom: 0.5rem;
         }
-
         .program-card-header h3 {
             font-size: 1.5rem;
         }
-
         .program-card-body {
             padding: 1.5rem;
         }
-
         .program-card-body p {
             color: var(--text-light);
         }
-
         /* Gallery Section */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1.5rem;
         }
-
         .gallery-item {
             position: relative;
             border-radius: 10px;
@@ -416,18 +358,15 @@
             box-shadow: var(--shadow);
             height: 250px;
         }
-
         .gallery-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-
         .gallery-item:hover img {
             transform: scale(1.1);
         }
-
         .gallery-item-caption {
             position: absolute;
             bottom: 0;
@@ -439,31 +378,25 @@
             transform: translateY(100%);
             transition: transform 0.3s ease;
         }
-
         .gallery-item:hover .gallery-item-caption {
             transform: translateY(0);
         }
-
         /* Impact Section */
         .impact {
             background-color: var(--primary);
             color: white;
         }
-
         .impact .section-title {
             color: white;
         }
-
         .impact .section-title::after {
             background-color: var(--accent);
         }
-
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .stat-item {
             text-align: center;
             padding: 1.5rem;
@@ -471,36 +404,31 @@
             border-radius: 10px;
             transition: all 0.3s ease;
         }
-
         .stat-item:hover {
             background-color: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
         }
-
         .stat-item i {
             font-size: 3rem;
             margin-bottom: 1rem;
             color: var(--accent);
         }
-
         .stat-number {
             font-size: 2.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            display: inline-block;
         }
-
         /* Members Section */
         .members {
             background-color: var(--bg-light);
         }
-
         .tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 2rem;
             flex-wrap: wrap;
         }
-
         .tab-button {
             background-color: var(--bg-card);
             border: none;
@@ -512,12 +440,10 @@
             transition: all 0.3s ease;
             box-shadow: var(--shadow);
         }
-
         .tab-button.active {
             background-color: var(--primary);
             color: white;
         }
-
         .tab-content {
             display: none;
             background-color: var(--bg-card);
@@ -527,17 +453,14 @@
             max-height: 500px;
             overflow-y: auto;
         }
-
         .tab-content.active {
             display: block;
         }
-
         .member-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 1rem;
         }
-
         .member-item {
             padding: 0.8rem;
             background-color: var(--bg-light);
@@ -545,10 +468,51 @@
             display: flex;
             align-items: center;
         }
-
         .member-item i {
             margin-right: 0.8rem;
             color: var(--primary);
+        }
+
+        /* === TAMBAHAN: Fitur Pencarian Anggota === */
+        .anggota-search-box {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        .anggota-search-box input {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--primary-light);
+            font-size: 1rem;
+            min-width: 150px;
+        }
+        .anggota-search-box button {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: none;
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        .anggota-search-box button:active,
+        .anggota-search-box button:focus {
+            outline: 2px solid var(--primary);
+        }
+        .member-item.highlight {
+            background: var(--accent);
+            color: var(--primary-dark);
+            font-weight: 600;
+            transition: background 0.3s, color 0.3s;
+        }
+        .no-search-result {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 1rem;
+            font-style: italic;
         }
 
         /* Registration Section */
@@ -558,12 +522,10 @@
             color: white;
             padding: 5rem 0;
         }
-
         .registration h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
-
         .registration p {
             font-size: 1.2rem;
             margin-bottom: 2rem;
@@ -571,32 +533,27 @@
             margin-left: auto;
             margin-right: auto;
         }
-
         /* Footer */
         footer {
             background-color: var(--primary-dark);
             color: white;
             padding: 3rem 0 1rem;
         }
-
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             margin-bottom: 2rem;
         }
-
         .footer-logo {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
         }
-
         .footer-links {
             display: flex;
             flex-wrap: wrap;
         }
-
         .footer-links a {
             color: white;
             text-decoration: none;
@@ -604,73 +561,58 @@
             margin-bottom: 0.5rem;
             transition: color 0.3s ease;
         }
-
         .footer-links a:hover {
             color: var(--accent);
         }
-
         .footer-bottom {
             text-align: center;
             padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 0.9rem;
         }
-
         /* Responsive */
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
                 padding: 1rem;
             }
-
             nav ul {
                 margin-top: 1rem;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-
             nav ul li {
                 margin: 0.5rem;
             }
-
             .hero h1 {
                 font-size: 2.5rem;
             }
-
             .hero p {
                 font-size: 1.2rem;
             }
-
             .about-content {
                 flex-direction: column;
             }
-
             .structure-grid,
             .program-cards,
             .gallery-grid,
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-
             .member-list {
                 grid-template-columns: 1fr;
             }
-
             .footer-content {
                 flex-direction: column;
                 text-align: center;
             }
-
             .footer-links {
                 justify-content: center;
             }
+            .anggota-search-box {
+                justify-content: center;
+            }
         }
-
-        /* Animasi Heker Niii */
-        .stat-number {
-            display: inline-block;
-        }
-
         /* Scroll to top button */
         .scroll-top {
             position: fixed;
@@ -692,12 +634,10 @@
             transition: all 0.3s ease;
             z-index: 1000;
         }
-
         .scroll-top.active {
             opacity: 1;
             visibility: visible;
         }
-
         .scroll-top:hover {
             background-color: var(--primary-dark);
             transform: translateY(-5px);
@@ -705,7 +645,7 @@
     </style>
 </head>
 <body>
-    <!-- Spanduk gim -->
+    <!-- Header -->
     <header>
         <div class="header-container">
             <div class="logo">
@@ -713,11 +653,12 @@
                 Green Generation
             </div>
             <div class="ligo">
-            By SMK Negeri 4 Banjarmasin
+                By SMK Negeri 4 Banjarmasin
             </div>
             <nav>
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
+                    <li><a href="#struktur">Struktur</a></li>
                     <li><a href="#divisi">Divisi</a></li>
                     <li><a href="#kegiatan">Kegiatan</a></li>
                     <li><a href="#daftar">Daftar</a></li>
@@ -726,12 +667,11 @@
         </div>
     </header>
 
-    <!-- Sektor Awal ygy -->
+    <!-- Hero -->
     <section class="hero">
         <div class="floating floating-1"><i class="fas fa-seedling"></i></div>
         <div class="floating floating-2"><i class="fas fa-tree"></i></div>
         <div class="floating floating-3"><i class="fas fa-recycle"></i></div>
-        
         <div class="hero-content">
             <h1>Green Generation</h1>
             <p>"Bersama menjaga bumi, mulai dari sekolah kita."</p>
@@ -739,21 +679,18 @@
         </div>
     </section>
 
-    <!-- Tennnetangg gusy -->
+    <!-- Tentang -->
     <section id="tentang" class="about">
         <div class="container">
             <h2 class="section-title">Tentang Green Generation</h2>
             <div class="about-content">
                 <div class="about-text">
                     <p>Tujuan Green Generation adalah membentuk siswa/siswi yang peduli lingkungan, menciptakan lingkungan sekolah yang bersih dan hijau, dan menjadi contoh perubahan positif.</p>
-                    
                     <h3>Apa Itu Green Generation?</h3>
                     <p>Green Generation atau sering disingkat GG, adalah organisasi lingkungan hidup di sekolah yang beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi. GG menjadi tempat belajar, berkarya, dan bergerak bersama demi menciptakan lingkungan sekolah yang sehat, hijau, dan berkelanjutan.</p>
-                    
                     <div class="vision-mission">
                         <h4>Visi</h4>
                         <p>"Menjadi pelopor gerakan pelestarian lingkungan di sekolah yang membentuk generasi muda yang sadar, peduli, dan bertanggung jawab terhadap bumi melalui aksi nyata, inovasi dan kolaborasi".</p></br>
-                        
                         <h4>Misi</h4>
                         <ul>
                             <li>Meningkatkan kesadaran lingkungan di kalangan siswa melalui edukasi rutin dan kampanye kreatif.</li>
@@ -776,64 +713,64 @@
         </div>
     </section>
 
-    <!-- Structurer Skection -->
+    <!-- Struktur Organisasi -->
     <section id="struktur" class="structure">
-    <div class="container">
-        <h2 class="section-title">Struktur Organisasi</h2>
-        <div class="structure-grid">
-            <div class="structure-card">
-                <i class="fas fa-user-tie"></i>
-                <h4>Ketua Lingkungan Hidup</h4>
-                <p>Silvia Najemi, M. Pd</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-file-alt"></i>
-                <h4>Sekretaris Lingkungan Hidup</h4>
-                <p>Rahmawati S. Pd. I</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-recycle"></i>
-                <h4>Koordinator Divisi Daur Ulang</h4>
-                <p>Hj. Noor Abdiah, S. Pd</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-piggy-bank"></i>
-                <h4>Koordinator Divisi Bank Sampah</h4>
-                <p>Eryn Rahmawati, M. Pd</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-leaf"></i>
-                <h4>Koordinator Green Generation dan Penghijauan</h4>
-                <p>Novita Arini, S. Pd</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-seedling"></i>
-                <h4>Koordinator Hidroponik</h4>
-                <p>Wardian</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-crown"></i>
-                <h4>Ketua GG</h4>
-                <p>Gaura Gryzfa</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-user-friends"></i>
-                <h4>Wakil Ketua</h4>
-                <p>Khairunisa</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-clipboard-list"></i>
-                <h4>Sekretaris</h4>
-                <p>Kirana Azzahra</p>
-            </div>
-            <div class="structure-card">
-                <i class="fas fa-map-marked-alt"></i>
-                <h4>Koordinator Lapangan</h4>
-                <p>Nadilla Aisyah</p>
+        <div class="container">
+            <h2 class="section-title">Struktur Organisasi</h2>
+            <div class="structure-grid">
+                <div class="structure-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h4>Ketua Lingkungan Hidup</h4>
+                    <p>Silvia Najemi, M. Pd</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Sekretaris Lingkungan Hidup</h4>
+                    <p>Rahmawati S. Pd. I</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-recycle"></i>
+                    <h4>Koordinator Divisi Daur Ulang</h4>
+                    <p>Hj. Noor Abdiah, S. Pd</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-piggy-bank"></i>
+                    <h4>Koordinator Divisi Bank Sampah</h4>
+                    <p>Eryn Rahmawati, M. Pd</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Koordinator Green Generation dan Penghijauan</h4>
+                    <p>Novita Arini, S. Pd</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-seedling"></i>
+                    <h4>Koordinator Hidroponik</h4>
+                    <p>Wardian</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-crown"></i>
+                    <h4>Ketua GG</h4>
+                    <p>Gaura Gryzfa</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-user-friends"></i>
+                    <h4>Wakil Ketua</h4>
+                    <p>Khairunisa</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-clipboard-list"></i>
+                    <h4>Sekretaris</h4>
+                    <p>Kirana Azzahra</p>
+                </div>
+                <div class="structure-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h4>Koordinator Lapangan</h4>
+                    <p>Nadilla Aisyah</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Programs Section -->
     <section id="divisi" class="programs">
@@ -978,16 +915,22 @@
         </div>
     </section>
 
-    <!-- Members Section -->
+    <!-- Members Section with Search -->
     <section class="members">
         <div class="container">
             <h2 class="section-title">Daftar Anggota Aktif</h2>
+            <!-- Search Box -->
+            <div class="anggota-search-box">
+                <input type="text" id="anggotaSearchInput" placeholder="Cari anggota...">
+                <button type="button" id="anggotaSearchBtn" aria-label="Cari anggota"><i class="fas fa-search"></i></button>
+            </div>
+            <!-- Tabs -->
             <div class="tabs">
                 <button class="tab-button active" data-tab="hidroponik">Divisi Hidroponik</button>
                 <button class="tab-button" data-tab="bank-sampah">Divisi Bank Sampah</button>
                 <button class="tab-button" data-tab="daur-ulang">Divisi Daur Ulang</button>
             </div>
-            
+            <!-- Tab Contents -->
             <div class="tab-content active" id="hidroponik">
                 <div class="member-list">
                     <div class="member-item"><i class="fas fa-user"></i> Syifa Lia Nur — XII Busana 1</div>
@@ -1066,7 +1009,6 @@
                     <div class="member-item"><i class="fas fa-user"></i> Armelia — XI Perhotelan 2</div>
                 </div>
             </div>
-            
             <div class="tab-content" id="bank-sampah">
                 <div class="member-list">
                     <div class="member-item"><i class="fas fa-user"></i> Marissa Putri Abidin – XI Perhotelan 1</div>
@@ -1096,7 +1038,6 @@
                     <div class="member-item"><i class="fas fa-user"></i> Rakha Maulana Firjatullah – X Seni</div>
                 </div>
             </div>
-            
             <div class="tab-content" id="daur-ulang">
                 <div class="member-list">
                     <div class="member-item"><i class="fas fa-user"></i> Haliza — X Busana 2</div>
@@ -1108,6 +1049,7 @@
                     <div class="member-item"><i class="fas fa-user"></i> Lutfia Azizah Khumaira — XI Busana 2</div>
                 </div>
             </div>
+            <div class="no-search-result" id="anggotaNoResult" style="display:none;">Tidak ada anggota ditemukan.</div>
         </div>
     </section>
 
@@ -1145,28 +1087,53 @@
         <i class="fas fa-arrow-up"></i>
     </div>
 
+    <!-- Scripts -->
     <script>
         // Tab functionality
         const tabButtons = document.querySelectorAll('.tab-button');
         const tabContents = document.querySelectorAll('.tab-content');
-
         tabButtons.forEach(button => {
             button.addEventListener('click', () => {
                 const tabId = button.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and contents
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
                 button.classList.add('active');
                 document.getElementById(tabId).classList.add('active');
+                document.getElementById('anggotaSearchInput').value = '';
+                anggotaSearchFilter();
             });
         });
 
+        // Anggota search logic
+        function anggotaSearchFilter() {
+            const input = document.getElementById('anggotaSearchInput').value.trim().toLowerCase();
+            const activeTab = document.querySelector('.tab-content.active');
+            const items = activeTab.querySelectorAll('.member-item');
+            let found = 0;
+            items.forEach(item => {
+                item.classList.remove('highlight');
+                if (input === "" || item.textContent.toLowerCase().includes(input)) {
+                    item.style.display = "";
+                    if (input && item.textContent.toLowerCase().includes(input)) {
+                        item.classList.add('highlight');
+                        found++;
+                    }
+                } else {
+                    item.style.display = "none";
+                }
+            });
+            const noResult = document.getElementById('anggotaNoResult');
+            if (input && found === 0) {
+                noResult.style.display = '';
+            } else {
+                noResult.style.display = 'none';
+            }
+        }
+        document.getElementById('anggotaSearchInput').addEventListener('input', anggotaSearchFilter);
+        document.getElementById('anggotaSearchBtn').addEventListener('click', anggotaSearchFilter);
+
         // Scroll to top functionality
         const scrollTopButton = document.querySelector('.scroll-top');
-
         window.addEventListener('scroll', () => {
             if (window.pageYOffset > 300) {
                 scrollTopButton.classList.add('active');
@@ -1174,23 +1141,18 @@
                 scrollTopButton.classList.remove('active');
             }
         });
-
         scrollTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
         // Animate stats on scroll
         const statNumbers = document.querySelectorAll('.stat-number');
         let animated = false;
-
         const animateStats = () => {
             const statsSection = document.querySelector('.stats-grid');
+            if (!statsSection) return;
             const statsPosition = statsSection.getBoundingClientRect().top;
             const screenPosition = window.innerHeight / 1.3;
-
             if (statsPosition < screenPosition && !animated) {
                 animated = true;
                 statNumbers.forEach(stat => {
@@ -1199,9 +1161,7 @@
                     const isPercentage = target.includes('%');
                     const isPlus = target.includes('+');
                     const isText = isNaN(parseInt(target));
-                    
                     if (isText) {
-                        // For text stats, just add a simple animation
                         stat.style.opacity = '0';
                         setTimeout(() => {
                             stat.style.transition = 'opacity 1s ease';
@@ -1209,10 +1169,8 @@
                         }, 300);
                         return;
                     }
-                    
                     const numValue = parseInt(target);
                     const increment = numValue / 700;
-                    
                     const updateCount = () => {
                         count += increment;
                         if (count < numValue) {
@@ -1222,12 +1180,10 @@
                             stat.innerText = target;
                         }
                     };
-                    
                     updateCount();
                 });
             }
         };
-
         window.addEventListener('scroll', animateStats);
         window.addEventListener('load', animateStats);
 
