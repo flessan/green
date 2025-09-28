@@ -55,10 +55,10 @@
             margin-right: 0.5rem;
             color: var(--primary);
         }
-        .ligo {
-            position: absolute;
-            top: 49px;
-            left: 218px;
+        ligo {
+            position: relative;
+            bottom: 13px;
+            left: 32px;
             font-size: 0.8rem;
             font-weight: 700;
             color: #FF7400;
