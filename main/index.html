@@ -1448,161 +1448,177 @@
         });
 
         // CSV URL
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
-        
-        // Function to create member card from CSV data
-        function createMemberCard(memberData) {
-            const card = document.createElement('div');
-            card.className = 'member-card';
-            card.setAttribute('data-aos', 'fade-up');
-            
-            // Extract data from CSV
-            const timestamp = memberData['Timestamp'] || '';
-            const nama = memberData['Nama'] || '';
-            const kelas = memberData['Kelas'] || '';
-            const divisi = memberData['Divisi'] || '';
-            const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
-            const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
-            const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
-            const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
-            const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
-            const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
-            const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
-            const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
-            const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
-            
-            card.innerHTML = `
-                <div class="member-header">
-                    <div class="member-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-name">${nama}</div>
-                    <div class="member-class">${kelas}</div>
-                </div>
-                <div class="member-body">
-                    <div class="member-info">
-                        <h4>Divisi</h4>
-                        <p>${divisi}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Tingkat Keyakinan Aktif</h4>
-                        <p>${keyakinan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Tantangan yang Dihadapi</h4>
-                        <p>${tantangan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Alasan Bergabung</h4>
-                        <p>${alasan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Pembagian Waktu</h4>
-                        <p>${waktu}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Ide Program</h4>
-                        <p>${ide}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Janji Partisipasi</h4>
-                        <p>${janji}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Alasan Yakin Aktif</h4>
-                        <p>${alasanYakin}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Kendala dan Kritik</h4>
-                        <p>${kendala}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4>Saran untuk GG</h4>
-                        <p>${saran}</p>
-                    </div>
-                    <div class="member-footer">
-                        Bergabung pada: ${timestamp}
-                    </div>
-                </div>
-            `;
-            
-            return card;
-        }
+const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
 
-        // Function to load and display CSV data
-        function loadCSVData(tabId, gridId, loadingId) {
-            const grid = document.getElementById(gridId);
-            const loading = document.getElementById(loadingId);
-            
-            // Show loading indicator
-            loading.style.display = 'block';
-            grid.innerHTML = '';
-            
-            // Fetch CSV data
-            Papa.parse(csvUrl, {
-                download: true,
-                header: true,
-                complete: function(results) {
-                    // Hide loading indicator
-                    loading.style.display = 'none';
-                    
-                    // Filter data by division (divisi)
-                    let filteredData = [];
-                    
-                    if (tabId === 'hidroponik') {
-                        filteredData = results.data.filter(row => 
-                            row['Divisi'] && row['Divisi'].toLowerCase().includes('hidroponik')
-                        );
-                    } else if (tabId === 'bank-sampah') {
-                        filteredData = results.data.filter(row => 
-                            row['Divisi'] && row['Divisi'].toLowerCase().includes('bank sampah')
-                        );
-                    } else if (tabId === 'daur-ulang') {
-                        filteredData = results.data.filter(row => 
-                            row['Divisi'] && row['Divisi'].toLowerCase().includes('daur ulang')
-                        );
-                    }
-                    
-                    // Create member cards
-                    if (filteredData.length > 0) {
-                        filteredData.forEach((member, index) => {
-                            const card = createMemberCard(member);
-                            // Add staggered animation delay
-                            card.setAttribute('data-aos-delay', (index % 12) * 100);
-                            grid.appendChild(card);
-                        });
-                        
-                        // Refresh AOS for new elements
-                        AOS.refresh();
-                    } else {
-                        grid.innerHTML = '<div class="no-search-result">Tidak ada data anggota untuk divisi ini.</div>';
-                    }
-                },
-                error: function(error) {
-                    loading.style.display = 'none';
-                    grid.innerHTML = '<div class="no-search-result">Gagal memuat data. Silakan coba lagi nanti.</div>';
-                    console.error('Error parsing CSV:', error);
-                }
-            });
-        }
+// Function to create member card from CSV data
+function createMemberCard(memberData) {
+    const card = document.createElement('div');
+    card.className = 'member-card';
+    card.setAttribute('data-aos', 'fade-up');
+    
+    // Extract data from CSV
+    const timestamp = memberData['Timestamp'] || '';
+    const nama = memberData['Nama'] || '';
+    const kelas = memberData['Kelas'] || '';
+    const divisi = memberData['Divisi'] || '';
+    const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
+    const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
+    const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
+    const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
+    const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
+    const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
+    const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
+    const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
+    const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
+    
+    card.innerHTML = `
+        <div class="member-header">
+            <div class="member-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="member-name">${nama}</div>
+            <div class="member-class">${kelas}</div>
+        </div>
+        <div class="member-body">
+            <div class="member-info">
+                <h4>Divisi</h4>
+                <p>${divisi}</p>
+            </div>
+            <div class="member-info">
+                <h4>Tingkat Keyakinan Aktif</h4>
+                <p>${keyakinan}</p>
+            </div>
+            <div class="member-info">
+                <h4>Tantangan yang Dihadapi</h4>
+                <p>${tantangan}</p>
+            </div>
+            <div class="member-info">
+                <h4>Alasan Bergabung</h4>
+                <p>${alasan}</p>
+            </div>
+            <div class="member-info">
+                <h4>Pembagian Waktu</h4>
+                <p>${waktu}</p>
+            </div>
+            <div class="member-info">
+                <h4>Ide Program</h4>
+                <p>${ide}</p>
+            </div>
+            <div class="member-info">
+                <h4>Janji Partisipasi</h4>
+                <p>${janji}</p>
+            </div>
+            <div class="member-info">
+                <h4>Alasan Yakin Aktif</h4>
+                <p>${alasanYakin}</p>
+            </div>
+            <div class="member-info">
+                <h4>Kendala dan Kritik</h4>
+                <p>${kendala}</p>
+            </div>
+            <div class="member-info">
+                <h4>Saran untuk GG</h4>
+                <p>${saran}</p>
+            </div>
+            <div class="member-footer">
+                Bergabung pada: ${timestamp}
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
 
-        // Load data for active tab on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            const activeTab = document.querySelector('.tab-button.active');
-            if (activeTab) {
-                const tabId = activeTab.getAttribute('data-tab');
-                loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
+// Function to load and display CSV data
+function loadCSVData(tabId, gridId, loadingId) {
+    const grid = document.getElementById(gridId);
+    const loading = document.getElementById(loadingId);
+    
+    // Show loading indicator
+    loading.style.display = 'block';
+    grid.innerHTML = '';
+    
+    // Fetch CSV data
+    Papa.parse(csvUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            // Hide loading indicator
+            loading.style.display = 'none';
+            
+            // Filter data by division (divisi)
+            let filteredData = [];
+            
+            if (tabId === 'hidroponik') {
+                filteredData = results.data.filter(row => 
+                    row['Divisi'] && (
+                        row['Divisi'].toLowerCase().includes('hidroponik') ||
+                        row['Kelas'] && row['Kelas'].toLowerCase().includes('hidroponik')
+                    )
+                );
+            } else if (tabId === 'bank-sampah') {
+                filteredData = results.data.filter(row => 
+                    row['Divisi'] && (
+                        row['Divisi'].toLowerCase().includes('bank sampah') ||
+                        row['Divisi'].toLowerCase().includes('bank-sampah') ||
+                        row['Kelas'] && (
+                            row['Kelas'].toLowerCase().includes('bank sampah') ||
+                            row['Kelas'].toLowerCase().includes('bank-sampah')
+                        )
+                    )
+                );
+            } else if (tabId === 'daur-ulang') {
+                filteredData = results.data.filter(row => 
+                    row['Divisi'] && (
+                        row['Divisi'].toLowerCase().includes('daur ulang') ||
+                        row['Divisi'].toLowerCase().includes('daur-ulang') ||
+                        row['Kelas'] && (
+                            row['Kelas'].toLowerCase().includes('daur ulang') ||
+                            row['Kelas'].toLowerCase().includes('daur-ulang')
+                        )
+                    )
+                );
             }
-        });
+            
+            // Create member cards
+            if (filteredData.length > 0) {
+                filteredData.forEach((member, index) => {
+                    const card = createMemberCard(member);
+                    // Add staggered animation delay
+                    card.setAttribute('data-aos-delay', (index % 12) * 100);
+                    grid.appendChild(card);
+                });
+                
+                // Refresh AOS for new elements
+                AOS.refresh();
+            } else {
+                grid.innerHTML = '<div class="no-search-result">Tidak ada data anggota untuk divisi ini.</div>';
+            }
+        },
+        error: function(error) {
+            loading.style.display = 'none';
+            grid.innerHTML = '<div class="no-search-result">Gagal memuat data. Silakan coba lagi nanti.</div>';
+            console.error('Error parsing CSV:', error);
+        }
+    });
+}
 
-        // Load data when tab is clicked
-        tabButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const tabId = this.getAttribute('data-tab');
-                loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
-            });
-        });
+// Load data for active tab on page load
+document.addEventListener('DOMContentLoaded', function() {
+    const activeTab = document.querySelector('.tab-button.active');
+    if (activeTab) {
+        const tabId = activeTab.getAttribute('data-tab');
+        loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
+    }
+});
 
+// Load data when tab is clicked
+tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+        const tabId = this.getAttribute('data-tab');
+        loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
+    });
+});
         // Search functionality
         const searchInput = document.getElementById('anggotaSearchInput');
         const searchBtn = document.getElementById('anggotaSearchBtn');
