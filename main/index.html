@@ -809,7 +809,7 @@
 
         /* Registration Section */
         .registration {
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(143, 188, 143, 0.9)), url('https://imgpx.com/en/8W023cOfmZbr.jpeg  ') center/cover no-repeat;
+            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(143, 188, 143, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760443699/hidrop_n86yi3.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
         }
@@ -1533,51 +1533,7 @@ function createMemberCard(memberData) {
 function loadCSVData(tabId, gridId, loadingId) {
     const grid = document.getElementById(gridId);
     const loading = document.getElementById(loadingId);
-    loading.style.display = 'block';
-    grid.innerHTML = '';
-
-    Papa.parse(csvUrl, {
-        download: true,
-        header: true,
-        complete: function(results) {
-            loading.style.display = 'none';
-
-            let filteredData = [];
-            const divisiColumn = 'Divisi'; // Ensure this matches your CSV header exactly
-
-            if (tabId === 'hidroponik') {
-                filteredData = results.data.filter(row =>
-                    row[divisiColumn] && row[divisiColumn].toLowerCase().includes('hidroponik')
-                );
-            } else if (tabId === 'bank-sampah') {
-                filteredData = results.data.filter(row =>
-                    row[divisiColumn] && row[divisiColumn].toLowerCase().includes('bank sampah')
-                );
-            } else if (tabId === 'daur-ulang') {
-                filteredData = results.data.filter(row =>
-                    row[divisiColumn] && row[divisiColumn].toLowerCase().includes('daur ulang')
-                );
-            }
-
-            if (filteredData.length > 0) {
-                filteredData.forEach((member, index) => {
-                    const card = createMemberCard(member);
-                    card.setAttribute('data-aos', 'fade-up');
-                    card.setAttribute('data-aos-delay', (index % 12) * 100);
-                    grid.appendChild(card);
-                });
-                AOS.refresh();
-            } else {
-                grid.innerHTML = '<div class="no-search-result">Tidak ada data anggota untuk divisi ini.</div>';
-            }
-        },
-        error: function(error) {
-            loading.style.display = 'none';
-            grid.innerHTML = '<div class="no-search-result">Gagal memuat data. Silakan coba lagi nanti.</div>';
-            console.error('Error parsing CSV:', error);
-        }
-    });
-}    
+    
     // Show loading indicator
     loading.style.display = 'block';
     grid.innerHTML = '';
