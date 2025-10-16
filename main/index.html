@@ -627,7 +627,25 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Members Section */
+        /* Members Section - Redesigned */
+        .members {
+            background: linear-gradient(135deg, rgba(240, 255, 240, 0.5), rgba(143, 188, 143, 0.2));
+        }
+
+        .members-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .members-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
         .anggota-search-box {
             max-width: 500px;
             margin: 0 auto 2rem;
@@ -635,6 +653,7 @@
             border-radius: 50px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            background: white;
         }
 
         .anggota-search-box input {
@@ -658,48 +677,7 @@
             background: var(--primary-dark);
         }
 
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .tab-button {
-            background: none;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .tab-button.active {
-            color: var(--primary);
-        }
-
-        .tab-button.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: var(--primary);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Member Card Styles */
+        /* Member Card Styles - Redesigned */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -712,9 +690,10 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: var(--transition);
-            height: 100%;
+            height: auto;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .member-card:hover {
@@ -728,6 +707,19 @@
             padding: 1.5rem;
             text-align: center;
             position: relative;
+            overflow: hidden;
+        }
+
+        .member-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            z-index: 1;
         }
 
         .member-avatar {
@@ -741,63 +733,162 @@
             margin: 0 auto 1rem;
             color: var(--primary);
             font-size: 2rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .member-name {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
+            position: relative;
+            z-index: 2;
         }
 
         .member-class {
             font-size: 0.9rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
-        .member-body {
+        .member-division {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .member-preview {
             padding: 1.5rem;
-            flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .member-preview-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .member-preview-item i {
+            color: var(--primary);
+            margin-top: 0.2rem;
+        }
+
+        .member-preview-item h4 {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .member-preview-item p {
+            font-size: 0.95rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .member-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            padding: 0 1.5rem;
+        }
+
+        .member-details.expanded {
+            max-height: 1000px;
+            padding: 0 1.5rem 1.5rem;
         }
 
         .member-info {
             margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        .member-info:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .member-info h4 {
             font-size: 0.9rem;
             color: var(--text-muted);
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .member-info h4 i {
+            color: var(--primary);
         }
 
         .member-info p {
             font-size: 0.95rem;
             line-height: 1.4;
+            margin: 0;
         }
 
         .member-footer {
             margin-top: auto;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            background: var(--bg-alt);
             text-align: center;
             font-size: 0.85rem;
             color: var(--text-muted);
             font-style: italic;
         }
 
+        .member-toggle-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0 0 15px 15px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .member-toggle-btn:hover {
+            background: var(--primary-dark);
+        }
+
+        .member-toggle-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .member-toggle-btn.expanded i {
+            transform: rotate(180deg);
+        }
+
         .no-search-result {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             color: var(--text-muted);
             font-style: italic;
+            grid-column: 1 / -1;
         }
 
         /* Loading indicator */
         .loading {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             color: var(--text-muted);
+            grid-column: 1 / -1;
         }
 
         .loading i {
@@ -805,6 +896,36 @@
             animation: spin 1s linear infinite;
             margin-bottom: 1rem;
             display: inline-block;
+        }
+
+        /* View More Button */
+        .view-more-container {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .view-more-btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            font-size: 1rem;
+        }
+
+        .view-more-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .view-more-btn.hidden {
+            display: none;
         }
 
         /* Registration Section */
@@ -968,15 +1089,6 @@
             
             .ligo {
                 font-size: 0.6rem;
-            }
-            
-            .tabs {
-                flex-wrap: wrap;
-            }
-            
-            .tab-button {
-                padding: 0.8rem 1rem;
-                font-size: 0.9rem;
             }
         }
     </style>
@@ -1249,44 +1361,33 @@
         </div>
     </section>
 
-    <!-- Members Section -->
+    <!-- Members Section - Redesigned -->
     <section id="member" class="members">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Daftar Anggota Aktif</h2>
+            <div class="members-header" data-aos="fade-up">
+                <h2 class="section-title">Daftar Anggota Aktif</h2>
+                <p class="members-subtitle">Temukan anggota Green Generation yang berdedikasi dalam menjaga lingkungan</p>
+            </div>
+            
             <!-- Search Box -->
             <div class="anggota-search-box" data-aos="fade-up" data-aos-delay="100">
                 <input type="text" id="anggotaSearchInput" placeholder="Cari anggota...">
                 <button type="button" id="anggotaSearchBtn" aria-label="Cari anggota"><i class="fas fa-search"></i></button>
             </div>
-            <!-- Tabs -->
-            <div class="tabs" data-aos="fade-up" data-aos-delay="200">
-                <button class="tab-button active" data-tab="hidroponik">Divisi Hidroponik</button>
-                <button class="tab-button" data-tab="bank-sampah">Divisi Bank Sampah</button>
-                <button class="tab-button" data-tab="daur-ulang">Divisi Daur Ulang</button>
-            </div>
-            <!-- Tab Contents -->
-            <div class="tab-content active" id="hidroponik">
-                <div class="loading" id="loadingHidroponik">
+            
+            <!-- All Members Grid -->
+            <div class="member-grid" id="membersGrid">
+                <div class="loading" id="loadingMembers">
                     <i class="fas fa-spinner"></i>
                     <p>Memuat data anggota...</p>
                 </div>
-                <div class="member-grid" id="hidroponikGrid"></div>
-            </div>
-            <div class="tab-content" id="bank-sampah">
-                <div class="loading" id="loadingBankSampah">
-                    <i class="fas fa-spinner"></i>
-                    <p>Memuat data anggota...</p>
-                </div>
-                <div class="member-grid" id="bankSampahGrid"></div>
-            </div>
-            <div class="tab-content" id="daur-ulang">
-                <div class="loading" id="loadingDaurUlang">
-                    <i class="fas fa-spinner"></i>
-                    <p>Memuat data anggota...</p>
-                </div>
-                <div class="member-grid" id="daurUlangGrid"></div>
             </div>
             <div class="no-search-result" id="anggotaNoResult" style="display:none;">Tidak ada anggota ditemukan.</div>
+            
+            <!-- View More Button -->
+            <div class="view-more-container" data-aos="fade-up" data-aos-delay="200">
+                <button id="viewMoreBtn" class="view-more-btn hidden">Lihat Lebih Banyak Anggota</button>
+            </div>
         </div>
     </section>
 
@@ -1429,221 +1530,237 @@
             });
         });
 
-        // Tab functionality
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const tabId = button.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and contents
-                tabButtons.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                button.classList.add('active');
-                document.getElementById(tabId).classList.add('active');
-            });
-        });
-
         // CSV URL
-const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
 
-// Function to create member card from CSV data
-function createMemberCard(memberData) {
-    const card = document.createElement('div');
-    card.className = 'member-card';
-    card.setAttribute('data-aos', 'fade-up');
-    
-    // Extract data from CSV
-    const timestamp = memberData['Timestamp'] || '';
-    const nama = memberData['Nama'] || '';
-    const kelas = memberData['Kelas'] || '';
-    const divisi = memberData['Divisi'] || '';
-    const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
-    const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
-    const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
-    const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
-    const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
-    const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
-    const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
-    const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
-    const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
-    
-    card.innerHTML = `
-        <div class="member-header">
-            <div class="member-avatar">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="member-name">${nama}</div>
-            <div class="member-class">${kelas}</div>
-        </div>
-        <div class="member-body">
-            <div class="member-info">
-                <h4>Divisi</h4>
-                <p>${divisi}</p>
-            </div>
-            <div class="member-info">
-                <h4>Tingkat Keyakinan Aktif</h4>
-                <p>${keyakinan}</p>
-            </div>
-            <div class="member-info">
-                <h4>Tantangan yang Dihadapi</h4>
-                <p>${tantangan}</p>
-            </div>
-            <div class="member-info">
-                <h4>Alasan Bergabung</h4>
-                <p>${alasan}</p>
-            </div>
-            <div class="member-info">
-                <h4>Pembagian Waktu</h4>
-                <p>${waktu}</p>
-            </div>
-            <div class="member-info">
-                <h4>Ide Program</h4>
-                <p>${ide}</p>
-            </div>
-            <div class="member-info">
-                <h4>Janji Partisipasi</h4>
-                <p>${janji}</p>
-            </div>
-            <div class="member-info">
-                <h4>Alasan Yakin Aktif</h4>
-                <p>${alasanYakin}</p>
-            </div>
-            <div class="member-info">
-                <h4>Kendala dan Kritik</h4>
-                <p>${kendala}</p>
-            </div>
-            <div class="member-info">
-                <h4>Saran untuk GG</h4>
-                <p>${saran}</p>
-            </div>
-            <div class="member-footer">
-                Bergabung pada: ${timestamp}
-            </div>
-        </div>
-    `;
-    
-    return card;
-}
+        // Global variables for member data and pagination
+        let allMembers = [];
+        let filteredMembers = [];
+        let currentPage = 1;
+        const membersPerPage = 6;
+        let isSearching = false;
 
-// Function to load and display CSV data
-function loadCSVData(tabId, gridId, loadingId) {
-    const grid = document.getElementById(gridId);
-    const loading = document.getElementById(loadingId);
-    
-    // Show loading indicator
-    loading.style.display = 'block';
-    grid.innerHTML = '';
-    
-    // Fetch CSV data
-    Papa.parse(csvUrl, {
-        download: true,
-        header: true,
-        complete: function(results) {
-            // Hide loading indicator
-            loading.style.display = 'none';
+        // Function to create member card from CSV data
+        function createMemberCard(memberData, index) {
+            const card = document.createElement('div');
+            card.className = 'member-card';
+            card.setAttribute('data-aos', 'fade-up');
+            card.setAttribute('data-aos-delay', (index % 12) * 100);
             
-            // Filter data by division (divisi)
-            let filteredData = [];
+            // Extract data from CSV
+            const timestamp = memberData['Timestamp'] || '';
+            const nama = memberData['Nama'] || '';
+            const kelas = memberData['Kelas'] || '';
+            const divisi = memberData['Divisi'] || '';
+            const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
+            const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
+            const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
+            const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
+            const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
+            const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
+            const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
+            const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
+            const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
             
-            if (tabId === 'hidroponik') {
-                filteredData = results.data.filter(row => 
-                    row['Divisi'] && (
-                        row['Divisi'].toLowerCase().includes('hidroponik') ||
-                        row['Kelas'] && row['Kelas'].toLowerCase().includes('hidroponik')
-                    )
-                );
-            } else if (tabId === 'bank-sampah') {
-                filteredData = results.data.filter(row => 
-                    row['Divisi'] && (
-                        row['Divisi'].toLowerCase().includes('bank sampah') ||
-                        row['Divisi'].toLowerCase().includes('bank-sampah') ||
-                        row['Kelas'] && (
-                            row['Kelas'].toLowerCase().includes('bank sampah') ||
-                            row['Kelas'].toLowerCase().includes('bank-sampah')
-                        )
-                    )
-                );
-            } else if (tabId === 'daur-ulang') {
-                filteredData = results.data.filter(row => 
-                    row['Divisi'] && (
-                        row['Divisi'].toLowerCase().includes('daur ulang') ||
-                        row['Divisi'].toLowerCase().includes('daur-ulang') ||
-                        row['Kelas'] && (
-                            row['Kelas'].toLowerCase().includes('daur ulang') ||
-                            row['Kelas'].toLowerCase().includes('daur-ulang')
-                        )
-                    )
-                );
+            // Generate a unique ID for this member card
+            const memberId = `member-${index}`;
+            
+            card.innerHTML = `
+                <div class="member-header">
+                    <div class="member-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-name">${nama}</div>
+                    <div class="member-class">${kelas}</div>
+                    <div class="member-division">${divisi}</div>
+                </div>
+                <div class="member-preview">
+                    <div class="member-preview-item">
+                        <i class="fas fa-heart"></i>
+                        <div>
+                            <h4>Keyakinan Aktif</h4>
+                            <p>${keyakinan}</p>
+                        </div>
+                    </div>
+                    <div class="member-preview-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <div>
+                            <h4>Alasan Bergabung</h4>
+                            <p>${alasan.length > 80 ? alasan.substring(0, 80) + '...' : alasan}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="member-details" id="${memberId}">
+                    <div class="member-info">
+                        <h4><i class="fas fa-heart"></i> Tingkat Keyakinan Aktif</h4>
+                        <p>${keyakinan}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Tantangan yang Dihadapi</h4>
+                        <p>${tantangan}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-question-circle"></i> Alasan Bergabung</h4>
+                        <p>${alasan}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-clock"></i> Pembagian Waktu</h4>
+                        <p>${waktu}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-lightbulb"></i> Ide Program</h4>
+                        <p>${ide}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-handshake"></i> Janji Partisipasi</h4>
+                        <p>${janji}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-check-circle"></i> Alasan Yakin Aktif</h4>
+                        <p>${alasanYakin}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-comments"></i> Kendala dan Kritik</h4>
+                        <p>${kendala}</p>
+                    </div>
+                    <div class="member-info">
+                        <h4><i class="fas fa-star"></i> Saran untuk GG</h4>
+                        <p>${saran}</p>
+                    </div>
+                </div>
+                <div class="member-footer">
+                    Bergabung pada: ${timestamp}
+                </div>
+                <button class="member-toggle-btn" id="toggle-${memberId}" onclick="toggleMemberDetails('${memberId}')">
+                    <span>Lihat Selengkapnya</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            `;
+            
+            return card;
+        }
+
+        // Function to toggle member details
+        function toggleMemberDetails(memberId) {
+            const details = document.getElementById(memberId);
+            const toggleBtn = document.getElementById(`toggle-${memberId}`);
+            
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                toggleBtn.classList.remove('expanded');
+                toggleBtn.querySelector('span').textContent = 'Lihat Selengkapnya';
+            } else {
+                details.classList.add('expanded');
+                toggleBtn.classList.add('expanded');
+                toggleBtn.querySelector('span').textContent = 'Tampilkan Lebih Sedikit';
             }
+        }
+
+        // Function to load and display CSV data
+        function loadAllMembers() {
+            const grid = document.getElementById('membersGrid');
+            const loading = document.getElementById('loadingMembers');
+            
+            // Show loading indicator
+            loading.style.display = 'block';
+            grid.innerHTML = '';
+            
+            // Fetch CSV data
+            Papa.parse(csvUrl, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    // Hide loading indicator
+                    loading.style.display = 'none';
+                    
+                    // Store all data
+                    allMembers = results.data.filter(row => row['Nama'] && row['Nama'].trim() !== '');
+                    filteredMembers = [...allMembers];
+                    
+                    // Display first page
+                    currentPage = 1;
+                    displayMembers();
+                },
+                error: function(error) {
+                    loading.style.display = 'none';
+                    grid.innerHTML = '<div class="no-search-result">Gagal memuat data. Silakan coba lagi nanti.</div>';
+                    console.error('Error parsing CSV:', error);
+                }
+            });
+        }
+
+        // Function to display members with pagination
+        function displayMembers() {
+            const grid = document.getElementById('membersGrid');
+            const noResult = document.getElementById('anggotaNoResult');
+            const viewMoreBtn = document.getElementById('viewMoreBtn');
+            
+            // Clear grid but keep loading state if it's the first load
+            if (currentPage === 1) {
+                grid.innerHTML = '';
+            } else {
+                // Remove loading indicator if it exists
+                const existingLoading = grid.querySelector('.loading');
+                if (existingLoading) {
+                    existingLoading.remove();
+                }
+            }
+            
+            // If no members
+            if (filteredMembers.length === 0) {
+                noResult.style.display = 'block';
+                viewMoreBtn.classList.add('hidden');
+                return;
+            }
+            
+            noResult.style.display = 'none';
+            
+            // Calculate start and end index
+            const startIndex = (currentPage - 1) * membersPerPage;
+            const endIndex = isSearching ? filteredMembers.length : startIndex + membersPerPage;
+            const membersToShow = isSearching ? filteredMembers : filteredMembers.slice(startIndex, endIndex);
             
             // Create member cards
-            if (filteredData.length > 0) {
-                filteredData.forEach((member, index) => {
-                    const card = createMemberCard(member);
-                    // Add staggered animation delay
-                    card.setAttribute('data-aos-delay', (index % 12) * 100);
-                    grid.appendChild(card);
-                });
-                
-                // Refresh AOS for new elements
-                AOS.refresh();
+            membersToShow.forEach((member, index) => {
+                const card = createMemberCard(member, startIndex + index);
+                grid.appendChild(card);
+            });
+            
+            // Refresh AOS for new elements
+            AOS.refresh();
+            
+            // Show/hide view more button
+            if (isSearching || endIndex >= filteredMembers.length) {
+                viewMoreBtn.classList.add('hidden');
             } else {
-                grid.innerHTML = '<div class="no-search-result">Tidak ada data anggota untuk divisi ini.</div>';
+                viewMoreBtn.classList.remove('hidden');
             }
-        },
-        error: function(error) {
-            loading.style.display = 'none';
-            grid.innerHTML = '<div class="no-search-result">Gagal memuat data. Silakan coba lagi nanti.</div>';
-            console.error('Error parsing CSV:', error);
         }
-    });
-}
 
-// Load data for active tab on page load
-document.addEventListener('DOMContentLoaded', function() {
-    const activeTab = document.querySelector('.tab-button.active');
-    if (activeTab) {
-        const tabId = activeTab.getAttribute('data-tab');
-        loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
-    }
-});
-
-// Load data when tab is clicked
-tabButtons.forEach(button => {
-    button.addEventListener('click', function() {
-        const tabId = this.getAttribute('data-tab');
-        loadCSVData(tabId, `${tabId}Grid`, `loading${tabId.charAt(0).toUpperCase() + tabId.slice(1).replace('-', '')}`);
-    });
-});
         // Search functionality
         const searchInput = document.getElementById('anggotaSearchInput');
         const searchBtn = document.getElementById('anggotaSearchBtn');
         const noResult = document.getElementById('anggotaNoResult');
         
         function performSearch() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const activeTab = document.querySelector('.tab-button.active');
-            const tabId = activeTab.getAttribute('data-tab');
-            const grid = document.getElementById(`${tabId}Grid`);
-            const memberCards = grid.querySelectorAll('.member-card');
+            const searchTerm = searchInput.value.toLowerCase().trim();
             
-            let hasResults = false;
+            if (searchTerm === '') {
+                // Reset to all members
+                isSearching = false;
+                filteredMembers = [...allMembers];
+                currentPage = 1;
+            } else {
+                // Filter members
+                isSearching = true;
+                filteredMembers = allMembers.filter(member => {
+                    // Check all fields for search term
+                    const searchableText = Object.values(member).join(' ').toLowerCase();
+                    return searchableText.includes(searchTerm);
+                });
+            }
             
-            memberCards.forEach(card => {
-                const text = card.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                    hasResults = true;
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            noResult.style.display = hasResults ? 'none' : 'block';
+            displayMembers();
         }
         
         searchBtn.addEventListener('click', performSearch);
@@ -1655,6 +1772,17 @@ tabButtons.forEach(button => {
         
         // Real-time search as user types
         searchInput.addEventListener('input', performSearch);
+
+        // View more button functionality
+        document.getElementById('viewMoreBtn').addEventListener('click', function() {
+            currentPage++;
+            displayMembers();
+        });
+
+        // Load all members on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllMembers();
+        });
 
         // Header background on scroll
         const header = document.querySelector('header');
