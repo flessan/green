@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita - Bottle Deposit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-recycle"></i> Green Generation
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="rewards.html">Hadiah</a></li>
+                    <li><a href="news.html" class="active">Berita</a></li>
+                    <li><a href="donate.html">Donasi</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Keluar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Berita & Pengumuman</h1>
+        
+        <div id="news-list" class="news-list">
+            <!-- News will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+    apiKey: "apiKey",
+    authDomain: "gryzfa.firebaseapp.com",
+    databaseURL: "https://gryzfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gryzfa",
+    storageBucket: "gryzfa.firebasestorage.app",
+    messagingSenderId: "604521234243",
+    appId: "1:604521234243:web:1953b1a2ec316aac9df9f6",
+    measurementId: "G-Y7L0680N16"
+  };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Check if user is logged in
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                document.getElementById('user-name').textContent = user.displayName;
+            }
+            
+            // Load news
+            loadNews();
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // Load news
+        function loadNews() {
+            db.collection('news')
+                .orderBy('date', 'desc')
+                .get()
+                .then(snapshot => {
+                    const newsList = document.getElementById('news-list');
+                    newsList.innerHTML = '';
+                    
+                    if (snapshot.empty) {
+                        newsList.innerHTML = '<p>Belum ada berita tersedia.</p>';
+                        return;
+                    }
+                    
+                    snapshot.forEach(doc => {
+                        const news = doc.data();
+                        const newsItem = createNewsItem(doc.id, news);
+                        newsList.appendChild(newsItem);
+                    });
+                });
+        }
+
+        // Create news item
+        function createNewsItem(newsId, news) {
+            const item = document.createElement('div');
+            item.className = 'news-item';
+            
+            const date = news.date.toDate();
+            const formattedDate = date.toLocaleDateString();
+            
+            // Parse markdown content
+            const contentHtml = marked.parse(news.content);
+            
+            item.innerHTML = `
+                <div class="news-header">
+                    <h2 class="news-title">${news.title}</h2>
+                    <div class="news-meta">
+                        <span class="news-date">${formattedDate}</span>
+                        ${news.author ? `<span class="news-author">Oleh: ${news.author}</span>` : ''}
+                    </div>
+                </div>
+                <div class="news-content">
+                    ${contentHtml}
+                </div>
+            `;
+            
+            return item;
+        }
+    </script>
+</body>
+</html>
