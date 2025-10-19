@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bottle Deposit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-recycle"></i> Green Generation
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="rewards.html">Hadiah</a></li>
+                    <li><a href="news.html">Berita</a></li>
+                    <li><a href="donate.html">Donasi</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Keluar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Dashboard</h1>
+        
+        <div id="message-container"></div>
+
+        <!-- User Stats -->
+        <div class="user-stats">
+            <div class="stat">
+                <div class="stat-value" id="user-points">0</div>
+                <div class="stat-label">Poin</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="user-level">1</div>
+                <div class="stat-label">Level</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="user-bottles">0</div>
+                <div class="stat-label">Botol</div>
+            </div>
+        </div>
+
+        <!-- Deposit Form -->
+        <div class="card">
+            <h2>Formulir Deposit Botol</h2>
+            <form id="deposit-form">
+                <div class="form-group">
+                    <label for="bottle-count">Jumlah Botol</label>
+                    <input type="number" id="bottle-count" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="deposit-location">Lokasi Pengumpulan</label>
+                    <select id="deposit-location" required>
+                        <option value="">Pilih lokasi</option>
+                        <option value="school">Dibawah - UKS</option>
+                        <option value="rpl">Diatas - RPL</option>
+                        <option value="perpus">Diatas - Perpus</option>
+                        <option value="other">Lainnya</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deposit-notes">Catatan (Opsional)</label>
+                    <textarea id="deposit-notes" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Kirim Deposit</button>
+            </form>
+        </div>
+
+        <!-- Deposit History -->
+        <div class="card">
+            <h2>Riwayat Deposit</h2>
+            <div class="table-container">
+                <table id="deposits-table">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Jumlah Botol</th>
+                            <th>Lokasi</th>
+                            <th>Poin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Deposits will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        const firebaseConfig = {
+    apiKey: "AIzaSyBJz6Ae8j1MKCNxxojC-hkBYSFBX-7l_Cs",
+    authDomain: "gryzfa.firebaseapp.com",
+    databaseURL: "https://gryzfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gryzfa",
+    storageBucket: "gryzfa.firebasestorage.app",
+    messagingSenderId: "604521234243",
+    appId: "1:604521234243:web:1953b1a2ec316aac9df9f6",
+    measurementId: "G-Y7L0680N16"
+  };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Check if user is logged in
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                document.getElementById('user-name').textContent = user.displayName;
+                
+                // Load user data
+                loadUserData(user.uid);
+                loadDepositHistory(user.uid);
+            } else {
+                // User is signed out, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // Load user data
+        function loadUserData(userId) {
+            db.collection('users').doc(userId).get().then(doc => {
+                if (doc.exists) {
+                    const userData = doc.data();
+                    document.getElementById('user-points').textContent = userData.points;
+                    document.getElementById('user-level').textContent = userData.level;
+                    document.getElementById('user-bottles').textContent = userData.bottles;
+                }
+            });
+        }
+
+        // Load deposit history
+        function loadDepositHistory(userId) {
+            db.collection('deposits')
+                .where('userId', '==', userId)
+                .orderBy('date', 'desc')
+                .get()
+                .then(snapshot => {
+                    const tbody = document.querySelector('#deposits-table tbody');
+                    tbody.innerHTML = '';
+                    
+                    if (snapshot.empty) {
+                        tbody.innerHTML = '<tr><td colspan="4">Belum ada riwayat deposit</td></tr>';
+                        return;
+                    }
+                    
+                    snapshot.forEach(doc => {
+                        const deposit = doc.data();
+                        const row = document.createElement('tr');
+                        
+                        const date = deposit.date.toDate();
+                        const formattedDate = date.toLocaleDateString();
+                        
+                        row.innerHTML = `
+                            <td>${formattedDate}</td>
+                            <td>${deposit.count}</td>
+                            <td>${getLocationName(deposit.location)}</td>
+                            <td>${deposit.count}</td>
+                        `;
+                        
+                        tbody.appendChild(row);
+                    });
+                });
+        }
+
+        // Get location name
+        function getLocationName(location) {
+            const locations = {
+                'school': 'Sekolah',
+                'rpl': 'Pusat Komunitas',
+                'perpus': 'Pusat Perbelanjaan',
+                'other': 'Lainnya'
+            };
+            return locations[location] || location;
+        }
+
+        // Submit deposit form
+        document.getElementById('deposit-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const bottleCount = parseInt(document.getElementById('bottle-count').value);
+            const location = document.getElementById('deposit-location').value;
+            const notes = document.getElementById('deposit-notes').value;
+            const userId = auth.currentUser.uid;
+            
+            // Add deposit to Firestore
+            db.collection('deposits').add({
+                userId: userId,
+                count: bottleCount,
+                location: location,
+                notes: notes,
+                date: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(docRef => {
+                // Update user points and bottles
+                db.collection('users').doc(userId).update({
+                    points: firebase.firestore.FieldValue.increment(bottleCount),
+                    bottles: firebase.firestore.FieldValue.increment(bottleCount)
+                })
+                .then(() => {
+                    // Update level (every 10 points = 1 level)
+                    db.collection('users').doc(userId).get().then(doc => {
+                        const userData = doc.data();
+                        const newLevel = Math.floor(userData.points / 10) + 1;
+                        
+                        if (newLevel > userData.level) {
+                            db.collection('users').doc(userId).update({
+                                level: newLevel
+                            });
+                        }
+                        
+                        // Show success message
+                        showMessage('Deposit berhasil dikirim!', 'success');
+                        
+                        // Reload user data and history
+                        loadUserData(userId);
+                        loadDepositHistory(userId);
+                        
+                        // Reset form
+                        document.getElementById('deposit-form').reset();
+                    });
+                });
+            })
+            .catch(error => {
+                console.error('Error submitting deposit:', error);
+                showMessage('Gagal mengirim deposit. Silakan coba lagi.', 'error');
+            });
+        });
+
+        // Show message
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message message-${type}`;
+            messageElement.textContent = message;
+            
+            messageContainer.innerHTML = '';
+            messageContainer.appendChild(messageElement);
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageElement.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
