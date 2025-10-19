@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Bottle Deposit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-recycle"></i> BottleDeposit
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="rewards.html">Hadiah</a></li>
+                    <li><a href="news.html">Berita</a></li>
+                    <li><a href="donate.html">Donasi</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Keluar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Admin Panel</h1>
+        
+        <div id="message-container"></div>
+
+        <!-- Admin Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-btn active" data-tab="rewards">Kelola Hadiah</button>
+            <button class="tab-btn" data-tab="news">Kelola Berita</button>
+            <button class="tab-btn" data-tab="users">Kelola Pengguna</button>
+            <button class="tab-btn" data-tab="donations">Kelola Donasi</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Rewards Tab -->
+            <div id="rewards-tab" class="tab-pane active">
+                <h2>Kelola Hadiah</h2>
+                
+                <div class="admin-actions">
+                    <button class="btn btn-primary" id="add-reward-btn">
+                        <i class="fas fa-plus"></i> Tambah Hadiah
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table id="rewards-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Deskripsi</th>
+                                <th>Poin</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Rewards will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- News Tab -->
+            <div id="news-tab" class="tab-pane">
+                <h2>Kelola Berita</h2>
+                
+                <div class="admin-actions">
+                    <button class="btn btn-primary" id="add-news-btn">
+                        <i class="fas fa-plus"></i> Tambah Berita
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table id="news-table">
+                        <thead>
+                            <tr>
+                                <th>Judul</th>
+                                <th>Tanggal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- News will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Users Tab -->
+            <div id="users-tab" class="tab-pane">
+                <h2>Kelola Pengguna</h2>
+                
+                <div class="table-container">
+                    <table id="users-table">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Email</th>
+                                <th>Poin</th>
+                                <th>Level</th>
+                                <th>Botol</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Donations Tab -->
+            <div id="donations-tab" class="tab-pane">
+                <h2>Kelola Donasi</h2>
+                
+                <div class="admin-actions">
+                    <button class="btn btn-primary" id="add-donation-btn">
+                        <i class="fas fa-plus"></i> Tambah Donasi
+                    </button>
+                </div>
+                
+                <div class="table-container">
+                    <table id="donations-table">
+                        <thead>
+                            <tr>
+                                <th>Pendonasi</th>
+                                <th>Jumlah</th>
+                                <th>Tanggal</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Donations will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add/Edit Reward Modal -->
+    <div id="reward-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="reward-modal-title">Tambah Hadiah</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="reward-form">
+                    <input type="hidden" id="reward-id">
+                    <div class="form-group">
+                        <label for="reward-name">Nama Hadiah</label>
+                        <input type="text" id="reward-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reward-description">Deskripsi</label>
+                        <textarea id="reward-description" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="reward-points">Poin yang Diperlukan</label>
+                        <input type="number" id="reward-points" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reward-image">URL Gambar (Opsional)</label>
+                        <input type="text" id="reward-image">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-reward">Batal</button>
+                <button class="btn btn-primary" id="save-reward">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit News Modal -->
+    <div id="news-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="news-modal-title">Tambah Berita</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="news-form">
+                    <input type="hidden" id="news-id">
+                    <div class="form-group">
+                        <label for="news-title">Judul Berita</label>
+                        <input type="text" id="news-title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-content">Konten (Markdown)</label>
+                        <textarea id="news-content" rows="10" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="news-author">Penulis</label>
+                        <input type="text" id="news-author">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-news">Batal</button>
+                <button class="btn btn-primary" id="save-news">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+    apiKey: "apiKey",
+    authDomain: "gryzfa.firebaseapp.com",
+    databaseURL: "https://gryzfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gryzfa",
+    storageBucket: "gryzfa.firebasestorage.app",
+    messagingSenderId: "604521234243",
+    appId: "1:604521234243:web:1953b1a2ec316aac9df9f6",
+    measurementId: "G-Y7L0680N16"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Admin email (change this to your admin email)
+        const adminEmail = "gryzfa@gmail.com";
+
+        // Check if user is logged in and is admin
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                document.getElementById('user-name').textContent = user.displayName;
+                
+                // Check if admin
+                if (user.email === adminEmail) {
+                    // Load data
+                    loadRewards();
+                    loadNews();
+                    loadUsers();
+                    loadDonations();
+                } else {
+                    // Not admin, redirect to home
+                    window.location.href = 'index.html';
+                }
+            } else {
+                // User is signed out, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and panes
+                tabBtns.forEach(b => b.classList.remove('active'));
+                tabPanes.forEach(p => p.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding pane
+                btn.classList.add('active');
+                document.getElementById(`${tabId}-tab`).classList.add('active');
+            });
+        });
+
+        // Load rewards
+        function loadRewards() {
+            db.collection('rewards').get().then(snapshot => {
+                const tbody = document.querySelector('#rewards-table tbody');
+                tbody.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="4">Belum ada hadiah</td></tr>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const reward = doc.data();
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${reward.name}</td>
+                        <td>${reward.description}</td>
+                        <td>${reward.points}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editReward('${doc.id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteReward('${doc.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+            });
+        }
+
+        // Load news
+        function loadNews() {
+            db.collection('news').get().then(snapshot => {
+                const tbody = document.querySelector('#news-table tbody');
+                tbody.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="3">Belum ada berita</td></tr>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const news = doc.data();
+                    const row = document.createElement('tr');
+                    
+                    const date = news.date.toDate();
+                    const formattedDate = date.toLocaleDateString();
+                    
+                    row.innerHTML = `
+                        <td>${news.title}</td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editNews('${doc.id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteNews('${doc.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+            });
+        }
+
+        // Load users
+        function loadUsers() {
+            db.collection('users').get().then(snapshot => {
+                const tbody = document.querySelector('#users-table tbody');
+                tbody.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="6">Belum ada pengguna</td></tr>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const user = doc.data();
+                    const row = document.createElement('tr');
+                    
+                    row.innerHTML = `
+                        <td>${user.name}</td>
+                        <td>${user.email}</td>
+                        <td>${user.points}</td>
+                        <td>${user.level}</td>
+                        <td>${user.bottles}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editUser('${doc.id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteUser('${doc.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+            });
+        }
+
+        // Load donations
+        function loadDonations() {
+            db.collection('donations').get().then(snapshot => {
+                const tbody = document.querySelector('#donations-table tbody');
+                tbody.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    tbody.innerHTML = '<tr><td colspan="4">Belum ada donasi</td></tr>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const donation = doc.data();
+                    const row = document.createElement('tr');
+                    
+                    const date = donation.date.toDate();
+                    const formattedDate = date.toLocaleDateString();
+                    
+                    row.innerHTML = `
+                        <td>${donation.donorName || 'Anonymous'}</td>
+                        <td>$${donation.amount}</td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary" onclick="editDonation('${doc.id}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-sm btn-danger" onclick="deleteDonation('${doc.id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    
+                    tbody.appendChild(row);
+                });
+            });
+        }
+
+        // Reward Modal
+        const rewardModal = document.getElementById('reward-modal');
+        const addRewardBtn = document.getElementById('add-reward-btn');
+        const cancelReward = document.getElementById('cancel-reward');
+        const saveReward = document.getElementById('save-reward');
+        const modalClose = document.querySelectorAll('.modal-close');
+
+        addRewardBtn.addEventListener('click', () => {
+            document.getElementById('reward-modal-title').textContent = 'Tambah Hadiah';
+            document.getElementById('reward-form').reset();
+            rewardModal.style.display = 'flex';
+        });
+
+        cancelReward.addEventListener('click', () => {
+            rewardModal.style.display = 'none';
+        });
+
+        saveReward.addEventListener('click', () => {
+            const rewardId = document.getElementById('reward-id').value;
+            const rewardData = {
+                name: document.getElementById('reward-name').value,
+                description: document.getElementById('reward-description').value,
+                points: parseInt(document.getElementById('reward-points').value),
+                imageUrl: document.getElementById('reward-image').value
+            };
+            
+            if (rewardId) {
+                // Update existing reward
+                db.collection('rewards').doc(rewardId).update(rewardData)
+                    .then(() => {
+                        showMessage('Hadiah berhasil diperbarui!', 'success');
+                        rewardModal.style.display = 'none';
+                        loadRewards();
+                    });
+            } else {
+                // Add new reward
+                db.collection('rewards').add(rewardData)
+                    .then(() => {
+                        showMessage('Hadiah berhasil ditambahkan!', 'success');
+                        rewardModal.style.display = 'none';
+                        loadRewards();
+                    });
+            }
+        });
+
+        // News Modal
+        const newsModal = document.getElementById('news-modal');
+        const addNewsBtn = document.getElementById('add-news-btn');
+        const cancelNews = document.getElementById('cancel-news');
+        const saveNews = document.getElementById('save-news');
+
+        addNewsBtn.addEventListener('click', () => {
+            document.getElementById('news-modal-title').textContent = 'Tambah Berita';
+            document.getElementById('news-form').reset();
+            newsModal.style.display = 'flex';
+        });
+
+        cancelNews.addEventListener('click', () => {
+            newsModal.style.display = 'none';
+        });
+
+        saveNews.addEventListener('click', () => {
+            const newsId = document.getElementById('news-id').value;
+            const newsData = {
+                title: document.getElementById('news-title').value,
+                content: document.getElementById('news-content').value,
+                author: document.getElementById('news-author').value,
+                date: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            if (newsId) {
+                // Update existing news
+                db.collection('news').doc(newsId).update(newsData)
+                    .then(() => {
+                        showMessage('Berita berhasil diperbarui!', 'success');
+                        newsModal.style.display = 'none';
+                        loadNews();
+                    });
+            } else {
+                // Add new news
+                db.collection('news').add(newsData)
+                    .then(() => {
+                        showMessage('Berita berhasil ditambahkan!', 'success');
+                        newsModal.style.display = 'none';
+                        loadNews();
+                    });
+            }
+        });
+
+        // Close modals
+        modalClose.forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                rewardModal.style.display = 'none';
+                newsModal.style.display = 'none';
+            });
+        });
+
+        // Edit functions
+        function editReward(rewardId) {
+            db.collection('rewards').doc(rewardId).get().then(doc => {
+                const reward = doc.data();
+                
+                document.getElementById('reward-modal-title').textContent = 'Edit Hadiah';
+                document.getElementById('reward-id').value = rewardId;
+                document.getElementById('reward-name').value = reward.name;
+                document.getElementById('reward-description').value = reward.description;
+                document.getElementById('reward-points').value = reward.points;
+                document.getElementById('reward-image').value = reward.imageUrl || '';
+                
+                rewardModal.style.display = 'flex';
+            });
+        }
+
+        function editNews(newsId) {
+            db.collection('news').doc(newsId).get().then(doc => {
+                const news = doc.data();
+                
+                document.getElementById('news-modal-title').textContent = 'Edit Berita';
+                document.getElementById('news-id').value = newsId;
+                document.getElementById('news-title').value = news.title;
+                document.getElementById('news-content').value = news.content;
+                document.getElementById('news-author').value = news.author || '';
+                
+                newsModal.style.display = 'flex';
+            });
+        }
+
+        // Delete functions
+        function deleteReward(rewardId) {
+            if (confirm('Apakah Anda yakin ingin menghapus hadiah ini?')) {
+                db.collection('rewards').doc(rewardId).delete()
+                    .then(() => {
+                        showMessage('Hadiah berhasil dihapus!', 'success');
+                        loadRewards();
+                    });
+            }
+        }
+
+        function deleteNews(newsId) {
+            if (confirm('Apakah Anda yakin ingin menghapus berita ini?')) {
+                db.collection('news').doc(newsId).delete()
+                    .then(() => {
+                        showMessage('Berita berhasil dihapus!', 'success');
+                        loadNews();
+                    });
+            }
+        }
+
+        function deleteUser(userId) {
+            if (confirm('Apakah Anda yakin ingin menghapus pengguna ini?')) {
+                db.collection('users').doc(userId).delete()
+                    .then(() => {
+                        showMessage('Pengguna berhasil dihapus!', 'success');
+                        loadUsers();
+                    });
+            }
+        }
+
+        function deleteDonation(donationId) {
+            if (confirm('Apakah Anda yakin ingin menghapus donasi ini?')) {
+                db.collection('donations').doc(donationId).delete()
+                    .then(() => {
+                        showMessage('Donasi berhasil dihapus!', 'success');
+                        loadDonations();
+                    });
+            }
+        }
+
+        // Show message
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message message-${type}`;
+            messageElement.textContent = message;
+            
+            messageContainer.innerHTML = '';
+            messageContainer.appendChild(messageElement);
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageElement.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
