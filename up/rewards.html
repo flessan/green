@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadiah - Bottle Deposit Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-recycle"></i> Green Generation
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Beranda</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="rewards.html" class="active">Hadiah</a></li>
+                    <li><a href="news.html">Berita</a></li>
+                    <li><a href="donate.html">Donasi</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <span id="user-name"></span>
+                <button id="logout-btn">Keluar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <h1>Katalog Hadiah</h1>
+        
+        <div id="message-container"></div>
+
+        <!-- User Points -->
+        <div class="user-points-card">
+            <div class="user-points-info">
+                <div class="user-points-value" id="user-points">0</div>
+                <div class="user-points-label">Poin Anda</div>
+            </div>
+            <div class="user-level-info">
+                <div class="user-level-value" id="user-level">1</div>
+                <div class="user-level-label">Level</div>
+            </div>
+        </div>
+
+        <!-- Rewards Grid -->
+        <div class="rewards-grid" id="rewards-grid">
+            <!-- Rewards will be loaded here -->
+        </div>
+    </main>
+
+    <!-- Redemption Modal -->
+    <div id="redemption-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Konfirmasi Penukaran</h2>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Apakah Anda yakin ingin menukar <span id="reward-name"></span> dengan <span id="reward-points"></span> poin?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancel-redemption">Batal</button>
+                <button class="btn btn-primary" id="confirm-redemption">Konfirmasi</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore-compat.js"></script>
+    
+    <script src="script.js"></script>
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+    apiKey: "apiKey",
+    authDomain: "gryzfa.firebaseapp.com",
+    databaseURL: "https://gryzfa-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "gryzfa",
+    storageBucket: "gryzfa.firebasestorage.app",
+    messagingSenderId: "604521234243",
+    appId: "1:604521234243:web:1953b1a2ec316aac9df9f6",
+    measurementId: "G-Y7L0680N16"
+  };
+
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Check if user is logged in
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                // User is signed in
+                document.getElementById('user-name').textContent = user.displayName;
+                
+                // Load user points
+                loadUserPoints(user.uid);
+                
+                // Load rewards
+                loadRewards();
+            } else {
+                // User is signed out, redirect to home
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            auth.signOut();
+        });
+
+        // Load user points
+        function loadUserPoints(userId) {
+            db.collection('users').doc(userId).get().then(doc => {
+                if (doc.exists) {
+                    const userData = doc.data();
+                    document.getElementById('user-points').textContent = userData.points;
+                    document.getElementById('user-level').textContent = userData.level;
+                }
+            });
+        }
+
+        // Load rewards
+        function loadRewards() {
+            db.collection('rewards').get().then(snapshot => {
+                const rewardsGrid = document.getElementById('rewards-grid');
+                rewardsGrid.innerHTML = '';
+                
+                if (snapshot.empty) {
+                    rewardsGrid.innerHTML = '<p>Belum ada hadiah tersedia.</p>';
+                    return;
+                }
+                
+                snapshot.forEach(doc => {
+                    const reward = doc.data();
+                    const rewardCard = createRewardCard(doc.id, reward);
+                    rewardsGrid.appendChild(rewardCard);
+                });
+            });
+        }
+
+        // Create reward card
+        function createRewardCard(rewardId, reward) {
+            const card = document.createElement('div');
+            card.className = 'reward-card';
+            
+            const userPoints = parseInt(document.getElementById('user-points').textContent);
+            const canRedeem = userPoints >= reward.points;
+            
+            card.innerHTML = `
+                <div class="reward-image">
+                    ${reward.imageUrl ? `<img src="${reward.imageUrl}" alt="${reward.name}">` : `<i class="fas fa-gift"></i>`}
+                </div>
+                <div class="reward-content">
+                    <h3 class="reward-title">${reward.name}</h3>
+                    <p class="reward-description">${reward.description}</p>
+                    <div class="reward-footer">
+                        <div class="reward-points">
+                            <i class="fas fa-coins"></i> ${reward.points} poin
+                        </div>
+                        <button class="btn ${canRedeem ? 'btn-primary' : 'btn-secondary'}" 
+                                onclick="openRedemptionModal('${rewardId}', '${reward.name}', ${reward.points})"
+                                ${!canRedeem ? 'disabled' : ''}>
+                            ${canRedeem ? 'Tukar Sekarang' : 'Poin Tidak Cukup'}
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Redemption modal
+        const redemptionModal = document.getElementById('redemption-modal');
+        const modalClose = document.querySelector('.modal-close');
+        const cancelRedemption = document.getElementById('cancel-redemption');
+        const confirmRedemption = document.getElementById('confirm-redemption');
+        
+        let currentRewardId = null;
+        let currentRewardPoints = 0;
+
+        function openRedemptionModal(rewardId, rewardName, rewardPoints) {
+            currentRewardId = rewardId;
+            currentRewardPoints = rewardPoints;
+            
+            document.getElementById('reward-name').textContent = rewardName;
+            document.getElementById('reward-points').textContent = rewardPoints;
+            
+            redemptionModal.style.display = 'flex';
+        }
+
+        modalClose.addEventListener('click', () => {
+            redemptionModal.style.display = 'none';
+        });
+
+        cancelRedemption.addEventListener('click', () => {
+            redemptionModal.style.display = 'none';
+        });
+
+        confirmRedemption.addEventListener('click', () => {
+            const userId = auth.currentUser.uid;
+            
+            // Check if user has enough points
+            db.collection('users').doc(userId).get().then(doc => {
+                const userData = doc.data();
+                
+                if (userData.points >= currentRewardPoints) {
+                    // Deduct points
+                    db.collection('users').doc(userId).update({
+                        points: firebase.firestore.FieldValue.increment(-currentRewardPoints)
+                    })
+                    .then(() => {
+                        // Record redemption
+                        db.collection('redemptions').add({
+                            userId: userId,
+                            rewardId: currentRewardId,
+                            rewardName: document.getElementById('reward-name').textContent,
+                            points: currentRewardPoints,
+                            date: firebase.firestore.FieldValue.serverTimestamp()
+                        })
+                        .then(() => {
+                            // Show success message
+                            showMessage('Hadiah berhasil ditukar!', 'success');
+                            
+                            // Reload user points and rewards
+                            loadUserPoints(userId);
+                            loadRewards();
+                            
+                            // Close modal
+                            redemptionModal.style.display = 'none';
+                        });
+                    });
+                } else {
+                    showMessage('Poin Anda tidak cukup untuk hadiah ini.', 'error');
+                    redemptionModal.style.display = 'none';
+                }
+            });
+        });
+
+        // Show message
+        function showMessage(message, type) {
+            const messageContainer = document.getElementById('message-container');
+            const messageElement = document.createElement('div');
+            messageElement.className = `message message-${type}`;
+            messageElement.textContent = message;
+            
+            messageContainer.innerHTML = '';
+            messageContainer.appendChild(messageElement);
+            
+            // Auto hide after 5 seconds
+            setTimeout(() => {
+                messageElement.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
