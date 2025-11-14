@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Green Generation - Bersama Menjaga Bumi</title>
-    <meta name="description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
+    <title>Green Generation - Bersama Menjaga Bumi | SMK Negeri 4 Banjarmasin</title>
+    <meta name="description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi. Bergabunglah dengan kami dalam gerakan hijau!">
+    <meta name="keywords" content="green generation, lingkungan hidup, smk negeri 4 banjarmasin, organisasi lingkungan, daur ulang, bank sampah, hidroponik">
+    <meta name="author" content="Green Generation SMKN 4 Banjarmasin">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -13,13 +15,20 @@
     <meta property="og:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
     <meta property="og:image" content="https://ameliaptz.141412.xyz/gambar/fotbar.jpg">
     
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://green.wasmer.app/">
+    <meta property="twitter:title" content="Green Generation - Bersama Menjaga Bumi">
+    <meta property="twitter:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
+    <meta property="twitter:image" content="https://ameliaptz.141412.xyz/gambar/fotbar.jpg">
+    
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760445380/gg_sruzxq.png">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation Library -->
@@ -27,6 +36,9 @@
     
     <!-- PapaParse for CSV parsing -->
     <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
+    
+    <!-- Chart.js for Carbon Footprint Calculator -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <style>
         :root {
@@ -425,6 +437,43 @@
             box-shadow: var(--shadow-lg);
         }
 
+        /* Social Media Share Bar */
+        .social-share {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 10px;
+            border-radius: 30px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .social-share a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-share .facebook { background: #3b5998; }
+        .social-share .twitter { background: #1da1f2; }
+        .social-share .instagram { background: #e1306c; }
+        .social-share .whatsapp { background: #25d366; }
+        .social-share .linkedin { background: #0077b5; }
+
+        .social-share a:hover {
+            transform: scale(1.1);
+        }
+
         /* Sections */
         section {
             padding: 6rem 0;
@@ -455,6 +504,456 @@
             height: 4px;
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             border-radius: 2px;
+        }
+
+        /* Environmental Tips Section */
+        .eco-tips {
+            background: linear-gradient(135deg, var(--bg-dark), var(--light));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .eco-tips::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        .tips-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tip-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .tip-description {
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .daily-tip {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            margin-top: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-tip::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .daily-tip h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .daily-tip p {
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tip-counter {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Carbon Footprint Calculator Section */
+        .carbon-calculator {
+            background: var(--bg-alt);
+        }
+
+        .calculator-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .calculator-form {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .calculate-btn {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .calculate-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .result-container {
+            display: none;
+            background: var(--bg-dark);
+            padding: 2rem;
+            border-radius: var(--radius);
+            margin-top: 2rem;
+        }
+
+        .result-container.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .result-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .result-text {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .chart-container {
+            margin-top: 2rem;
+            height: 300px;
+        }
+
+        /* Environmental News Section */
+        .env-news {
+            background: var(--bg-dark);
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .news-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .news-content {
+            padding: 2rem;
+        }
+
+        .news-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .news-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .news-excerpt {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        /* Achievement Timeline Section */
+        .timeline {
+            background: var(--bg-alt);
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            transform: translateX(-50%);
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.5s ease;
+        }
+
+        .timeline-item.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+            width: 90%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* FAQ Section */
+        .faq {
+            background: var(--bg-dark);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: var(--radius);
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background: var(--bg-alt);
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text);
+            line-height: 1.6;
         }
 
         /* About Section */
@@ -713,6 +1212,61 @@
         .gallery-item-caption p {
             font-size: 1rem;
             font-weight: 500;
+        }
+
+        /* Instagram Section */
+        .instagram-section {
+            background: var(--bg-alt);
+            padding: 4rem 0;
+        }
+
+        .instagram-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .instagram-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .instagram-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .instagram-embed {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .instagram-embed iframe {
+            max-width: 100%;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .instagram-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .instagram-link:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
         }
 
         /* Impact Section */
@@ -1134,6 +1688,79 @@
             display: none;
         }
 
+        /* Newsletter Section */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48L3N2Zz4=');
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .newsletter .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .newsletter p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text);
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+        }
+
         /* Registration Section */
         .registration {
             background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(143, 188, 143, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760443699/hidrop_n86yi3.jpg') center/cover no-repeat;
@@ -1239,6 +1866,28 @@
             width: 100%;
         }
 
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: var(--transition);
+        }
+
+        .footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
@@ -1293,6 +1942,26 @@
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .social-share {
+                display: none;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-dot {
+                left: 20px !important;
+                right: auto !important;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1327,6 +1996,14 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .tips-container {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -1359,43 +2036,12 @@
             .structure-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .calculator-container {
+                padding: 2rem 1rem;
+            }
         }
-    /* Theme & Header Actions */
-html.dark-theme {
-    --bg: #121212;
-    --bg-alt: #1e1e1e;
-    --bg-dark: #1b1b1b;
-    --text: #e0e0e0;
-    --text-muted: #aaaaaa;
-    --light: #1b1b1b;
-    --border: #333333;
-}
-.theme-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    background: var(--bg);
-    color: var(--text);
-    box-shadow: var(--shadow-sm);
-    cursor: pointer;
-    transition: var(--transition);
-}
-.theme-toggle:hover { transform: scale(1.05); }
-header.header--scrolled { box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
-html.dark-theme header { background: rgba(18,18,18,0.95); }
-html.dark-theme header.header--scrolled { background: rgba(18,18,18,0.98); }
-.cta-secondary {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-    margin-left: 1rem;
-}
-html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--secondary); }
-</style>
+    </style>
 </head>
 <body>
     <!-- Preloader -->
@@ -1405,6 +2051,25 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
 
     <!-- Progress Bar -->
     <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Social Media Share Bar -->
+    <div class="social-share">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://green.wasmer.app/" target="_blank" class="facebook" title="Share on Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/intent/tweet?url=https://green.wasmer.app/&text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi" target="_blank" class="twitter" title="Share on Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://www.instagram.com/greengeneration.smkn4bjm/" target="_blank" class="instagram" title="Follow on Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://api.whatsapp.com/send?text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi%20https://green.wasmer.app/" target="_blank" class="whatsapp" title="Share on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://green.wasmer.app/" target="_blank" class="linkedin" title="Share on LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+    </div>
 
     <!-- Header -->
     <header>
@@ -1419,17 +2084,19 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
             <nav>
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
+                    <li><a href="#tips">Tips</a></li>
+                    <li><a href="#kalkulator">Kalkulator</a></li>
+                    <li><a href="#berita">Berita</a></li>
                     <li><a href="#struktur">Struktur</a></li>
                     <li><a href="#divisi">Divisi</a></li>
                     <li><a href="#kegiatan">Kegiatan</a></li>
+                    <li><a href="#timeline">Timeline</a></li>
+                    <li><a href="#faq">FAQ</a></li>
                     <li><a href="#impact">Pengaruh</a></li>
                     <li><a href="#member">Anggota</a></li>
                     <li><a href="#daftar">Daftar</a></li>
                 </ul>
             </nav>
-            <button id="themeToggle" class="theme-toggle" aria-label="Ubah tema">
-                <i class="fas fa-moon"></i>
-            </button>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
@@ -1448,7 +2115,124 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
             <h1>Green Generation</h1>
             <p>"Bersama menjaga bumi, mulai dari sekolah kita."</p>
             <a href="#daftar" class="cta-button">Daftar Jadi Member</a>
-            <button id="shareBtn" class="cta-button cta-secondary" type="button"><i class="fas fa-share-alt"></i> Bagikan</button>
+        </div>
+    </section>
+
+    <!-- Environmental Tips Section -->
+    <section id="tips" class="eco-tips">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Tips Lingkungan Hari Ini</h2>
+            <div class="tips-container">
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="tip-icon"><i class="fas fa-water"></i></div>
+                    <h3 class="tip-title">Hemat Air</h3>
+                    <p class="tip-description">Matikan keran saat menyikat gigi dan gunakan shower daripada bak mandi untuk menghemat air hingga 50%.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="tip-title">Energi Efisien</h3>
+                    <p class="tip-description">Gunakan lampu LED dan matikan peralatan elektronik saat tidak digunakan untuk mengurangi konsumsi energi.</p>
+                </div>
+                <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="tip-icon"><i class="fas fa-recycle"></i></div>
+                    <h3 class="tip-title">Daur Ulang</h3>
+                    <p class="tip-description">Pisahkan sampah organik dan anorganik. Kertas, plastik, dan logam dapat didaur ulang menjadi produk baru.</p>
+                </div>
+            </div>
+            <div class="daily-tip" data-aos="fade-up" data-aos-delay="400">
+                <h3><i class="fas fa-star"></i> Tip Harian</h3>
+                <p id="dailyTipContent">Bawa botol minum sendiri untuk mengurangi penggunaan botol plastik sekali pakai!</p>
+                <div class="tip-counter">
+                    <i class="fas fa-refresh"></i> Tip berikutnya dalam <span id="tipCounter">24</span> jam
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carbon Footprint Calculator Section -->
+    <section id="kalkulator" class="carbon-calculator">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Kalkulator Jejak Karbon</h2>
+            <div class="calculator-container" data-aos="fade-up" data-aos-delay="100">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--primary);">
+                    <i class="fas fa-calculator"></i> Hitung Jejak Karbon Harian Anda
+                </h3>
+                <form class="calculator-form" id="carbonForm">
+                    <div class="form-group">
+                        <label><i class="fas fa-car"></i> Transportasi (km/hari)</label>
+                        <input type="number" id="transport" min="0" step="0.1" placeholder="Contoh: 10" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh/bulan)</label>
+                        <input type="number" id="electricity" min="0" step="0.1" placeholder="Contoh: 150" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-utensils"></i> Pola Makan</label>
+                        <select id="diet" required>
+                            <option value="">Pilih pola makan...</option>
+                            <option value="1.5">Vegetarian</option>
+                            <option value="2.5">Campuran (sedikit daging)</option>
+                            <option value="3.5">Banyak daging</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-shopping-bag"></i> Konsumsi (barang/bulan)</label>
+                        <input type="number" id="consumption" min="0" placeholder="Contoh: 5" required>
+                    </div>
+                    <button type="submit" class="calculate-btn">
+                        <i class="fas fa-chart-line"></i> Hitung Jejak Karbon
+                    </button>
+                </form>
+                <div class="result-container" id="resultContainer">
+                    <div class="result-value" id="resultValue">0 kg CO₂</div>
+                    <div class="result-text" id="resultText">Jejak karbon harian Anda</div>
+                    <div class="chart-container">
+                        <canvas id="carbonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Environmental News Section -->
+    <section id="berita" class="env-news">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Berita Lingkungan Terkini</h2>
+            <div class="news-grid">
+                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="news-image">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">15 November 2024</div>
+                        <h3 class="news-title">Inovasi Teknologi Ramah Lingkungan di Sekolah</h3>
+                        <p class="news-excerpt">SMK Negeri 4 Banjarmasin memperkenalkan inovasi terbaru dalam pengelolaan sampah dan energi terbarukan...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="news-image">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">10 November 2024</div>
+                        <h3 class="news-title">Program Penghijauan Sekolah Berhasil Ditanam</h3>
+                        <p class="news-excerpt">Green Generation berhasil menanam 200 pohon baru di area sekolah sebagai bagian dari program penghijauan...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="news-image">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">5 November 2024</div>
+                        <h3 class="news-title">Workshop Daur Ulang Bersama Komunitas Lokal</h3>
+                        <p class="news-excerpt">Kolaborasi dengan komunitas lokal dalam workshop pembuatan produk daur ulang dari sampah plastik...</p>
+                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1628,6 +2412,181 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
         </div>
     </section>
 
+    <!-- Achievement Timeline Section -->
+    <section id="timeline" class="timeline">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Timeline Prestasi Green Generation</h2>
+            <div class="timeline-container">
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Januari 2024</div>
+                        <h3 class="timeline-title">Program Penghijauan Sekolah</h3>
+                        <p class="timeline-description">Berhasil menanam 200 pohon baru di area sekolah dan membangun taman hijau edukatif.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Maret 2024</div>
+                        <h3 class="timeline-title">Inovasi Eco-Brick</h3>
+                        <p class="timeline-description">Mengembangkan kursi dan meja dari eco-brick hasil karya siswa, mengurangi 500kg sampah plastik.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Juni 2024</div>
+                        <h3 class="timeline-title">Juara Lomba Lingkungan Kota</h3>
+                        <p class="timeline-description">Meraih juara 1 dalam lomba sekolah adiwiyata tingkat kota Banjarmasin.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">September 2024</div>
+                        <h3 class="timeline-title">Kolaborasi Regional</h3>
+                        <p class="timeline-description">Berkolaborasi dengan Green Generation Kalsel dalam program penanaman 1000 bibit pohon.</p>
+                    </div>
+                </div>
+                <div class="timeline-item" data-aos="fade-up">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">November 2024</div>
+                        <h3 class="timeline-title">Digital Innovation Award</h3>
+                        <p class="timeline-description">Menerima penghargaan inovasi digital untuk aplikasi Dacing Code promosi wisata lokal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <span>Apa itu Green Generation?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Green Generation adalah organisasi lingkungan hidup di SMK Negeri 4 Banjarmasin yang beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi melalui berbagai program seperti bank sampah, hidroponik, dan daur ulang.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <span>Bagaimana cara bergabung dengan Green Generation?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Anda dapat bergabung dengan mengisi formulir pendaftaran online yang tersedia di website kami. Setelah itu, Anda akan dihubungi untuk mengikuti proses seleksi dan orientasi program.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <span>Apa saja kegiatan yang dilakukan Green Generation?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Kegiatan kami meliputi pengelolaan bank sampah, budidaya hidroponik, workshop daur ulang, aksi bersih-bersih, penanaman pohon, edukasi lingkungan, dan berbagai program inovasi lainnya.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <span>Apakah ada syarat khusus untuk menjadi anggota?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Syarat utama adalah memiliki komitmen dan kepedulian terhadap lingkungan. Tidak ada syarat akademik khusus, yang terpenting adalah semangat untuk belajar dan berkontribusi dalam gerakan hijau.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
+                    <div class="faq-question">
+                        <span>Bagaimana cara mendukung Green Generation?</span>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Anda dapat mendukung kami dengan cara bergabung sebagai anggota, berdonasi, mengikuti program kami, menyebarkan informasi tentang kegiatan kami, atau menerapkan praktik ramah lingkungan dalam kehidupan sehari-hari.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram-section">
+        <div class="instagram-container">
+            <h2 class="instagram-title" data-aos="fade-up">Ikuti Kami di Instagram</h2>
+            <p class="instagram-subtitle" data-aos="fade-up" data-aos-delay="100">Dapatkan update terkini tentang kegiatan dan program Green Generation</p>
+            
+            <div class="instagram-embed" data-aos="fade-up" data-aos-delay="200">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/Cn0X6m7vJd_/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                    <div style="padding:16px;"> <a href="https://www.instagram.com/p/Cn0X6m7vJd_/" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                        <div style=" display: flex; flex-direction: row; align-items: center;">
+                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                            </div>
+                        </div>
+                        <div style="padding: 19% 0;"></div>
+                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
+                                        <g>
+                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,37.852 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.994,74.552 541,74.552 C533.006,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                        </g>
+                                    </g>
+                                </g>
+                            </svg>
+                        </div>
+                        <div style="padding-top: 8px;">
+                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> View this post on Instagram</div>
+                        </div>
+                        <div style="padding: 12.5% 0;"></div>
+                        <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
+                            <div>
+                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
+                                <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
+                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
+                            </div>
+                            <div style="margin-left: 8px;">
+                                <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
+                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
+                                <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
+                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
+                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 224px;"></div>
+                        </div>
+                    </a>
+                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/Cn0X6m7vJd_/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Green Generation SMKN 4 BJM (@greengeneration.smkn4bjm)</a></p>
+                </div>
+            </blockquote>
+            <script async src="//www.instagram.com/embed.js"></script>
+            </div>
+            
+            <a href="https://www.instagram.com/greengeneration.smkn4bjm/" target="_blank" class="instagram-link" data-aos="fade-up" data-aos-delay="300">
+                <i class="fab fa-instagram"></i> Kunjungi Instagram Kami
+            </a>
+        </div>
+    </section>
+
     <!-- Impact Section -->
     <section id="impact" class="impact">
         <div class="container">
@@ -1669,6 +2628,18 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
                     <p>Promosi Wisata Lokal lewat Dacing Code berbasis digital berbahasa Inggris</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 data-aos="fade-up">Dapatkan Update Terbaru</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Daftar newsletter kami untuk mendapatkan informasi terkini tentang kegiatan dan program Green Generation</p>
+            <form class="newsletter-form" data-aos="fade-up" data-aos-delay="200">
+                <input type="email" placeholder="Email Anda" required>
+                <button type="submit">Daftar</button>
+            </form>
         </div>
     </section>
 
@@ -1723,9 +2694,26 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
                 </div>
                 <div class="footer-links">
                     <a href="#tentang">Tentang</a>
+                    <a href="#tips">Tips</a>
+                    <a href="#kalkulator">Kalkulator</a>
+                    <a href="#berita">Berita</a>
                     <a href="#divisi">Program</a>
                     <a href="#struktur">Struktur</a>
                     <a href="#daftar">Daftar</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.facebook.com/greengeneration.smkn4bjm" target="_blank" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/greengeneration.smkn4bjm/" target="_blank" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://twitter.com/greengeneration4" target="_blank" title="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCexample" target="_blank" title="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1748,24 +2736,6 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
             once: true,
             offset: 100
         });
-
-        const THEME_KEY = 'gg-theme';
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const applyTheme = (t) => {
-            document.documentElement.classList.toggle('dark-theme', t === 'dark');
-            if (themeToggleBtn) {
-                themeToggleBtn.innerHTML = t === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            }
-        };
-        const preferred = localStorage.getItem(THEME_KEY) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-        applyTheme(preferred);
-        if (themeToggleBtn) {
-            themeToggleBtn.addEventListener('click', () => {
-                const next = document.documentElement.classList.contains('dark-theme') ? 'light' : 'dark';
-                localStorage.setItem(THEME_KEY, next);
-                applyTheme(next);
-            });
-        }
 
         // Preloader
         window.addEventListener('load', function() {
@@ -1861,6 +2831,177 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+
+        // Environmental Tips Rotation
+        const dailyTips = [
+            "Bawa botol minum sendiri untuk mengurangi penggunaan botol plastik sekali pakai!",
+            "Gunakan tas belanja kain saat berbelanja untuk mengurangi penggunaan plastik.",
+            "Matikan lampu dan peralatan elektronik saat tidak digunakan untuk hemat energi.",
+            "Pisahkan sampah organik dan anorganik di rumah untuk memudahkan daur ulang.",
+            "Tanam tanaman di rumah untuk meningkatkan kualitas udara dan keindahan.",
+            "Gunakan transportasi umum atau bersepeda untuk mengurangi emisi karbon.",
+            "Kurangi penggunaan air dengan mematukan keran saat tidak digunakan.",
+            "Pilih produk dengan kemasan minimal atau dapat didaur ulang kembali.",
+            "Daur ulang kertas bekas menjadi catatan atau kerajinan tangan.",
+            "Kompos sampah organik untuk menjadi pupuk alami bagi tanaman."
+        ];
+
+        let currentTipIndex = 0;
+        const tipCounter = document.getElementById('tipCounter');
+        const dailyTipContent = document.getElementById('dailyTipContent');
+
+        function updateDailyTip() {
+            currentTipIndex = (currentTipIndex + 1) % dailyTips.length;
+            dailyTipContent.textContent = dailyTips[currentTipIndex];
+            
+            // Reset counter
+            let hours = 24;
+            tipCounter.textContent = hours;
+            
+            // Countdown timer
+            const countdown = setInterval(() => {
+                hours--;
+                tipCounter.textContent = hours;
+                if (hours <= 0) {
+                    clearInterval(countdown);
+                    updateDailyTip();
+                }
+            }, 3600000); // Update every hour
+        }
+
+        // Update tip every 24 hours
+        setInterval(updateDailyTip, 86400000);
+
+        // Carbon Footprint Calculator
+        const carbonForm = document.getElementById('carbonForm');
+        const resultContainer = document.getElementById('resultContainer');
+        const resultValue = document.getElementById('resultValue');
+        const resultText = document.getElementById('resultText');
+        let carbonChart = null;
+
+        carbonForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const transport = parseFloat(document.getElementById('transport').value) || 0;
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const diet = parseFloat(document.getElementById('diet').value) || 0;
+            const consumption = parseFloat(document.getElementById('consumption').value) || 0;
+            
+            // Calculate carbon footprint (simplified calculation)
+            const transportCO2 = transport * 0.21; // kg CO2 per km
+            const electricityCO2 = (electricity / 30) * 0.5; // kg CO2 per kWh daily
+            const dietCO2 = diet; // kg CO2 based on diet type
+            const consumptionCO2 = consumption * 0.5; // kg CO2 per item
+            
+            const totalCO2 = transportCO2 + electricityCO2 + dietCO2 + consumptionCO2;
+            
+            // Show result
+            resultValue.textContent = totalCO2.toFixed(2) + ' kg CO₂';
+            
+            // Determine impact level
+            let impactText = '';
+            if (totalCO2 < 5) {
+                impactText = 'Jejak karbon Anda RENDAH. Teruskan gaya hidup ramah lingkungan!';
+            } else if (totalCO2 < 10) {
+                impactText = 'Jejak karbon Anda SEDANG. Ada ruang untuk perbaikan.';
+            } else {
+                impactText = 'Jejak karbon Anda TINGGI. Segera kurangi emisi karbon Anda!';
+            }
+            resultText.textContent = impactText;
+            
+            // Show result container
+            resultContainer.classList.add('show');
+            
+            // Create or update chart
+            const ctx = document.getElementById('carbonChart').getContext('2d');
+            
+            if (carbonChart) {
+                carbonChart.destroy();
+            }
+            
+            carbonChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Transportasi', 'Listrik', 'Makanan', 'Konsumsi'],
+                    datasets: [{
+                        data: [transportCO2, electricityCO2, dietCO2, consumptionCO2],
+                        backgroundColor: [
+                            '#FF6384',
+                                                        '#36A2EB',
+                            '#FFCE56',
+                            '#4BC0C0'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#fff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    size: 12
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.label + ': ' + context.parsed.toFixed(2) + ' kg CO₂';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Scroll to result
+            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Timeline Animation on Scroll
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                }
+            });
+        }, observerOptions);
+        
+        timelineItems.forEach(item => {
+            observer.observe(item);
         });
 
         // CSV URL
@@ -2122,15 +3263,41 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.classList.add('header--scrolled');
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
             } else {
-                header.classList.remove('header--scrolled');
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
             }
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+           
+            const formContainer = this.parentElement;
+            const originalContent = formContainer.innerHTML;
+            
+            formContainer.innerHTML = `
+                <div style="padding: 20px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; backdrop-filter: blur(5px);">
+                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem; color: #4CAF50;"></i>
+                    <h3>Terima Kasih!</h3>
+                    <p>Email ${email} telah terdaftar. Anda akan menerima update terbaru dari kami.</p>
+                </div>
+            `;
+            
+            // Reset form after 5 seconds
+            setTimeout(() => {
+                formContainer.innerHTML = originalContent;
+                // Re-attach event listener
+                document.querySelector('.newsletter-form').addEventListener('submit', arguments.callee);
+            }, 5000);
         });
 
         // Add animation to elements on scroll
         const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.structure-card, .program-card, .gallery-item, .stat-item');
+            const elements = document.querySelectorAll('.structure-card, .program-card, .gallery-item, .stat-item, .tip-card, .news-card');
             
             elements.forEach(element => {
                 const elementPosition = element.getBoundingClientRect().top;
@@ -2146,26 +3313,16 @@ html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--se
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
 
-        const shareBtn = document.getElementById('shareBtn');
-        if (shareBtn) {
-            shareBtn.addEventListener('click', async () => {
-                const shareData = {
-                    title: document.title,
-                    text: 'Yuk dukung Green Generation! ',
-                    url: window.location.href
-                };
-                if (navigator.share) {
-                    try { await navigator.share(shareData); } catch {}
-                } else {
-                    try {
-                        await navigator.clipboard.writeText(shareData.url);
-                        alert('Link disalin ke clipboard');
-                    } catch {
-                        prompt('Salin link berikut:', shareData.url);
-                    }
-                }
+        // Initialize animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial opacity for animated elements
+            const animatedElements = document.querySelectorAll('.structure-card, .program-card, .gallery-item, .stat-item, .tip-card, .news-card');
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(30px)';
+                element.style.transition = 'all 0.6s ease';
             });
-        }
+        });
     </script>
 </body>
 </html>
