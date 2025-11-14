@@ -1360,7 +1360,42 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+    /* Theme & Header Actions */
+html.dark-theme {
+    --bg: #121212;
+    --bg-alt: #1e1e1e;
+    --bg-dark: #1b1b1b;
+    --text: #e0e0e0;
+    --text-muted: #aaaaaa;
+    --light: #1b1b1b;
+    --border: #333333;
+}
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: var(--shadow-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+.theme-toggle:hover { transform: scale(1.05); }
+header.header--scrolled { box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+html.dark-theme header { background: rgba(18,18,18,0.95); }
+html.dark-theme header.header--scrolled { background: rgba(18,18,18,0.98); }
+.cta-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    margin-left: 1rem;
+}
+html.dark-theme .cta-secondary { color: var(--secondary); border-color: var(--secondary); }
+</style>
 </head>
 <body>
     <!-- Preloader -->
@@ -1392,6 +1427,9 @@
                     <li><a href="#daftar">Daftar</a></li>
                 </ul>
             </nav>
+            <button id="themeToggle" class="theme-toggle" aria-label="Ubah tema">
+                <i class="fas fa-moon"></i>
+            </button>
             <button class="mobile-menu-toggle" id="mobileMenuToggle">
                 <span></span>
                 <span></span>
@@ -1410,6 +1448,7 @@
             <h1>Green Generation</h1>
             <p>"Bersama menjaga bumi, mulai dari sekolah kita."</p>
             <a href="#daftar" class="cta-button">Daftar Jadi Member</a>
+            <button id="shareBtn" class="cta-button cta-secondary" type="button"><i class="fas fa-share-alt"></i> Bagikan</button>
         </div>
     </section>
 
@@ -1709,6 +1748,24 @@
             once: true,
             offset: 100
         });
+
+        const THEME_KEY = 'gg-theme';
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const applyTheme = (t) => {
+            document.documentElement.classList.toggle('dark-theme', t === 'dark');
+            if (themeToggleBtn) {
+                themeToggleBtn.innerHTML = t === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            }
+        };
+        const preferred = localStorage.getItem(THEME_KEY) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        applyTheme(preferred);
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const next = document.documentElement.classList.contains('dark-theme') ? 'light' : 'dark';
+                localStorage.setItem(THEME_KEY, next);
+                applyTheme(next);
+            });
+        }
 
         // Preloader
         window.addEventListener('load', function() {
@@ -2065,11 +2122,9 @@
         
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+                header.classList.add('header--scrolled');
             } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                header.classList.remove('header--scrolled');
             }
         });
 
@@ -2090,6 +2145,27 @@
         
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
+
+        const shareBtn = document.getElementById('shareBtn');
+        if (shareBtn) {
+            shareBtn.addEventListener('click', async () => {
+                const shareData = {
+                    title: document.title,
+                    text: 'Yuk dukung Green Generation! ',
+                    url: window.location.href
+                };
+                if (navigator.share) {
+                    try { await navigator.share(shareData); } catch {}
+                } else {
+                    try {
+                        await navigator.clipboard.writeText(shareData.url);
+                        alert('Link disalin ke clipboard');
+                    } catch {
+                        prompt('Salin link berikut:', shareData.url);
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>
