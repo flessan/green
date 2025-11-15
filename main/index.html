@@ -29,6 +29,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- AOS Animation Library -->
@@ -45,17 +47,17 @@
             /* Enhanced Color Palette */
             --primary: #2E8B57;
             --primary-light: #4CAF50;
-            --primary-dark: #1B5E20;
+            --primary-dark: #1a6b20;
             --secondary: #8BC34A;
             --accent: #009688;
-            --light: #F1F8E9;
+            --light: #93d493;
             --dark: #263238;
             --text: #212121;
             --text-muted: #757575;
             --text-light: #FFFFFF;
-            --bg: #FFFFFF;
+            --bg: #71ff90;
             --bg-alt: #F5F5F5;
-            --bg-dark: #E8F5E9;
+            --bg-dark: #dadada;
             --border: #E0E0E0;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
@@ -149,7 +151,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(132, 230, 129, 0.95);
             backdrop-filter: blur(10px);
             box-shadow: var(--shadow-sm);
             z-index: 1000;
@@ -732,6 +734,30 @@
             background: var(--bg-dark);
         }
 
+        .news-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .news-filter-btn {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .news-filter-btn:hover, .news-filter-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -744,6 +770,9 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-card:hover {
@@ -753,16 +782,39 @@
 
         .news-image {
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 3rem;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .news-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
+        }
+
+        .news-source {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 1;
         }
 
         .news-content {
             padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .news-date {
@@ -776,12 +828,14 @@
             font-weight: 600;
             color: var(--primary);
             margin-bottom: 1rem;
+            line-height: 1.4;
         }
 
         .news-excerpt {
             color: var(--text);
             line-height: 1.6;
             margin-bottom: 1rem;
+            flex-grow: 1;
         }
 
         .read-more {
@@ -796,6 +850,315 @@
 
         .read-more:hover {
             gap: 1rem;
+        }
+
+        .news-loading {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .news-loading i {
+            font-size: 2rem;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+            display: inline-block;
+            color: var(--primary);
+        }
+
+        .news-error {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .news-error i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .refresh-news-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .refresh-news-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-dark);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin: 2rem 0 1.2rem;
+            color: var(--primary);
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .vision-mission {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius-lg);
+            margin-top: 2.5rem;
+            box-shadow: var(--shadow-md);
+            border-left: 5px solid var(--primary);
+        }
+
+        .vision-mission h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .vision-mission h4 i {
+            background: var(--light);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .vision-mission ul {
+            padding-left: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .vision-mission li {
+            margin-bottom: 1rem;
+            position: relative;
+            padding-left: 0.5rem;
+        }
+
+        .vision-mission li::before {
+            content: '•';
+            color: var(--primary);
+            font-weight: bold;
+            position: absolute;
+            left: -1rem;
+        }
+
+        .about-visual {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-visual img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-visual:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Structure Section */
+        .structure {
+            background: var(--bg-alt);
+        }
+
+        .structure-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .structure-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-top: 4px solid var(--primary);
+        }
+
+        .structure-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .structure-card i {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            background: var(--light);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .structure-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .structure-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            background: var(--bg-dark);
+        }
+
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .program-card-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .program-card-header i {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .program-card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-card-body {
+            padding: 2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .program-card-body p {
+            font-size: 1.1rem;
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--bg-dark);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            height: 280px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-item-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-item-caption p {
+            font-size: 1rem;
+            font-weight: 500;
         }
 
         /* Achievement Timeline Section */
@@ -954,264 +1317,6 @@
             padding: 0 1.5rem 1.5rem;
             color: var(--text);
             line-height: 1.6;
-        }
-
-        /* About Section */
-        .about {
-            background: var(--bg-dark);
-        }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin: 2rem 0 1.2rem;
-            color: var(--primary);
-        }
-
-        .about-text p {
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--text);
-        }
-
-        .vision-mission {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            margin-top: 2.5rem;
-            box-shadow: var(--shadow-md);
-            border-left: 5px solid var(--primary);
-        }
-
-        .vision-mission h4 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .vision-mission h4 i {
-            background: var(--light);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-        }
-
-        .vision-mission ul {
-            padding-left: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .vision-mission li {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-left: 0.5rem;
-        }
-
-        .vision-mission li::before {
-            content: '•';
-            color: var(--primary);
-            font-weight: bold;
-            position: absolute;
-            left: -1rem;
-        }
-
-        .about-visual {
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-visual img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .about-visual:hover img {
-            transform: scale(1.03);
-        }
-
-        /* Structure Section */
-        .structure {
-            background: var(--bg-alt);
-        }
-
-        .structure-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .structure-card {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-top: 4px solid var(--primary);
-        }
-
-        .structure-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .structure-card i {
-            font-size: 3.5rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-            background: var(--light);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .structure-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--primary);
-        }
-
-        .structure-card p {
-            color: var(--text-muted);
-            font-size: 1rem;
-        }
-
-        /* Programs Section */
-        .program-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .program-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .program-card-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-
-        .program-card-header i {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: rgba(255, 255, 255, 0.2);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-
-        .program-card-header h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .program-card-body {
-            padding: 2rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .program-card-body p {
-            font-size: 1.1rem;
-            color: var(--text);
-            line-height: 1.7;
-        }
-
-        /* Gallery Section */
-        .gallery {
-            background: var(--bg-dark);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            height: 280px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-            color: white;
-            padding: 1.5rem;
-            transform: translateY(100%);
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-item-caption {
-            transform: translateY(0);
-        }
-
-        .gallery-item-caption p {
-            font-size: 1rem;
-            font-weight: 500;
         }
 
         /* Instagram Section */
@@ -2004,6 +2109,14 @@
             .tips-container {
                 grid-template-columns: 1fr;
             }
+            
+            .news-controls {
+                justify-content: center;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 576px) {
@@ -2074,7 +2187,7 @@
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="#" class="logo">
+            <a href="https://skenpat.pages.dev/green" class="logo">
                 <i class="fas fa-leaf"></i>
                 <div class="logo-text">
                     <span class="main-logo-text">Green Generation</span>
@@ -2084,15 +2197,11 @@
             <nav>
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
-                    <li><a href="#tips">Tips</a></li>
-                    <li><a href="#kalkulator">Kalkulator</a></li>
                     <li><a href="#berita">Berita</a></li>
                     <li><a href="#struktur">Struktur</a></li>
                     <li><a href="#divisi">Divisi</a></li>
                     <li><a href="#kegiatan">Kegiatan</a></li>
-                    <li><a href="#timeline">Timeline</a></li>
                     <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#impact">Pengaruh</a></li>
                     <li><a href="#member">Anggota</a></li>
                     <li><a href="#daftar">Daftar</a></li>
                 </ul>
@@ -2198,40 +2307,31 @@
     <section id="berita" class="env-news">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Berita Lingkungan Terkini</h2>
-            <div class="news-grid">
-                <div class="news-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="news-image">
-                        <i class="fas fa-globe-americas"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">15 November 2024</div>
-                        <h3 class="news-title">Inovasi Teknologi Ramah Lingkungan di Sekolah</h3>
-                        <p class="news-excerpt">SMK Negeri 4 Banjarmasin memperkenalkan inovasi terbaru dalam pengelolaan sampah dan energi terbarukan...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
+            
+            <!-- News Filter Buttons -->
+            <div class="news-controls" data-aos="fade-up" data-aos-delay="100">
+                <button class="news-filter-btn active" data-category="all">Semua</button>
+                <button class="news-filter-btn" data-category="climate">Iklim</button>
+                <button class="news-filter-btn" data-category="renewable">Energi Terbarukan</button>
+                <button class="news-filter-btn" data-category="conservation">Konservasi</button>
+                <button class="news-filter-btn" data-category="pollution">Pencemaran</button>
+            </div>
+            
+            <!-- News Grid -->
+            <div class="news-grid" id="newsGrid">
+                <div class="news-loading" id="newsLoading">
+                    <i class="fas fa-spinner"></i>
+                    <p>Memuat berita terkini...</p>
                 </div>
-                <div class="news-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="news-image">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">10 November 2024</div>
-                        <h3 class="news-title">Program Penghijauan Sekolah Berhasil Ditanam</h3>
-                        <p class="news-excerpt">Green Generation berhasil menanam 200 pohon baru di area sekolah sebagai bagian dari program penghijauan...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="news-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="news-image">
-                        <i class="fas fa-recycle"></i>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">5 November 2024</div>
-                        <h3 class="news-title">Workshop Daur Ulang Bersama Komunitas Lokal</h3>
-                        <p class="news-excerpt">Kolaborasi dengan komunitas lokal dalam workshop pembuatan produk daur ulang dari sampah plastik...</p>
-                        <a href="#" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+            </div>
+            
+            <!-- News Error Message (Hidden by default) -->
+            <div class="news-error" id="newsError" style="display: none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p>Gagal memuat berita. Silakan coba lagi nanti.</p>
+                <button class="refresh-news-btn" id="refreshNewsBtn">
+                    <i class="fas fa-sync-alt"></i> Coba Lagi
+                </button>
             </div>
         </div>
     </section>
@@ -2264,9 +2364,7 @@
                     </div>
                 </div>
                 <div class="about-visual" data-aos="fade-left">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760645705/Pi7_Gif_1_hlwram.gif" 
-     alt="Foto Bersama" 
-     loading="lazy">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760645705/Pi7_Gif_1_hlwram.gif" alt="Foto Bersama" loading="lazy">
                 </div>
             </div>
         </div>
@@ -2547,7 +2645,7 @@
                                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g transform="translate(-511.000000, -20.000000)" fill="#000000">
                                         <g>
-                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,37.852 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.994,74.552 541,74.552 C533.006,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
+                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,37.852 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.994,74.552 541,74.552 C533.006,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.756,65.022 516.622,62.101 C516.476,58.943 516.445,57.993 516.445,50 C516.445,42.007 516.476,41.057 516.622,37.899 C516.756,34.978 517.244,33.394 517.654,32.337 C518.197,30.94 518.846,29.943 519.894,28.894 C520.942,27.846 521.94,27.197 523.338,26.653 C524.393,26.243 525.979,25.756 528.898,25.622 C532.056,25.479 533.006,25.448 541,25.448 C548.994,25.448 549.944,25.479 553.102,25.622 C556.021,25.756 557.607,26.243 558.662,26.653 C560.06,27.197 561.058,27.846 562.106,28.894 C563.154,29.943 563.803,30.94 564.346,32.337 C564.756,33.394 565.244,34.978 565.378,37.899 C565.524,41.057 565.555,42.007 565.555,50 C565.555,57.993 565.524,58.943 565.378,62.101"></path>
                                         </g>
                                     </g>
                                 </g>
@@ -2929,7 +3027,7 @@
                         data: [transportCO2, electricityCO2, dietCO2, consumptionCO2],
                         backgroundColor: [
                             '#FF6384',
-                                                        '#36A2EB',
+                            '#36A2EB',
                             '#FFCE56',
                             '#4BC0C0'
                         ],
@@ -2965,6 +3063,132 @@
             resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
+        // News API Integration
+        const newsGrid = document.getElementById('newsGrid');
+        const newsLoading = document.getElementById('newsLoading');
+        const newsError = document.getElementById('newsError');
+        const refreshNewsBtn = document.getElementById('refreshNewsBtn');
+        const filterButtons = document.querySelectorAll('.news-filter-btn');
+
+        // NewsData.io configuration
+        const newsCategories = {
+            all: '',
+            climate: 'iklim',
+            renewable: 'energi terbarukan',
+            conservation: 'konservasi',
+            pollution: 'pencemaran'
+        };
+
+        let currentCategory = 'all';
+        let allNewsArticles = [];
+
+        // NewsData.io Implementation
+        async function fetchNewsNewsData(category = 'all') {
+            try {
+                newsLoading.style.display = 'block';
+                newsError.style.display = 'none';
+                newsGrid.innerHTML = '';
+                
+                const query = newsCategories[category];
+                const baseUrl = 'https://newsdata.io/api/1/latest';
+                const apiKey = 'pub_7e3c7a4c159d40388b0275db37a4ddfd';
+                const country = 'id';
+                const language = 'id';
+                const categories = 'education,environment,health,food,world';
+                const timezone = 'asia/kuala_lumpur';
+                
+                let url = `${baseUrl}?apikey=${apiKey}&country=${country}&language=${language}&category=${categories}&timezone=${timezone}`;
+                
+                if (query) {
+                    url += `&q=${encodeURIComponent(query)}`;
+                }
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.status === 'success' && data.results && data.results.length > 0) {
+                    allNewsArticles = data.results;
+                    displayNews(allNewsArticles);
+                } else {
+                    throw new Error('No articles found');
+                }
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                newsLoading.style.display = 'none';
+                newsError.style.display = 'block';
+            }
+        }
+
+        // Display news articles
+        function displayNews(articles) {
+            newsLoading.style.display = 'none';
+            newsGrid.innerHTML = '';
+            
+            if (articles.length === 0) {
+                newsGrid.innerHTML = '<div class="no-search-result"><i class="fas fa-search"></i><p>Tidak ada berita ditemukan untuk kategori ini.</p></div>';
+                return;
+            }
+            
+            articles.slice(0, 6).forEach((article, index) => {
+                const newsCard = document.createElement('div');
+                newsCard.className = 'news-card';
+                newsCard.setAttribute('data-aos', 'fade-up');
+                newsCard.setAttribute('data-aos-delay', index * 100);
+                
+                // Format date
+                let formattedDate = 'Tanggal tidak tersedia';
+                if (article.pubDate) {
+                    const date = new Date(article.pubDate);
+                    formattedDate = date.toLocaleDateString('id-ID', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric'
+                    });
+                }
+                
+                // Extract source name
+                const sourceName = article.source_id || 'Unknown';
+                
+                newsCard.innerHTML = `
+                    <div class="news-image" style="background-image: url('${article.image_url || `https://picsum.photos/seed/green${index}/400/200.jpg`}')">
+                        <div class="news-source">${sourceName}</div>
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">${formattedDate}</div>
+                        <h3 class="news-title">${article.title}</h3>
+                        <p class="news-excerpt">${article.description || 'Tidak ada deskripsi tersedia.'}</p>
+                        <a href="${article.link}" target="_blank" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                `;
+                
+                newsGrid.appendChild(newsCard);
+            });
+            
+            // Refresh AOS for new elements
+            AOS.refresh();
+        }
+
+        // Filter buttons event listeners
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // Update current category and fetch news
+                currentCategory = button.dataset.category;
+                fetchNewsNewsData(currentCategory);
+            });
+        });
+
+        // Refresh news button
+        refreshNewsBtn.addEventListener('click', () => {
+            fetchNewsNewsData(currentCategory);
+        });
+
+        // Initial news fetch
+        fetchNewsNewsData('all');
+
         // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
         
@@ -2983,7 +3207,7 @@
                 item.classList.toggle('active');
             });
         });
-
+        
         // Timeline Animation on Scroll
         const timelineItems = document.querySelectorAll('.timeline-item');
         
@@ -3323,6 +3547,733 @@
                 element.style.transition = 'all 0.6s ease';
             });
         });
-    </script>
+
+        // Auto-refresh news every 30 minutes
+        setInterval(() => {
+            if (document.visibilityState === 'visible') {
+                fetchNewsNewsData(currentCategory);
+            }
+        }, 1800000); // 30 minutes
+
+        // Add keyboard navigation for news filters
+        document.addEventListener('keydown', (e) => {
+            if (e.target.closest('.news-controls')) {
+                const activeButton = document.querySelector('.news-filter-btn.active');
+                const buttons = Array.from(filterButtons);
+                const currentIndex = buttons.indexOf(activeButton);
+                
+                if (e.key === 'ArrowLeft' && currentIndex > 0) {
+                    buttons[currentIndex - 1].click();
+                } else if (e.key === 'ArrowRight' && currentIndex < buttons.length - 1) {
+                    buttons[currentIndex + 1].click();
+                }
+            }
+        });
+
+        // Add touch swipe support for mobile news navigation
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        const newsSection = document.getElementById('berita');
+        
+        newsSection.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        newsSection.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const activeButton = document.querySelector('.news-filter-btn.active');
+            const buttons = Array.from(filterButtons);
+            const currentIndex = buttons.indexOf(activeButton);
+            
+            if (touchEndX < touchStartX - 50 && currentIndex < buttons.length - 1) {
+                // Swipe left - next category
+                buttons[currentIndex + 1].click();
+            } else if (touchEndX > touchStartX + 50 && currentIndex > 0) {
+                // Swipe right - previous category
+                buttons[currentIndex - 1].click();
+            }
+        }
+
+        // Add share functionality for news articles
+        function shareNews(article) {
+            if (navigator.share) {
+                navigator.share({
+                    title: article.title,
+                    text: article.description,
+                    url: article.link
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(article.link)}`;
+                window.open(shareUrl, '_blank');
+            }
+        }
+
+        // Add print functionality for news articles
+        function printNews(article) {
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>${article.title}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
+                        h1 { color: #2E8B57; }
+                        .meta { color: #666; margin-bottom: 20px; }
+                        img { max-width: 100%; height: auto; }
+                    </style>
+                </head>
+                <body>
+                    <h1>${article.title}</h1>
+                    <div class="meta">
+                        <p>Sumber: ${article.source_id}</p>
+                        <p>Tanggal: ${new Date(article.pubDate).toLocaleDateString('id-ID')}</p>
+                    </div>
+                    ${article.image_url ? `<img src="${article.image_url}" alt="${article.title}">` : ''}
+                    <p>${article.description}</p>
+                    <p><a href="${article.link}">Baca artikel lengkap</a></p>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Add accessibility improvements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add ARIA labels to dynamic content
+            const newsGrid = document.getElementById('newsGrid');
+            newsGrid.setAttribute('aria-live', 'polite');
+            newsGrid.setAttribute('aria-busy', 'true');
+            
+            // Update ARIA attributes when news is loaded
+            const originalDisplayNews = displayNews;
+            displayNews = function(articles) {
+                originalDisplayNews(articles);
+                newsGrid.setAttribute('aria-busy', 'false');
+                newsGrid.setAttribute('aria-label', `Menampilkan ${articles.length} berita lingkungan terkini`);
+            };
+            
+            // Add keyboard navigation for member cards
+            document.addEventListener('keydown', (e) => {
+                if (e.target.closest('.member-card')) {
+                    const card = e.target.closest('.member-card');
+                    const allCards = Array.from(document.querySelectorAll('.member-card'));
+                    const currentIndex = allCards.indexOf(card);
+                    
+                    if (e.key === 'ArrowDown' && currentIndex < allCards.length - 1) {
+                        allCards[currentIndex + 1].focus();
+                    } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                        allCards[currentIndex - 1].focus();
+                    }
+                }
+            });
+            
+            // Add skip to content link for better accessibility
+            const skipLink = document.createElement('a');
+            skipLink.href = '#berita';
+            skipLink.textContent = 'Skip to content';
+            skipLink.style.cssText = `
+                position: absolute;
+                top: -40px;
+                left: 0;
+                background: var(--primary);
+                color: white;
+                padding: 8px;
+                text-decoration: none;
+                z-index: 100;
+            `;
+            skipLink.addEventListener('focus', () => {
+                skipLink.style.top = '0';
+            });
+            skipLink.addEventListener('blur', () => {
+                skipLink.style.top = '-40px';
+            });
+            document.body.insertBefore(skipLink, document.body.firstChild);
+        });
+
+        // Add performance optimization
+        let ticking = false;
+        function requestTick(callback) {
+            if (!ticking) {
+                requestAnimationFrame(callback);
+                ticking = true;
+                setTimeout(() => { ticking = false; }, 100);
+            }
+        }
+
+        // Optimize scroll event listeners
+        const optimizedScrollHandler = () => {
+            requestTick(() => {
+                // Update progress bar
+                const scrollPosition = window.scrollY;
+                const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const scrollPercentage = (scrollPosition / documentHeight) * 100;
+                document.getElementById('progressBar').style.width = scrollPercentage + '%';
+                
+                // Show/hide scroll to top button
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+                
+                // Update header background
+                if (window.scrollY > 50) {
+                    header.style.background = 'rgba(255, 255, 255, 0.98)';
+                    header.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
+                } else {
+                    header.style.background = 'rgba(255, 255, 255, 0.95)';
+                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                }
+                
+                // Animate elements on scroll
+                animateOnScroll();
+            });
+        };
+
+        // Replace scroll event listener with optimized version
+        window.removeEventListener('scroll', animateOnScroll);
+        window.addEventListener('scroll', optimizedScrollHandler);
+
+        // Add error handling for images
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName === 'IMG') {
+                e.target.src = 'https://picsum.photos/seed/fallback/400/200.jpg';
+                e.target.alt = 'Image not available';
+            }
+        }, true);
+
+        // Add service worker registration for offline support (optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
+        }
+
+        // Add modern polished dark mode styles
+const darkModeStyles = document.createElement('style');
+darkModeStyles.textContent = `
+    /* Dark Mode Color Palette */
+    body.dark-mode {
+        --bg: #0f1419;
+        --bg-alt: #1a1f29;
+        --bg-dark: #0a0e13;
+        --bg-elevated: #1e2532;
+        --text: #f0f6fc;
+        --text-muted: #8b949e;
+        --text-dim: #656d76;
+        --border: #30363d;
+        --border-elevated: #3d444d;
+        --accent: #2f81f7;
+        --accent-hover: #58a6ff;
+        --primary: #238636;
+        --primary-hover: #2ea043;
+        --secondary: #8250df;
+        --secondary-hover: #a371f7;
+        --success: #3fb950;
+        --warning: #d29922;
+        --danger: #f85149;
+        --code-bg: #161b22;
+        --overlay: rgba(13, 17, 23, 0.8);
+        --shadow-rgb: 0, 0, 0;
+        --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.5);
+        --transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    }
+    
+    /* Smooth transition for dark mode toggle */
+    body, body * {
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    /* Background adjustments */
+    body.dark-mode {
+        background-color: var(--bg);
+        color: var(--text);
+    }
+    
+    body.dark-mode .hero {
+        background: linear-gradient(135deg, rgba(22, 41, 30, 0.95), rgba(35, 56, 47, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440176/hidro_aqrllc.jpg') center/cover no-repeat;
+    }
+    
+    body.dark-mode .eco-tips {
+        background: linear-gradient(135deg, var(--bg-dark), #0f1a15);
+    }
+    
+    body.dark-mode .carbon-calculator,
+    body.dark-mode .structure,
+    body.dark-mode .programs,
+    body.dark-mode .gallery,
+    body.dark-mode .faq {
+        background: var(--bg-alt);
+    }
+    
+    body.dark-mode .about {
+        background: var(--bg-alt);
+    }
+    
+    body.dark-mode .env-news {
+        background: var(--bg-alt);
+    }
+    
+    body.dark-mode .timeline {
+        background: var(--bg-alt);
+    }
+    
+    body.dark-mode .timeline::before {
+        background: linear-gradient(180deg, var(--primary), var(--secondary));
+    }
+    
+    body.dark-mode .newsletter {
+        background: linear-gradient(135deg, #0f2419, #1a2f24);
+    }
+    
+    body.dark-mode .registration {
+        background: linear-gradient(135deg, rgba(22, 41, 30, 0.9), rgba(35, 56, 47, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760443699/hidrop_n86yi3.jpg') center/cover no-repeat;
+    }
+    
+    body.dark-mode .members {
+        background: linear-gradient(135deg, rgba(22, 30, 26, 0.7), rgba(35, 47, 42, 0.3));
+    }
+    
+    body.dark-mode .impact {
+        background: linear-gradient(135deg, #0f2419, #1a2f24);
+    }
+    
+    body.dark-mode .impact::before {
+        opacity: 0.05;
+    }
+    
+    body.dark-mode .instagram-section {
+        background: var(--bg-alt);
+    }
+    
+    /* Card styles with elevated appearance */
+    body.dark-mode .tip-card,
+    body.dark-mode .structure-card,
+    body.dark-mode .program-card,
+    body.dark-mode .gallery-item,
+    body.dark-mode .stat-item,
+    body.dark-mode .news-card,
+    body.dark-mode .member-card,
+    body.dark-mode .faq-item,
+    body.dark-mode .calculator-container {
+        background: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    body.dark-mode .tip-card:hover,
+    body.dark-mode .structure-card:hover,
+    body.dark-mode .program-card:hover,
+    body.dark-mode .gallery-item:hover,
+    body.dark-mode .stat-item:hover,
+    body.dark-mode .news-card:hover,
+    body.dark-mode .member-card:hover,
+    body.dark-mode .faq-item:hover {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        transform: translateY(-2px);
+    }
+    
+    /* Card accents and highlights */
+    body.dark-mode .tip-card::before,
+    body.dark-mode .structure-card::before {
+        background: var(--primary);
+    }
+    
+    body.dark-mode .vision-mission {
+        background: var(--bg-elevated);
+        border-left-color: var(--primary);
+        border: 1px solid var(--border);
+    }
+    
+    /* Gradient headers */
+    body.dark-mode .program-card-header {
+        background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
+        border-bottom: 1px solid var(--border);
+    }
+    
+    body.dark-mode .member-header {
+        background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
+        border-bottom: 1px solid var(--border);
+    }
+    
+    /* Member card elements */
+    body.dark-mode .member-preview-item,
+    body.dark-mode .member-info {
+        background: var(--bg-alt);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode .member-preview-item:hover {
+        background: var(--bg-elevated);
+    }
+    
+    body.dark-mode .member-footer {
+        background: var(--bg-dark);
+        border-top: 1px solid var(--border);
+    }
+    
+    /* Daily tip card */
+    body.dark-mode .daily-tip {
+        background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
+        border: 1px solid var(--border);
+    }
+    
+    /* Results container */
+    body.dark-mode .result-container {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+    }
+    
+    /* Form elements */
+    body.dark-mode .newsletter-form input {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode .newsletter-form input:focus {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+    }
+    
+    body.dark-mode .anggota-search-box {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    body.dark-mode .anggota-search-box input {
+        background: transparent;
+        color: var(--text);
+    }
+    
+    body.dark-mode .anggota-search-box input:focus {
+        background: var(--bg-dark);
+    }
+    
+    /* Status and loading elements */
+    body.dark-mode .no-search-result,
+    body.dark-mode .loading {
+        background: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Buttons and controls */
+    body.dark-mode .news-filter-btn {
+        background: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode .news-filter-btn:hover,
+    body.dark-mode .news-filter-btn.active {
+        background: var(--primary);
+        color: white;
+        border-color: var(--primary);
+    }
+    
+    body.dark-mode .calculate-btn,
+    body.dark-mode .refresh-news-btn,
+    body.dark-mode .view-more-btn,
+    body.dark-mode .member-toggle-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+    }
+    
+    body.dark-mode .calculate-btn:hover,
+    body.dark-mode .refresh-news-btn:hover,
+    body.dark-mode .view-more-btn:hover,
+    body.dark-mode .member-toggle-btn:hover {
+        background: var(--primary-hover);
+    }
+    
+    /* Footer styling */
+    body.dark-mode footer {
+        background: var(--bg-dark);
+        border-top: 1px solid var(--border);
+    }
+    
+    body.dark-mode .footer-links a::after {
+        background: var(--primary);
+    }
+    
+    body.dark-mode .footer-social a {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode .footer-social a:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    body.dark-mode .footer-bottom {
+        color: var(--text-dim);
+        border-top-color: var(--border);
+    }
+    
+    /* Form inputs and controls */
+    body.dark-mode input,
+    body.dark-mode select,
+    body.dark-mode textarea {
+        background-color: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode input:focus,
+    body.dark-mode select:focus,
+    body.dark-mode textarea:focus {
+        background-color: var(--bg-dark);
+        border-color: var(--accent);
+        box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+        outline: none;
+    }
+    
+    body.dark-mode .form-group input:focus,
+    body.dark-mode .form-group select:focus {
+        border-color: var(--accent);
+    }
+    
+    /* Scroll to top button */
+    body.dark-mode .scroll-top {
+        background: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode .scroll-top:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    /* Dark mode toggle button */
+    body.dark-mode #darkModeToggle {
+        background: var(--bg-elevated);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    body.dark-mode #darkModeToggle:hover {
+        background: var(--primary);
+        border-color: var(--primary);
+    }
+    
+    /* Social share bar */
+    body.dark-mode .social-share {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+    }
+    
+    /* Header styling */
+    body.dark-mode header {
+        background: rgba(15, 20, 25, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
+    }
+    
+    /* Progress bar */
+    body.dark-mode .progress-bar {
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    /* Timeline elements */
+    body.dark-mode .timeline-content {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+    
+    body.dark-mode .timeline-dot {
+        background: var(--primary);
+        border-color: var(--bg-elevated);
+    }
+    
+    /* FAQ accordion */
+    body.dark-mode .faq-question:hover {
+        background: var(--bg-alt);
+    }
+    
+    /* Gallery captions */
+    body.dark-mode .gallery-item-caption {
+        background: linear-gradient(to top, rgba(10, 14, 19, 0.9), transparent);
+    }
+    
+    /* Mobile menu */
+    body.dark-mode nav ul {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-elevated);
+    }
+    
+    /* CTA buttons */
+    body.dark-mode .cta-button {
+        background: var(--primary);
+        color: white;
+    }
+    
+    body.dark-mode .cta-button:hover {
+        background: var(--primary-hover);
+    }
+    
+    /* Instagram link */
+    body.dark-mode .instagram-link {
+        background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    }
+    
+    /* Override AOS styles in dark mode */
+    body.dark-mode [data-aos="fade-up"] {
+        background-color: transparent;
+    }
+    
+    /* Special elements */
+    body.dark-mode .floating {
+        opacity: 0.1;
+    }
+    
+    body.dark-mode .hero-badge {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    body.dark-mode .daily-tip::before {
+        opacity: 0.05;
+    }
+    
+    body.dark-mode .stat-item {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    body.dark-mode .stat-item:hover {
+        background: rgba(255, 255, 255, 0.08);
+    }
+    
+    /* Text selection */
+    body.dark-mode ::selection {
+        background: var(--primary);
+        color: white;
+    }
+    
+    /* Scrollbar styling */
+    body.dark-mode::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    body.dark-mode::-webkit-scrollbar-track {
+        background: var(--bg-dark);
+    }
+    
+    body.dark-mode::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 4px;
+    }
+    
+    body.dark-mode::-webkit-scrollbar-thumb:hover {
+        background: var(--text-dim);
+    }
+    
+    /* Code blocks */
+    body.dark-mode pre, body.dark-mode code {
+        background: var(--code-bg);
+        color: var(--text);
+        border: 1px solid var(--border);
+    }
+    
+    /* Tooltips */
+    body.dark-mode [title] {
+        border-bottom: 1px dotted var(--text-dim);
+    }
+    
+    /* Focus indicators for accessibility */
+    body.dark-mode a:focus,
+    body.dark-mode button:focus,
+    body.dark-mode input:focus,
+    body.dark-mode select:focus,
+    body.dark-mode textarea:focus {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
+    }
+    
+    /* Print styles */
+    @media print {
+        body.dark-mode {
+            background: white !important;
+            color: black !important;
+        }
+        
+        body.dark-mode * {
+            background: white !important;
+            color: black !important;
+            border-color: black !important;
+        }
+    }
+`;
+document.head.appendChild(darkModeStyles);
+
+// Update the dark mode toggle implementation
+const darkModeToggle = document.createElement('button');
+darkModeToggle.id = 'darkModeToggle';
+darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+darkModeToggle.setAttribute('aria-label', 'Toggle dark mode');
+darkModeToggle.style.cssText = `
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-alt);
+    color: var(--text);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 999;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`;
+
+darkModeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+    localStorage.setItem('darkMode', isDark);
+    
+    // Add a subtle animation to indicate the mode change
+    darkModeToggle.style.transform = 'rotate(360deg)';
+    setTimeout(() => {
+        darkModeToggle.style.transform = 'rotate(0deg)';
+    }, 300);
+});
+
+// Check for saved dark mode preference
+if (localStorage.getItem('darkMode') === 'true') {
+    document.body.classList.add('dark-mode');
+    darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+document.body.appendChild(darkModeToggle);    </script>
+
+
 </body>
 </html>
