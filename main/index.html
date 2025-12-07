@@ -13,22 +13,20 @@
     <meta property="og:url" content="https://green.wasmer.app/">
     <meta property="og:title" content="Green Generation - Bersama Menjaga Bumi">
     <meta property="og:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
-    <meta property="og:image" content="https://ameliaptz.141412.xyz/gambar/fotbar.jpg">
+    <meta property="og:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://green.wasmer.app/">
     <meta property="twitter:title" content="Green Generation - Bersama Menjaga Bumi">
     <meta property="twitter:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
-    <meta property="twitter:image" content="https://ameliaptz.141412.xyz/gambar/fotbar.jpg">
+    <meta property="twitter:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760445380/gg_sruzxq.png">
     
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -44,27 +42,29 @@
     
     <style>
         :root {
-            /* Enhanced Color Palette */
-            --primary: #2E8B57;
-            --primary-light: #4CAF50;
-            --primary-dark: #1a6b20;
-            --secondary: #8BC34A;
-            --accent: #009688;
-            --light: #93d493;
-            --dark: #263238;
+            /* Enhanced Color Palette with better harmony */
+            --primary: #2E7D32;
+            --primary-light: #66BB6A;
+            --primary-dark: #1B5E20;
+            --secondary: #81C784;
+            --accent: #00897B;
+            --light: #E8F5E9;
+            --dark: #1B1B1B;
             --text: #212121;
-            --text-muted: #757575;
+            --text-muted: #616161;
             --text-light: #FFFFFF;
-            --bg: #71ff90;
-            --bg-alt: #F5F5F5;
-            --bg-dark: #dadada;
+            --bg: #F5F5F5;
+            --bg-alt: #FAFAFA;
+            --bg-dark: #EEEEEE;
             --border: #E0E0E0;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --radius: 12px;
-            --radius-lg: 16px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.16);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --radius: 16px;
+            --radius-lg: 24px;
+            --gradient-1: linear-gradient(135deg, #2E7D32, #00897B);
+            --gradient-2: linear-gradient(135deg, #66BB6A, #4DB6AC);
         }
 
         * {
@@ -79,11 +79,30 @@
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.6;
             overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* Skip to content link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 100;
+            border-radius: 0 0 8px 0;
+            transition: top 0.3s ease;
+        }
+
+        .skip-link:focus {
+            top: 0;
         }
 
         /* Preloader */
@@ -109,7 +128,7 @@
         .loader {
             width: 60px;
             height: 60px;
-            border: 5px solid var(--bg-alt);
+            border: 4px solid var(--bg-alt);
             border-top-color: var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
@@ -119,11 +138,11 @@
         .loader::after {
             content: '';
             position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            border: 3px solid transparent;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid transparent;
             border-top-color: var(--secondary);
             border-radius: 50%;
             animation: spin 2s linear infinite reverse;
@@ -139,8 +158,8 @@
             top: 0;
             left: 0;
             width: 0%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            height: 3px;
+            background: var(--gradient-1);
             z-index: 1001;
             transition: width 0.3s ease;
         }
@@ -151,8 +170,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(137, 214, 134, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
             box-shadow: var(--shadow-sm);
             z-index: 1000;
             transition: var(--transition);
@@ -184,7 +203,7 @@
             font-size: 2rem;
             margin-right: 0.75rem;
             color: var(--primary);
-            background: var(--light);
+            background: var(--bg);
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -230,17 +249,17 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 3px;
+            height: 2px;
             background: var(--primary);
             transition: var(--transition);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
-        nav a:hover {
+        nav a:hover, nav a:focus {
             color: var(--primary);
         }
 
-        nav a:hover::after {
+        nav a:hover::after, nav a:focus::after {
             width: 100%;
         }
 
@@ -305,7 +324,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(139, 188, 143, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440176/hidro_aqrllc.jpg') center/cover no-repeat;
+            background: var(--gradient-1), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440176/hidro_aqrllc.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
             overflow: hidden;
@@ -363,7 +382,7 @@
         .hero-badge {
             display: inline-block;
             background: rgba(255, 255, 255, 0.2);
-            color: rgb(240, 240, 240);
+            color: white;
             font-size: 0.9rem;
             font-weight: 600;
             padding: 0.5rem 1.5rem;
@@ -429,50 +448,103 @@
             transition: var(--transition);
         }
 
-        .cta-button:hover::before {
+        .cta-button:hover::before, .cta-button:focus::before {
             left: 100%;
         }
 
-        .cta-button:hover {
+        .cta-button:hover, .cta-button:focus {
             background: var(--primary);
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
-        /* Social Media Share Bar */
-        .social-share {
+        /* Floating Action Button for Social Sharing */
+        .fab-container {
             position: fixed;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
+            bottom: 20px;
+            right: 20px;
             z-index: 999;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 15px 10px;
-            border-radius: 30px;
-            box-shadow: var(--shadow-md);
         }
 
-        .social-share a {
+        .fab-main {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow-lg);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: white;
+            font-size: 1.5rem;
             transition: var(--transition);
         }
 
-        .social-share .facebook { background: #3b5998; }
-        .social-share .twitter { background: #1da1f2; }
-        .social-share .instagram { background: #e1306c; }
-        .social-share .whatsapp { background: #25d366; }
-        .social-share .linkedin { background: #0077b5; }
+        .fab-main:hover, .fab-main:focus {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
 
-        .social-share a:hover {
+        .fab-main.active {
+            transform: rotate(45deg);
+            background: var(--accent);
+        }
+
+        .fab-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .fab-options.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .fab-option {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow-md);
+            transform: scale(0);
+        }
+
+        .fab-options.active .fab-option {
+            transform: scale(1);
+        }
+
+        .fab-option:nth-child(1) {
+            background: #3b5998;
+            transition-delay: 0.05s;
+        }
+
+        .fab-option:nth-child(2) {
+            background: #1da1f2;
+            transition-delay: 0.1s;
+        }
+
+        .fab-option:nth-child(3) {
+            background: #25D366;
+            transition-delay: 0.15s;
+        }
+
+        .fab-option:hover, .fab-option:focus {
             transform: scale(1.1);
         }
 
@@ -504,7 +576,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
             border-radius: 2px;
         }
 
@@ -560,7 +632,7 @@
             background: var(--primary);
         }
 
-        .tip-card:hover {
+        .tip-card:hover, .tip-card:focus-within {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
@@ -584,7 +656,7 @@
         }
 
         .daily-tip {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
             color: white;
             padding: 1.5rem;
             border-radius: var(--radius-lg);
@@ -678,6 +750,7 @@
         .form-group input:focus, .form-group select:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(46, 139, 87, 0.2);
         }
 
         .calculate-btn {
@@ -692,9 +765,10 @@
             transition: var(--transition);
         }
 
-        .calculate-btn:hover {
+        .calculate-btn:hover, .calculate-btn:focus {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
         }
 
         .result-container {
@@ -727,177 +801,6 @@
         .chart-container {
             margin-top: 1.5rem;
             height: 300px;
-        }
-
-        /* Environmental News Section */
-        .env-news {
-            background: var(--bg-dark);
-        }
-
-        .news-controls {
-            display: flex;
-            justify-content: center;
-            gap: 0.8rem;
-            margin-bottom: 1.5rem;
-            flex-wrap: wrap;
-        }
-
-        .news-filter-btn {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-        }
-
-        .news-filter-btn:hover, .news-filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .news-card {
-            background: white;
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .news-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-
-        .news-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.7));
-        }
-
-        .news-source {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            z-index: 1;
-        }
-
-        .news-content {
-            padding: 1.5rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-date {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .news-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            line-height: 1.4;
-        }
-
-        .news-excerpt {
-            color: var(--text);
-            line-height: 1.6;
-            margin-bottom: 1rem;
-            flex-grow: 1;
-        }
-
-        .read-more {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: var(--transition);
-        }
-
-        .read-more:hover {
-            gap: 1rem;
-        }
-
-        .news-loading {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-        }
-
-        .news-loading i {
-            font-size: 2rem;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1rem;
-            display: inline-block;
-            color: var(--primary);
-        }
-
-        .news-error {
-            text-align: center;
-            padding: 3rem 1rem;
-            color: var(--text-muted);
-            background: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-        }
-
-        .news-error i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .refresh-news-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 30px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 1rem;
-        }
-
-        .refresh-news-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
         }
 
         /* About Section */
@@ -1016,7 +919,7 @@
             border-top: 4px solid var(--primary);
         }
 
-        .structure-card:hover {
+        .structure-card:hover, .structure-card:focus-within {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
@@ -1067,13 +970,13 @@
             flex-direction: column;
         }
 
-        .program-card:hover {
+        .program-card:hover, .program-card:focus-within {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
 
         .program-card-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
             color: white;
             padding: 1.5rem;
             text-align: center;
@@ -1137,7 +1040,7 @@
             transition: var(--transition);
         }
 
-        .gallery-item:hover img {
+        .gallery-item:hover img, .gallery-item:focus-within img {
             transform: scale(1.1);
         }
 
@@ -1153,7 +1056,7 @@
             transition: var(--transition);
         }
 
-        .gallery-item:hover .gallery-item-caption {
+        .gallery-item:hover .gallery-item-caption, .gallery-item:focus-within .gallery-item-caption {
             transform: translateY(0);
         }
 
@@ -1175,7 +1078,7 @@
             top: 0;
             bottom: 0;
             width: 4px;
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
         }
 
         .timeline-container {
@@ -1271,7 +1174,7 @@
             transition: var(--transition);
         }
 
-        .faq-question:hover {
+        .faq-question:hover, .faq-question:focus {
             background: var(--bg-alt);
         }
 
@@ -1349,14 +1252,14 @@
             transition: var(--transition);
         }
 
-        .instagram-link:hover {
+        .instagram-link:hover, .instagram-link:focus {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
         }
 
         /* Impact Section */
         .impact {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
             color: white;
             position: relative;
             overflow: hidden;
@@ -1369,7 +1272,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48L3N2Zz4=');
+            background: url('');
             opacity: 0.1;
             z-index: 1;
         }
@@ -1403,7 +1306,7 @@
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .stat-item:hover {
+        .stat-item:hover, .stat-item:focus-within {
             background: rgba(255, 255, 255, 0.25);
             transform: translateY(-10px);
         }
@@ -1432,7 +1335,7 @@
             line-height: 1.5;
         }
 
-        /* Members Section - Redesigned */
+        /* Members Section */
         .members {
             background: linear-gradient(135deg, rgba(240, 255, 240, 0.7), rgba(143, 188, 143, 0.3));
         }
@@ -1482,11 +1385,11 @@
             font-size: 1.1rem;
         }
 
-        .anggota-search-box button:hover {
+        .anggota-search-box button:hover, .anggota-search-box button:focus {
             background: var(--primary-dark);
         }
 
-        /* Member Card Styles - Redesigned */
+        /* Member Card Styles */
         .member-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -1505,13 +1408,13 @@
             position: relative;
         }
 
-        .member-card:hover {
+        .member-card:hover, .member-card:focus-within {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
 
         .member-header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
             color: white;
             padding: 1.5rem;
             text-align: center;
@@ -1694,7 +1597,7 @@
             font-size: 0.95rem;
         }
 
-        .member-toggle-btn:hover {
+        .member-toggle-btn:hover, .member-toggle-btn:focus {
             background: var(--primary-dark);
         }
 
@@ -1763,7 +1666,7 @@
             font-size: 1rem;
         }
 
-        .view-more-btn:hover {
+        .view-more-btn:hover, .view-more-btn:focus {
             background: var(--primary-dark);
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
@@ -1773,82 +1676,9 @@
             display: none;
         }
 
-        /* Newsletter Section */
-        .newsletter {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
-            color: white;
-            padding: 4rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .newsletter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48cGF0aCBmaWxsPSIjZmZmIiBmaWxsLW9wYWNpdHk9IjAuMDUiIGQ9Ik0wIDBoNjB2NjBIMHoiLz48L3N2Zz4=');
-            opacity: 0.1;
-            z-index: 1;
-        }
-
-        .newsletter .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-        }
-
-        .newsletter h2 {
-            font-size: clamp(1.6rem, 5vw, 2.2rem);
-            margin-bottom: 1.2rem;
-        }
-
-        .newsletter p {
-            font-size: 1rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
-        }
-
-        .newsletter-form {
-            max-width: 500px;
-            margin: 0 auto;
-            display: flex;
-            gap: 0.8rem;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 0.8rem 1.2rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--text);
-        }
-
-        .newsletter-form button {
-            padding: 0.8rem 1.5rem;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .newsletter-form button:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-        }
-
         /* Registration Section */
         .registration {
-            background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(143, 188, 143, 0.9)), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760443699/hidrop_n86yi3.jpg') center/cover no-repeat;
+            background: var(--gradient-1), url('https://res.cloudinary.com/dahcxjdbl/image/upload/v1760443699/hidrop_n86yi3.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
             position: relative;
@@ -1880,6 +1710,109 @@
             font-size: clamp(1rem, 3vw, 1.2rem);
             max-width: 700px;
             margin: 0 auto 2rem;
+        }
+
+        /* Products Section */
+        .products {
+            background: var(--bg-alt);
+            padding: 5rem 0;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover, .product-card:focus-within {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+
+        .product-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .product-description {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+
+        .product-buy-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+        }
+
+        .product-buy-btn:hover, .product-buy-btn:focus {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .product-buy-btn i {
+            font-size: 1.2rem;
         }
 
         /* Footer */
@@ -1943,11 +1876,11 @@
             transition: var(--transition);
         }
 
-        .footer-links a:hover {
+        .footer-links a:hover, .footer-links a:focus {
             color: var(--secondary);
         }
 
-        .footer-links a:hover::after {
+        .footer-links a:hover::after, .footer-links a:focus::after {
             width: 100%;
         }
 
@@ -1968,7 +1901,7 @@
             transition: var(--transition);
         }
 
-        .footer-social a:hover {
+        .footer-social a:hover, .footer-social a:focus {
             background: var(--primary);
             transform: translateY(-5px);
         }
@@ -1984,7 +1917,7 @@
         .scroll-top {
             position: fixed;
             bottom: 20px;
-            right: 20px;
+            left: 20px;
             width: 50px;
             height: 50px;
             background: var(--primary);
@@ -2006,7 +1939,7 @@
             visibility: visible;
         }
 
-        .scroll-top:hover {
+        .scroll-top:hover, .scroll-top:focus {
             background: var(--primary-dark);
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
@@ -2016,7 +1949,7 @@
         #darkModeToggle {
             position: fixed;
             bottom: 80px;
-            right: 20px;
+            left: 20px;
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -2032,7 +1965,7 @@
             justify-content: center;
         }
 
-        #darkModeToggle:hover {
+        #darkModeToggle:hover, #darkModeToggle:focus {
             background: var(--primary);
             color: white;
             border-color: var(--primary);
@@ -2040,29 +1973,12 @@
 
         /* Dark Mode Styles */
         body.dark-mode {
-            --bg: #0f1419;
-            --bg-alt: #1a1f29;
-            --bg-dark: #0a0e13;
-            --bg-elevated: #1e2532;
-            --text: #f0f6fc;
-            --text-muted: #8b949e;
-            --text-dim: #656d76;
-            --border: #30363d;
-            --border-elevated: #3d444d;
-            --accent: #2f81f7;
-            --accent-hover: #58a6ff;
-            --primary: #238636;
-            --primary-hover: #2ea043;
-            --secondary: #01612c;
-            --secondary-hover: #048d54;
-            --success: #3fb950;
-            --warning: #d29922;
-            --danger: #f85149;
-            --code-bg: #161b22;
-            --overlay: rgba(13, 17, 23, 0.8);
-            --shadow-rgb: 0, 0, 0;
-            --shadow-elevated: 0 8px 24px rgba(0, 0, 0, 0.5);
-            --transition: all 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+            --bg: #121212;
+            --bg-alt: #1E1E1E;
+            --bg-dark: #2D2D2D;
+            --text: #F5F5F5;
+            --text-muted: #AAAAAA;
+            --border: #333333;
         }
 
         body.dark-mode {
@@ -2090,20 +2006,12 @@
             background: var(--bg-alt);
         }
 
-        body.dark-mode .env-news {
-            background: var(--bg-alt);
-        }
-
         body.dark-mode .timeline {
             background: var(--bg-alt);
         }
 
         body.dark-mode .timeline::before {
-            background: linear-gradient(180deg, var(--primary), var(--secondary));
-        }
-
-        body.dark-mode .newsletter {
-            background: linear-gradient(135deg, #0f2419, #1a2f24);
+            background: var(--gradient-1);
         }
 
         body.dark-mode .registration {
@@ -2126,95 +2034,56 @@
             background: var(--bg-alt);
         }
 
+        body.dark-mode .products {
+            background: var(--bg-alt);
+        }
+
         body.dark-mode .tip-card,
         body.dark-mode .structure-card,
         body.dark-mode .program-card,
         body.dark-mode .gallery-item,
         body.dark-mode .stat-item,
-        body.dark-mode .news-card,
         body.dark-mode .member-card,
         body.dark-mode .faq-item,
-        body.dark-mode .calculator-container {
-            background: var(--bg-elevated);
+        body.dark-mode .calculator-container,
+        body.dark-mode .product-card {
+            background: var(--bg-alt);
             color: var(--text);
             border: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        body.dark-mode .tip-card:hover,
-        body.dark-mode .structure-card:hover,
-        body.dark-mode .program-card:hover,
-        body.dark-mode .gallery-item:hover,
-        body.dark-mode .stat-item:hover,
-        body.dark-mode .news-card:hover,
-        body.dark-mode .member-card:hover,
-        body.dark-mode .faq-item:hover {
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            transform: translateY(-2px);
-        }
-
-        body.dark-mode .tip-card::before,
-        body.dark-mode .structure-card::before {
-            background: var(--primary);
         }
 
         body.dark-mode .vision-mission {
-            background: var(--bg-elevated);
+            background: var(--bg-alt);
             border-left-color: var(--primary);
-            border: 1px solid var(--border);
         }
 
         body.dark-mode .program-card-header {
-            background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
-            border-bottom: 1px solid var(--border);
+            background: var(--gradient-1);
         }
 
         body.dark-mode .member-header {
-            background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
-            border-bottom: 1px solid var(--border);
+            background: var(--gradient-1);
         }
 
-        body.dark-mode .member-preview-item,
-        body.dark-mode .member-info {
-            background: var(--bg-alt);
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode .member-preview-item:hover {
-            background: var(--bg-elevated);
+        body.dark-mode .member-preview-item {
+            background: var(--bg-dark);
         }
 
         body.dark-mode .member-footer {
             background: var(--bg-dark);
-            border-top: 1px solid var(--border);
         }
 
         body.dark-mode .daily-tip {
-            background: linear-gradient(135deg, #1a3d1a, #2d5a2d);
-            border: 1px solid var(--border);
+            background: var(--gradient-1);
         }
 
         body.dark-mode .result-container {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode .newsletter-form input {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode .newsletter-form input:focus {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
+            background: var(--bg-dark);
         }
 
         body.dark-mode .anggota-search-box {
-            background: var(--bg-elevated);
+            background: var(--bg-alt);
             border: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
         body.dark-mode .anggota-search-box input {
@@ -2222,50 +2091,33 @@
             color: var(--text);
         }
 
-        body.dark-mode .anggota-search-box input:focus {
-            background: var(--bg-dark);
-        }
-
         body.dark-mode .no-search-result,
         body.dark-mode .loading {
-            background: var(--bg-elevated);
+            background: var(--bg-alt);
             color: var(--text);
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        body.dark-mode .news-filter-btn {
-            background: var(--bg-elevated);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode .news-filter-btn:hover,
-        body.dark-mode .news-filter-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
         }
 
         body.dark-mode .calculate-btn,
-        body.dark-mode .refresh-news-btn,
         body.dark-mode .view-more-btn,
-        body.dark-mode .member-toggle-btn {
+        body.dark-mode .member-toggle-btn,
+        body.dark-mode .product-buy-btn {
             background: var(--primary);
             color: white;
-            border: none;
+        }
+
+        body.dark-mode .product-buy-btn {
+            background: #128C7E;
         }
 
         body.dark-mode .calculate-btn:hover,
-        body.dark-mode .refresh-news-btn:hover,
         body.dark-mode .view-more-btn:hover,
-        body.dark-mode .member-toggle-btn:hover {
-            background: var(--primary-hover);
+        body.dark-mode .member-toggle-btn:hover,
+        body.dark-mode .product-buy-btn:hover {
+            background: var(--primary-dark);
         }
 
         body.dark-mode footer {
             background: var(--bg-dark);
-            border-top: 1px solid var(--border);
         }
 
         body.dark-mode .footer-links a::after {
@@ -2273,44 +2125,32 @@
         }
 
         body.dark-mode .footer-social a {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
+            background: var(--bg-alt);
         }
 
         body.dark-mode .footer-social a:hover {
             background: var(--primary);
-            border-color: var(--primary);
         }
 
         body.dark-mode .footer-bottom {
-            color: var(--text-dim);
-            border-top-color: var(--border);
+            color: var(--text-muted);
         }
 
         body.dark-mode input,
-        body.dark-mode select,
-        body.dark-mode textarea {
-            background-color: var(--bg-elevated);
+        body.dark-mode select {
+            background-color: var(--bg-alt);
             color: var(--text);
             border: 1px solid var(--border);
         }
 
         body.dark-mode input:focus,
-        body.dark-mode select:focus,
-        body.dark-mode textarea:focus {
+        body.dark-mode select:focus {
             background-color: var(--bg-dark);
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(47, 129, 247, 0.3);
-            outline: none;
-        }
-
-        body.dark-mode .form-group input:focus,
-        body.dark-mode .form-group select:focus {
-            border-color: var(--accent);
+            border-color: var(--primary);
         }
 
         body.dark-mode .scroll-top {
-            background: var(--bg-elevated);
+            background: var(--bg-alt);
             color: var(--text);
             border: 1px solid var(--border);
         }
@@ -2321,7 +2161,7 @@
         }
 
         body.dark-mode #darkModeToggle {
-            background: var(--bg-elevated);
+            background: var(--bg-alt);
             color: var(--text);
             border: 1px solid var(--border);
         }
@@ -2331,138 +2171,33 @@
             border-color: var(--primary);
         }
 
-        body.dark-mode .social-share {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-        }
-
         body.dark-mode header {
-            background: rgba(15, 20, 25, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
+            background: rgba(18, 18, 18, 0.9);
         }
 
         body.dark-mode .progress-bar {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: var(--gradient-1);
         }
 
         body.dark-mode .timeline-content {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            background: var(--bg-alt);
         }
 
         body.dark-mode .timeline-dot {
             background: var(--primary);
-            border-color: var(--bg-elevated);
-        }
-
-        body.dark-mode .faq-question:hover {
-            background: var(--bg-alt);
+            border-color: var(--bg-alt);
         }
 
         body.dark-mode .gallery-item-caption {
-            background: linear-gradient(to top, rgba(10, 14, 19, 0.9), transparent);
-        }
-
-        body.dark-mode nav ul {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-elevated);
+            background: linear-gradient(to top, rgba(18, 18, 18, 0.9), transparent);
         }
 
         body.dark-mode .cta-button {
             background: var(--primary);
-            color: white;
         }
 
         body.dark-mode .cta-button:hover {
-            background: var(--primary-hover);
-        }
-
-        body.dark-mode .instagram-link {
-            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-        }
-
-        body.dark-mode [data-aos="fade-up"] {
-            background-color: transparent;
-        }
-
-        body.dark-mode .floating {
-            opacity: 0.1;
-        }
-
-        body.dark-mode .hero-badge {
-            background: rgba(255, 255, 255, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        body.dark-mode .daily-tip::before {
-            opacity: 0.05;
-        }
-
-        body.dark-mode .stat-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark-mode .stat-item:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        body.dark-mode ::selection {
-            background: var(--primary);
-            color: white;
-        }
-
-        body.dark-mode::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-
-        body.dark-mode::-webkit-scrollbar-track {
-            background: var(--bg-dark);
-        }
-
-        body.dark-mode::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        body.dark-mode::-webkit-scrollbar-thumb:hover {
-            background: var(--text-dim);
-        }
-
-        body.dark-mode pre, body.dark-mode code {
-            background: var(--code-bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-
-        body.dark-mode [title] {
-            border-bottom: 1px dotted var(--text-dim);
-        }
-
-        body.dark-mode a:focus,
-        body.dark-mode button:focus,
-        body.dark-mode input:focus,
-        body.dark-mode select:focus,
-        body.dark-mode textarea:focus {
-            outline: 2px solid var(--accent);
-            outline-offset: 2px;
-        }
-
-        @media print {
-            body.dark-mode {
-                background: white !important;
-                color: black !important;
-            }
-            
-            body.dark-mode * {
-                background: white !important;
-                color: black !important;
-                border-color: black !important;
-            }
+            background: var(--primary-dark);
         }
 
         /* Responsive Design */
@@ -2493,10 +2228,6 @@
         }
 
         @media (max-width: 992px) {
-            .social-share {
-                display: none;
-            }
-            
             .timeline::before {
                 left: 20px;
             }
@@ -2583,19 +2314,7 @@
                 grid-template-columns: 1fr;
             }
             
-            .newsletter-form {
-                flex-direction: column;
-            }
-            
             .tips-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .news-controls {
-                justify-content: center;
-            }
-            
-            .news-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -2609,6 +2328,10 @@
             
             .calculator-container {
                 padding: 1.5rem 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
             }
             
             .footer-content {
@@ -2627,13 +2350,18 @@
                 width: 45px;
                 height: 45px;
                 bottom: 15px;
-                right: 15px;
+                left: 15px;
             }
             
             #darkModeToggle {
                 width: 45px;
                 height: 45px;
                 bottom: 70px;
+                left: 15px;
+            }
+
+            .fab-container {
+                bottom: 15px;
                 right: 15px;
             }
         }
@@ -2689,20 +2417,6 @@
             }
             
             .stat-item p {
-                font-size: 0.9rem;
-            }
-            
-            .newsletter h2 {
-                font-size: 1.5rem;
-            }
-            
-            .newsletter p {
-                font-size: 0.95rem;
-            }
-            
-            .newsletter-form input,
-            .newsletter-form button {
-                padding: 0.7rem 1rem;
                 font-size: 0.9rem;
             }
             
@@ -2790,7 +2504,7 @@
                 font-size: 0.9rem;
             }
             
-            .form-group input,
+                        .form-group input,
             .form-group select {
                 padding: 0.7rem;
                 font-size: 0.9rem;
@@ -2799,22 +2513,6 @@
             .calculate-btn {
                 padding: 0.7rem 1.5rem;
                 font-size: 1rem;
-            }
-            
-            .news-card {
-                margin-bottom: 1rem;
-            }
-            
-            .news-content {
-                padding: 1.2rem;
-            }
-            
-            .news-title {
-                font-size: 1.1rem;
-            }
-            
-            .news-excerpt {
-                font-size: 0.9rem;
             }
             
             .about-text h3 {
@@ -3031,20 +2729,6 @@
                 font-size: 0.9rem;
             }
             
-            .newsletter h2 {
-                font-size: 1.3rem;
-            }
-            
-            .newsletter p {
-                font-size: 0.9rem;
-            }
-            
-            .newsletter-form input,
-            .newsletter-form button {
-                padding: 0.6rem 1rem;
-                font-size: 0.85rem;
-            }
-            
             .registration h2 {
                 font-size: 1.3rem;
             }
@@ -3086,51 +2770,51 @@
                 width: 40px;
                 height: 40px;
                 bottom: 10px;
-                right: 10px;
+                left: 10px;
             }
             
             #darkModeToggle {
                 width: 40px;
                 height: 40px;
                 bottom: 60px;
+                left: 10px;
+            }
+
+            .fab-container {
+                bottom: 10px;
                 right: 10px;
+            }
+
+            .fab-main {
+                width: 48px;
+                height: 48px;
+                font-size: 1.2rem;
+            }
+
+            .fab-option {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Preloader -->
-    <div class="preloader" id="preloader">
+    <div class="preloader" id="preloader" role="status" aria-label="Loading content">
         <div class="loader"></div>
     </div>
 
     <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar"></div>
-
-    <!-- Social Media Share Bar -->
-    <div class="social-share">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https://green.wasmer.app/" target="_blank" class="facebook" title="Share on Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://twitter.com/intent/tweet?url=https://green.wasmer.app/&text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi" target="_blank" class="twitter" title="Share on Twitter">
-            <i class="fab fa-twitter"></i>
-        </a>
-        <a href="https://www.instagram.com/greengeneration.smkn4bjm/" target="_blank" class="instagram" title="Follow on Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://api.whatsapp.com/send?text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi%20https://green.wasmer.app/" target="_blank" class="whatsapp" title="Share on WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://green.wasmer.app/" target="_blank" class="linkedin" title="Share on LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
-    </div>
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="https://skenpat.pages.dev/green" class="logo">
-                <i class="fas fa-leaf"></i>
+            <a href="https://skenpat.pages.dev/green" class="logo" aria-label="Green Generation Home">
+                <i class="fas fa-leaf" aria-hidden="true"></i>
                 <div class="logo-text">
                     <span class="main-logo-text">Green Generation</span>
                     <span class="ligo">By SMK Negeri 4 Banjarmasin</span>
@@ -3139,16 +2823,15 @@
             <nav>
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
-                    <li><a href="#berita">Berita</a></li>
                     <li><a href="#struktur">Struktur</a></li>
                     <li><a href="#divisi">Divisi</a></li>
                     <li><a href="#kegiatan">Kegiatan</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#produk">Produk</a></li>
                     <li><a href="#member">Anggota</a></li>
                     <li><a href="#daftar">Daftar</a></li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -3157,10 +2840,10 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="floating floating-1"><i class="fas fa-seedling"></i></div>
-        <div class="floating floating-2"><i class="fas fa-tree"></i></div>
-        <div class="floating floating-3"><i class="fas fa-recycle"></i></div>
+    <section class="hero" id="main-content">
+        <div class="floating floating-1" aria-hidden="true"><i class="fas fa-seedling"></i></div>
+        <div class="floating floating-2" aria-hidden="true"><i class="fas fa-tree"></i></div>
+        <div class="floating floating-3" aria-hidden="true"><i class="fas fa-recycle"></i></div>
         <div class="hero-content" data-aos="fade-up">
             <div class="hero-badge">Organisasi Lingkungan Hidup</div>
             <h1>Green Generation</h1>
@@ -3210,15 +2893,15 @@
                 </h3>
                 <form class="calculator-form" id="carbonForm">
                     <div class="form-group">
-                        <label><i class="fas fa-car"></i> Transportasi (km/hari)</label>
+                        <label for="transport"><i class="fas fa-car"></i> Transportasi (km/hari)</label>
                         <input type="number" id="transport" min="0" step="0.1" placeholder="Contoh: 10" required>
                     </div>
                     <div class="form-group">
-                        <label><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh/bulan)</label>
+                        <label for="electricity"><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh/bulan)</label>
                         <input type="number" id="electricity" min="0" step="0.1" placeholder="Contoh: 150" required>
                     </div>
                     <div class="form-group">
-                        <label><i class="fas fa-utensils"></i> Pola Makan</label>
+                        <label for="diet"><i class="fas fa-utensils"></i> Pola Makan</label>
                         <select id="diet" required>
                             <option value="">Pilih pola makan...</option>
                             <option value="1.5">Vegetarian</option>
@@ -3227,7 +2910,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label><i class="fas fa-shopping-bag"></i> Konsumsi (barang/bulan)</label>
+                        <label for="consumption"><i class="fas fa-shopping-bag"></i> Konsumsi (barang/bulan)</label>
                         <input type="number" id="consumption" min="0" placeholder="Contoh: 5" required>
                     </div>
                     <button type="submit" class="calculate-btn">
@@ -3241,39 +2924,6 @@
                         <canvas id="carbonChart"></canvas>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Environmental News Section -->
-    <section id="berita" class="env-news">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Berita Lingkungan Terkini</h2>
-            
-            <!-- News Filter Buttons -->
-            <div class="news-controls" data-aos="fade-up" data-aos-delay="100">
-                <button class="news-filter-btn active" data-category="all">Semua</button>
-                <button class="news-filter-btn" data-category="climate">Iklim</button>
-                <button class="news-filter-btn" data-category="renewable">Energi Terbarukan</button>
-                <button class="news-filter-btn" data-category="conservation">Konservasi</button>
-                <button class="news-filter-btn" data-category="pollution">Pencemaran</button>
-            </div>
-            
-            <!-- News Grid -->
-            <div class="news-grid" id="newsGrid">
-                <div class="news-loading" id="newsLoading">
-                    <i class="fas fa-spinner"></i>
-                    <p>Memuat berita terkini...</p>
-                </div>
-            </div>
-            
-            <!-- News Error Message (Hidden by default) -->
-            <div class="news-error" id="newsError" style="display: none;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <p>Gagal memuat berita. Silakan coba lagi nanti.</p>
-                <button class="refresh-news-btn" id="refreshNewsBtn">
-                    <i class="fas fa-sync-alt"></i> Coba Lagi
-                </button>
             </div>
         </div>
     </section>
@@ -3413,39 +3063,126 @@
             <h2 class="section-title" data-aos="fade-up">Galeri Kegiatan</h2>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Lilin Minyak Jelantah">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Pembuatan Lilin Dari Minyak Jelantah" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Pembuatan Lilin Dari Minyak Jelantah Bersama Mahasiswa Poliban</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Eco-Print">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Hasil Eco-Print" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Hasil Eco-Print Dari Bahan Alam</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="700 Gram Minyak Jelantah">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Green Soap" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Pembuatan Green Soap Dari Minyak Jelantah</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440114/press_vvg0fh.jpg" alt="Eco-Print">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440114/press_vvg0fh.jpg" alt="Eco-Press" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Sosialisasi Pembuatan Eco-Brick Menggunakan Alat Press</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Eco-Brick">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Kursi Eco-Brick" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Proses Pembuatan Kursi Dari Eco-Brick</p>
                     </div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Panen Hidroponik">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Panen Hidroponik" loading="lazy">
                     <div class="gallery-item-caption">
                         <p>Panen Hidroponik Siap Di-Jual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produk" class="products">
+        <div class="products-container">
+            <h2 class="section-title" data-aos="fade-up">Produk Kami</h2>
+            <div class="products-grid">
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Sabun Hijau" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Sabun Hijau</h3>
+                        <p class="product-description">Sabun ramah lingkungan yang terbuat dari minyak jelantah berkualitas tinggi. Aman untuk kulit dan membantu mengurangi limbah minyak.</p>
+                        <div class="product-price">Rp 15.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20sabun%20hijau%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Lilin Aromaterapi" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Lilin Aromaterapi</h3>
+                        <p class="product-description">Lilin aromaterapi dari minyak jelantah dengan berbagai pilihan wangi. Menciptakan suasana nyaman dan membantu relaksasi.</p>
+                        <div class="product-price">Rp 20.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20lilin%20aromaterapi%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Eco-Print" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Kain Eco-Print</h3>
+                        <p class="product-description">Kain dengan motif eco-print dari bahan alami. Setiap produk unik karena motifnya dihasilkan langsung dari daun dan bunga asli.</p>
+                        <div class="product-price">Rp 75.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20kain%20eco-print%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Sayuran Hidroponik" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Sayuran Hidroponik</h3>
+                        <p class="product-description">Sayuran segar hasil budidaya hidroponik tanpa pestisida. Sehat, bersih, dan bernutrisi tinggi untuk keluarga Anda.</p>
+                        <div class="product-price">Mulai Rp 10.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20saya%20mau%20pesan%20sayuran%20hidroponik%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Eco-Brick" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Kursi Eco-Brick</h3>
+                        <p class="product-description">Kursi ringan dan kuat terbuat dari eco-brick (botol plastik yang dipadatkan). Solusi kreatif untuk mengurangi sampah plastik.</p>
+                        <div class="product-price">Rp 150.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20kursi%20eco-brick%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="product-card" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="product-image">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440114/press_vvg0fh.jpg" alt="Alat Press Eco-Brick" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Alat Press Eco-Brick</h3>
+                        <p class="product-description">Alat press untuk membuat eco-brick dari botol plastik bekas. Dapat digunakan di rumah, sekolah, atau komunitas.</p>
+                        <div class="product-price">Rp 100.000</div>
+                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20alat%20press%20eco-brick%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
+                            <i class="fab fa-whatsapp"></i> Beli Sekarang
+                        </a>
                     </div>
                 </div>
             </div>
@@ -3481,22 +3218,6 @@
                         <p class="timeline-description">Meraih juara 1 dalam lomba sekolah adiwiyata tingkat kota Banjarmasin.</p>
                     </div>
                 </div>
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">September 2024</div>
-                        <h3 class="timeline-title">Kolaborasi Regional</h3>
-                        <p class="timeline-description">Berkolaborasi dengan Green Generation Kalsel dalam program penanaman 1000 bibit pohon.</p>
-                    </div>
-                </div>
-                <div class="timeline-item" data-aos="fade-up">
-                    <div class="timeline-content">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-date">November 2024</div>
-                        <h3 class="timeline-title">Digital Innovation Award</h3>
-                        <p class="timeline-description">Menerima penghargaan inovasi digital untuk aplikasi Dacing Code promosi wisata lokal.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -3507,10 +3228,10 @@
             <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
             <div class="faq-container">
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
-                    <div class="faq-question">
+                    <button class="faq-question">
                         <span>Apa itu Green Generation?</span>
                         <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             Green Generation adalah organisasi lingkungan hidup di SMK Negeri 4 Banjarmasin yang beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi melalui berbagai program seperti bank sampah, hidroponik, dan daur ulang.
@@ -3518,10 +3239,10 @@
                     </div>
                 </div>
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="faq-question">
+                    <button class="faq-question">
                         <span>Bagaimana cara bergabung dengan Green Generation?</span>
                         <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             Anda dapat bergabung dengan mengisi formulir pendaftaran online yang tersedia di website kami. Setelah itu, Anda akan dihubungi untuk mengikuti proses seleksi dan orientasi program.
@@ -3529,10 +3250,10 @@
                     </div>
                 </div>
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="faq-question">
+                    <button class="faq-question">
                         <span>Apa saja kegiatan yang dilakukan Green Generation?</span>
                         <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
                             Kegiatan kami meliputi pengelolaan bank sampah, budidaya hidroponik, workshop daur ulang, aksi bersih-bersih, penanaman pohon, edukasi lingkungan, dan berbagai program inovasi lainnya.
@@ -3540,24 +3261,13 @@
                     </div>
                 </div>
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-                    <div class="faq-question">
-                        <span>Apakah ada syarat khusus untuk menjadi anggota?</span>
+                    <button class="faq-question">
+                        <span>Bagaimana cara membeli produk Green Generation?</span>
                         <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
+                    </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Syarat utama adalah memiliki komitmen dan kepedulian terhadap lingkungan. Tidak ada syarat akademik khusus, yang terpenting adalah semangat untuk belajar dan berkontribusi dalam gerakan hijau.
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="500">
-                    <div class="faq-question">
-                        <span>Bagaimana cara mendukung Green Generation?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Anda dapat mendukung kami dengan cara bergabung sebagai anggota, berdonasi, mengikuti program kami, menyebarkan informasi tentang kegiatan kami, atau menerapkan praktik ramah lingkungan dalam kehidupan sehari-hari.
+                            Anda dapat membeli produk kami dengan mengklik tombol "Beli Sekarang" pada halaman Produk. Anda akan langsung diarahkan ke WhatsApp untuk melakukan pemesanan dengan format pesan yang sudah disiapkan.
                         </div>
                     </div>
                 </div>
@@ -3635,7 +3345,7 @@
                 <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-lightbulb"></i>
                     <div class="stat-number">9+</div>
-                    <p>Inovasi Lingkungan (Eco Print, Green Soap, Green VR, Sumur Resapan, Taman Sekolah, Penampungan Air, Hutan Sekolah, Dacing Code, dll.)</p>
+                    <p>Inovasi Lingkungan (Eco Print, Green Soap, Green VR, Sumur Resapan, dll.)</p>
                 </div>
                 <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-tree"></i>
@@ -3652,34 +3362,7 @@
                     <div class="stat-number">100%</div>
                     <p>Siswa Terlibat dalam program Jumat Bersih & aksi pemilahan sampah</p>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="500">
-                    <i class="fas fa-handshake"></i>
-                    <div class="stat-number">Regional</div>
-                    <p>Kolaborasi dengan Green Generation Kalsel dalam kegiatan penanaman bibit</p>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="600">
-                    <i class="fas fa-tint"></i>
-                    <div class="stat-number">Puluhan Liter</div>
-                    <p>Air hemat lewat sumur resapan, biopori, dan pemanfaatan limbah air wudhu & cuci tangan</p>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="700">
-                    <i class="fas fa-globe"></i>
-                    <div class="stat-number">Digital</div>
-                    <p>Promosi Wisata Lokal lewat Dacing Code berbasis digital berbahasa Inggris</p>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2 data-aos="fade-up">Dapatkan Update Terbaru</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Daftar newsletter kami untuk mendapatkan informasi terkini tentang kegiatan dan program Green Generation</p>
-            <form class="newsletter-form" data-aos="fade-up" data-aos-delay="200">
-                <input type="email" placeholder="Email Anda" required>
-                <button type="submit">Daftar</button>
-            </form>
         </div>
     </section>
 
@@ -3716,12 +3399,13 @@
         </div>
     </section>
 
+
     <!-- Registration Section -->
     <section id="daftar" class="registration">
         <div class="container">
             <h2 data-aos="fade-up">Jadilah Bagian dari Green Generation</h2>
             <p data-aos="fade-up" data-aos-delay="100">Daftar sekarang dan ikut bergerak bersama kami menjaga bumi untuk masa depan yang lebih baik.</p>
-            <a href="https://forms.gle/ynrUonQzr9Nxbg2d9" target="_blank" class="cta-button" data-aos="fade-up" data-aos-delay="200">Isi Formulir Pendaftaran</a>
+            <a href="https://forms.gle/ynrUonQzr9Nxbg2d9" target="_blank" rel="noopener noreferrer" class="cta-button" data-aos="fade-up" data-aos-delay="200">Isi Formulir Pendaftaran</a>
         </div>
     </section>
 
@@ -3734,995 +3418,622 @@
                 </div>
                 <div class="footer-links">
                     <a href="#tentang">Tentang</a>
-                    <a href="#tips">Tips</a>
-                    <a href="#kalkulator">Kalkulator</a>
-                    <a href="#berita">Berita</a>
-                    <a href="#divisi">Program</a>
                     <a href="#struktur">Struktur</a>
+                    <a href="#divisi">Program</a>
+                    <a href="#produk">Produk</a>
                     <a href="#daftar">Daftar</a>
                 </div>
                 <div class="footer-social">
-                    <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank" title="Instagram">
+                    <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram Green Generation">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="https://www.tiktok.com/@greengenerationsmkn4" target="_blank" title="TikTok">
+                    <a href="https://www.tiktok.com/@greengenerationsmkn4" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok Green Generation">
                         <i class="fab fa-tiktok"></i>
                     </a>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; Green Generation 2025. All rights reserved.</p>
+                <p>&copy; 2026 Green Generation SMKN 4 Banjarmasin. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to top button -->
-    <div class="scroll-top" id="scrollTop">
-        <i class="fas fa-arrow-up"></i>
+    <!-- Floating Action Button for Social Sharing -->
+    <div class="fab-container">
+        <button class="fab-main" id="fabMain" aria-label="Bagikan" aria-expanded="false">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <div class="fab-options" id="fabOptions">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://green.wasmer.app/" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on Facebook" aria-label="Bagikan ke Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/intent/tweet?url=https://green.wasmer.app/&text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on Twitter" aria-label="Bagikan ke Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://api.whatsapp.com/send?text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi%20https://green.wasmer.app/" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on WhatsApp" aria-label="Bagikan ke WhatsApp">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
     </div>
 
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle">
+    <button id="darkModeToggle" aria-label="Aktifkan mode gelap">
         <i class="fas fa-moon"></i>
     </button>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 1000,
-            once: true,
-            offset: 100
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
 
-        // Preloader
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                document.getElementById('preloader').classList.add('hidden');
-            }, 1000);
-        });
+            // Preloader
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 1000);
+            });
 
-        // Progress Bar
-        window.addEventListener('scroll', function() {
-            const scrollPosition = window.scrollY;
-            const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercentage = (scrollPosition / documentHeight) * 100;
-            document.getElementById('progressBar').style.width = scrollPercentage + '%';
-        });
-
-        // Mobile menu toggle with animation
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navLinks = document.querySelector('nav ul');
-        
-        mobileMenuToggle.addEventListener('click', function() {
-            this.classList.toggle('open');
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.querySelector('nav ul');
             
-            if (navLinks.style.display === 'flex') {
-                navLinks.style.display = 'none';
-            } else {
-                navLinks.style.display = 'flex';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '100%';
-                navLinks.style.left = '0';
-                navLinks.style.width = '100%';
-                navLinks.style.backgroundColor = 'white';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.padding = '1.5rem';
-                navLinks.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.15)';
-                navLinks.style.animation = 'slideDown 0.3s ease forwards';
-                navLinks.style.borderRadius = '0 0 16px 16px';
-            }
-        });
-
-        // Add slideDown animation for mobile menu
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideDown {
-                from {
-                    opacity: 0;
-                    transform: translateY(-20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const headerHeight = document.querySelector('header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight;
-                    
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                    
-                    // Close mobile menu if open
-                    if (window.innerWidth <= 768) {
-                        navLinks.style.display = 'none';
-                        mobileMenuToggle.classList.remove('open');
-                    }
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenuToggle.classList.toggle('open');
+                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+                
+                if (isOpen) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.backgroundColor = 'white';
+                    navLinks.style.padding = '1.5rem';
+                    navLinks.style.boxShadow = 'var(--shadow-md)';
+                    navLinks.style.borderRadius = '0 0 var(--radius-lg) var(--radius-lg)';
+                    navLinks.style.zIndex = '1000';
+                } else {
+                    navLinks.style.display = 'none';
                 }
             });
-        });
 
-        // Scroll to top functionality
-        const scrollTopBtn = document.getElementById('scrollTop');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('visible');
-            } else {
-                scrollTopBtn.classList.remove('visible');
-            }
-        });
-        
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Environmental Tips Rotation
-        const dailyTips = [
-            "Bawa botol minum sendiri untuk mengurangi penggunaan botol plastik sekali pakai!",
-            "Gunakan tas belanja kain saat berbelanja untuk mengurangi penggunaan plastik.",
-            "Matikan lampu dan peralatan elektronik saat tidak digunakan untuk hemat energi.",
-            "Pisahkan sampah organik dan anorganik di rumah untuk memudahkan daur ulang.",
-            "Tanam tanaman di rumah untuk meningkatkan kualitas udara dan keindahan.",
-            "Gunakan transportasi umum atau bersepeda untuk mengurangi emisi karbon.",
-            "Kurangi penggunaan air dengan mematukan keran saat tidak digunakan.",
-            "Pilih produk dengan kemasan minimal atau dapat didaur ulang kembali.",
-            "Daur ulang kertas bekas menjadi catatan atau kerajinan tangan.",
-            "Kompos sampah organik untuk menjadi pupuk alami bagi tanaman."
-        ];
-
-        let currentTipIndex = 0;
-        const tipCounter = document.getElementById('tipCounter');
-        const dailyTipContent = document.getElementById('dailyTipContent');
-
-        function updateDailyTip() {
-            currentTipIndex = (currentTipIndex + 1) % dailyTips.length;
-            dailyTipContent.textContent = dailyTips[currentTipIndex];
-            
-            // Reset counter
-            let hours = 24;
-            tipCounter.textContent = hours;
-            
-            // Countdown timer
-            const countdown = setInterval(() => {
-                hours--;
-                tipCounter.textContent = hours;
-                if (hours <= 0) {
-                    clearInterval(countdown);
-                    updateDailyTip();
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target) && window.innerWidth <= 768 && navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                    mobileMenuToggle.classList.remove('open');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
                 }
-            }, 3600000); // Update every hour
-        }
+            });
 
-        // Update tip every 24 hours
-        setInterval(updateDailyTip, 86400000);
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'static';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.backgroundColor = 'transparent';
+                    navLinks.style.padding = '0';
+                    navLinks.style.boxShadow = 'none';
+                    navLinks.style.borderRadius = '0';
+                    navLinks.style.zIndex = 'auto';
+                } else if (navLinks.style.display === 'flex' && !mobileMenuToggle.classList.contains('open')) {
+                    navLinks.style.display = 'none';
+                }
+            });
 
-        // Carbon Footprint Calculator
-        const carbonForm = document.getElementById('carbonForm');
-        const resultContainer = document.getElementById('resultContainer');
-        const resultValue = document.getElementById('resultValue');
-        const resultText = document.getElementById('resultText');
-        let carbonChart = null;
-
-        carbonForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const transport = parseFloat(document.getElementById('transport').value) || 0;
-            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
-            const diet = parseFloat(document.getElementById('diet').value) || 0;
-            const consumption = parseFloat(document.getElementById('consumption').value) || 0;
-            
-            // Calculate carbon footprint (simplified calculation)
-            const transportCO2 = transport * 0.21; // kg CO2 per km
-            const electricityCO2 = (electricity / 30) * 0.5; // kg CO2 per kWh daily
-            const dietCO2 = diet; // kg CO2 based on diet type
-            const consumptionCO2 = consumption * 0.5; // kg CO2 per item
-            
-            const totalCO2 = transportCO2 + electricityCO2 + dietCO2 + consumptionCO2;
-            
-            // Show result
-            resultValue.textContent = totalCO2.toFixed(2) + ' kg CO₂';
-            
-            // Determine impact level
-            let impactText = '';
-            if (totalCO2 < 5) {
-                impactText = 'Jejak karbon Anda RENDAH. Teruskan gaya hidup ramah lingkungan!';
-            } else if (totalCO2 < 10) {
-                impactText = 'Jejak karbon Anda SEDANG. Ada ruang untuk perbaikan.';
-            } else {
-                impactText = 'Jejak karbon Anda TINGGI. Segera kurangi emisi karbon Anda!';
-            }
-            resultText.textContent = impactText;
-            
-            // Show result container
-            resultContainer.classList.add('show');
-            
-            // Create or update chart
-            const ctx = document.getElementById('carbonChart').getContext('2d');
-            
-            if (carbonChart) {
-                carbonChart.destroy();
-            }
-            
-            carbonChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Transportasi', 'Listrik', 'Makanan', 'Konsumsi'],
-                    datasets: [{
-                        data: [transportCO2, electricityCO2, dietCO2, consumptionCO2],
-                        backgroundColor: [
-                            '#FF6384',
-                            '#36A2EB',
-                            '#FFCE56',
-                            '#4BC0C0'
-                        ],
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 20,
-                                font: {
-                                    size: 12
-                                }
-                            }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function(context) {
-                                    return context.label + ': ' + context.parsed.toFixed(2) + ' kg CO₂';
-                                }
-                            }
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (window.innerWidth <= 768 && navLinks.style.display === 'flex') {
+                            navLinks.style.display = 'none';
+                            mobileMenuToggle.classList.remove('open');
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
                         }
                     }
-                }
-            });
-            
-            // Scroll to result
-            resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        });
-
-        // News API Integration
-        const newsGrid = document.getElementById('newsGrid');
-        const newsLoading = document.getElementById('newsLoading');
-        const newsError = document.getElementById('newsError');
-        const refreshNewsBtn = document.getElementById('refreshNewsBtn');
-        const filterButtons = document.querySelectorAll('.news-filter-btn');
-
-        // NewsData.io configuration
-        const newsCategories = {
-            all: '',
-            climate: 'iklim',
-            renewable: 'energi terbarukan',
-            conservation: 'konservasi',
-            pollution: 'pencemaran'
-        };
-
-        let currentCategory = 'all';
-        let allNewsArticles = [];
-
-        // NewsData.io Implementation
-        async function fetchNewsNewsData(category = 'all') {
-            try {
-                newsLoading.style.display = 'block';
-                newsError.style.display = 'none';
-                newsGrid.innerHTML = '';
-                
-                const query = newsCategories[category];
-                const baseUrl = 'https://newsdata.io/api/1/latest';
-                const apiKey = 'pub_7e3c7a4c159d40388b0275db37a4ddfd';
-                const country = 'id';
-                const language = 'id';
-                const categories = 'education,environment,health,food,world';
-                const timezone = 'asia/kuala_lumpur';
-                
-                let url = `${baseUrl}?apikey=${apiKey}&country=${country}&language=${language}&category=${categories}&timezone=${timezone}`;
-                
-                if (query) {
-                    url += `&q=${encodeURIComponent(query)}`;
-                }
-                
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (data.status === 'success' && data.results && data.results.length > 0) {
-                    allNewsArticles = data.results;
-                    displayNews(allNewsArticles);
-                } else {
-                    throw new Error('No articles found');
-                }
-            } catch (error) {
-                console.error('Error fetching news:', error);
-                newsLoading.style.display = 'none';
-                newsError.style.display = 'block';
-            }
-        }
-
-        // Display news articles
-        function displayNews(articles) {
-            newsLoading.style.display = 'none';
-            newsGrid.innerHTML = '';
-            
-            if (articles.length === 0) {
-                newsGrid.innerHTML = '<div class="no-search-result"><i class="fas fa-search"></i><p>Tidak ada berita ditemukan untuk kategori ini.</p></div>';
-                return;
-            }
-            
-            articles.slice(0, 6).forEach((article, index) => {
-                const newsCard = document.createElement('div');
-                newsCard.className = 'news-card';
-                newsCard.setAttribute('data-aos', 'fade-up');
-                newsCard.setAttribute('data-aos-delay', index * 100);
-                
-                // Format date
-                let formattedDate = 'Tanggal tidak tersedia';
-                if (article.pubDate) {
-                    const date = new Date(article.pubDate);
-                    formattedDate = date.toLocaleDateString('id-ID', {
-                        day: 'numeric',
-                        month: 'long',
-                        year: 'numeric'
-                    });
-                }
-                
-                // Extract source name
-                const sourceName = article.source_id || 'Unknown';
-                
-                newsCard.innerHTML = `
-                    <div class="news-image" style="background-image: url('${article.image_url || `https://picsum.photos/seed/green${index}/400/200.jpg`}')">
-                        <div class="news-source">${sourceName}</div>
-                    </div>
-                    <div class="news-content">
-                        <div class="news-date">${formattedDate}</div>
-                        <h3 class="news-title">${article.title}</h3>
-                        <p class="news-excerpt">${article.description || 'Tidak ada deskripsi tersedia.'}</p>
-                        <a href="${article.link}" target="_blank" class="read-more">Baca Selengkapnya <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                `;
-                
-                newsGrid.appendChild(newsCard);
-            });
-            
-            // Refresh AOS for new elements
-            AOS.refresh();
-        }
-
-        // Filter buttons event listeners
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Update active button
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                // Update current category and fetch news
-                currentCategory = button.dataset.category;
-                fetchNewsNewsData(currentCategory);
-            });
-        });
-
-        // Refresh news button
-        refreshNewsBtn.addEventListener('click', () => {
-            fetchNewsNewsData(currentCategory);
-        });
-
-        // Initial news fetch
-        fetchNewsNewsData('all');
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', () => {
-                // Close other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
                 });
-                
-                // Toggle current item
-                item.classList.toggle('active');
             });
-        });
-        
-        // Timeline Animation on Scroll
-        const timelineItems = document.querySelectorAll('.timeline-item');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, observerOptions);
-        
-        timelineItems.forEach(item => {
-            observer.observe(item);
-        });
 
-        // CSV URL
-        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
-
-        // Global variables for member data and pagination
-        let allMembers = [];
-        let filteredMembers = [];
-        let currentPage = 1;
-        const membersPerPage = 6;
-        let isSearching = false;
-
-        // Function to create member card from CSV data
-        function createMemberCard(memberData, index) {
-            const card = document.createElement('div');
-            card.className = 'member-card';
-            card.setAttribute('data-aos', 'fade-up');
-            card.setAttribute('data-aos-delay', (index % 12) * 100);
+            // Scroll to top functionality
+            const scrollTopBtn = document.getElementById('scrollTop');
             
-            // Extract data from CSV
-            const timestamp = memberData['Timestamp'] || '';
-            const nama = memberData['Nama'] || '';
-            const kelas = memberData['Kelas'] || '';
-            const divisi = memberData['Divisi'] || '';
-            const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
-            const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
-            const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
-            const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
-            const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
-            const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
-            const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
-            const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
-            const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
-            
-            // Generate a unique ID for this member card
-            const memberId = `member-${index}`;
-            
-            card.innerHTML = `
-                <div class="member-header">
-                    <div class="member-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-name">${nama}</div>
-                    <div class="member-class">${kelas}</div>
-                    <div class="member-division">${divisi}</div>
-                </div>
-                <div class="member-preview">
-                    <div class="member-preview-item">
-                        <i class="fas fa-heart"></i>
-                        <div>
-                            <h4>Keyakinan Aktif</h4>
-                            <p>${keyakinan}</p>
-                        </div>
-                    </div>
-                    <div class="member-preview-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <div>
-                            <h4>Alasan Bergabung</h4>
-                            <p>${alasan.length > 80 ? alasan.substring(0, 80) + '...' : alasan}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="member-details" id="${memberId}">
-                    <div class="member-info">
-                        <h4><i class="fas fa-heart"></i> Tingkat Keyakinan Aktif</h4>
-                        <p>${keyakinan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-exclamation-triangle"></i> Tantangan yang Dihadapi</h4>
-                        <p>${tantangan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-question-circle"></i> Alasan Bergabung</h4>
-                        <p>${alasan}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-clock"></i> Pembagian Waktu</h4>
-                        <p>${waktu}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-lightbulb"></i> Ide Program</h4>
-                        <p>${ide}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-handshake"></i> Janji Partisipasi</h4>
-                        <p>${janji}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-check-circle"></i> Alasan Yakin Aktif</h4>
-                        <p>${alasanYakin}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-comments"></i> Kendala dan Kritik</h4>
-                        <p>${kendala}</p>
-                    </div>
-                    <div class="member-info">
-                        <h4><i class="fas fa-star"></i> Saran untuk GG</h4>
-                        <p>${saran}</p>
-                    </div>
-                </div>
-                <div class="member-footer">
-                    Bergabung pada: ${timestamp}
-                </div>
-                <button class="member-toggle-btn" id="toggle-${memberId}" onclick="toggleMemberDetails('${memberId}')">
-                    <span>Lihat Selengkapnya</span>
-                    <i class="fas fa-chevron-down"></i>
-                </button>
-            `;
-            
-            return card;
-        }
-
-        // Function to toggle member details
-        function toggleMemberDetails(memberId) {
-            const details = document.getElementById(memberId);
-            const toggleBtn = document.getElementById(`toggle-${memberId}`);
-            
-            if (details.classList.contains('expanded')) {
-                details.classList.remove('expanded');
-                toggleBtn.classList.remove('expanded');
-                toggleBtn.querySelector('span').textContent = 'Lihat Selengkapnya';
-            } else {
-                details.classList.add('expanded');
-                toggleBtn.classList.add('expanded');
-                toggleBtn.querySelector('span').textContent = 'Tampilkan Lebih Sedikit';
-            }
-        }
-
-        // Function to load and display CSV data
-        function loadAllMembers() {
-            const grid = document.getElementById('membersGrid');
-            const loading = document.getElementById('loadingMembers');
-            
-            // Show loading indicator
-            loading.style.display = 'block';
-            grid.innerHTML = '';
-            
-            // Fetch CSV data
-            Papa.parse(csvUrl, {
-                download: true,
-                header: true,
-                complete: function(results) {
-                    // Hide loading indicator
-                    loading.style.display = 'none';
-                    
-                    // Store all data
-                    allMembers = results.data.filter(row => row['Nama'] && row['Nama'].trim() !== '');
-                    filteredMembers = [...allMembers];
-                    
-                    // Display first page
-                    currentPage = 1;
-                    displayMembers();
-                },
-                error: function(error) {
-                    loading.style.display = 'none';
-                    grid.innerHTML = '<div class="no-search-result"><i class="fas fa-exclamation-triangle"></i><p>Gagal memuat data. Silakan coba lagi nanti.</p></div>';
-                    console.error('Error parsing CSV:', error);
-                }
-            });
-        }
-
-        // Function to display members with pagination
-        function displayMembers() {
-            const grid = document.getElementById('membersGrid');
-            const noResult = document.getElementById('anggotaNoResult');
-            const viewMoreBtn = document.getElementById('viewMoreBtn');
-            
-            // Clear grid but keep loading state if it's the first load
-            if (currentPage === 1) {
-                grid.innerHTML = '';
-            } else {
-                // Remove loading indicator if it exists
-                const existingLoading = grid.querySelector('.loading');
-                if (existingLoading) {
-                    existingLoading.remove();
-                }
-            }
-            
-            // If no members
-            if (filteredMembers.length === 0) {
-                noResult.style.display = 'block';
-                viewMoreBtn.classList.add('hidden');
-                return;
-            }
-            
-            noResult.style.display = 'none';
-            
-            // Calculate start and end index
-            const startIndex = (currentPage - 1) * membersPerPage;
-            const endIndex = isSearching ? filteredMembers.length : startIndex + membersPerPage;
-            const membersToShow = isSearching ? filteredMembers : filteredMembers.slice(startIndex, endIndex);
-            
-            // Create member cards
-            membersToShow.forEach((member, index) => {
-                const card = createMemberCard(member, startIndex + index);
-                grid.appendChild(card);
-            });
-            
-            // Refresh AOS for new elements
-            AOS.refresh();
-            
-            // Show/hide view more button
-            if (isSearching || endIndex >= filteredMembers.length) {
-                viewMoreBtn.classList.add('hidden');
-            } else {
-                viewMoreBtn.classList.remove('hidden');
-            }
-        }
-
-        // Search functionality
-        const searchInput = document.getElementById('anggotaSearchInput');
-        const searchBtn = document.getElementById('anggotaSearchBtn');
-        const noResult = document.getElementById('anggotaNoResult');
-        
-        function performSearch() {
-            const searchTerm = searchInput.value.toLowerCase().trim();
-            
-            if (searchTerm === '') {
-                // Reset to all members
-                isSearching = false;
-                filteredMembers = [...allMembers];
-                currentPage = 1;
-            } else {
-                // Filter members
-                isSearching = true;
-                filteredMembers = allMembers.filter(member => {
-                    // Check all fields for search term
-                    const searchableText = Object.values(member).join(' ').toLowerCase();
-                    return searchableText.includes(searchTerm);
-                });
-            }
-            
-            displayMembers();
-        }
-        
-        searchBtn.addEventListener('click', performSearch);
-        searchInput.addEventListener('keyup', (event) => {
-            if (event.key === 'Enter') {
-                performSearch();
-            }
-        });
-        
-        // Real-time search as user types
-        searchInput.addEventListener('input', performSearch);
-
-        // View more button functionality
-        document.getElementById('viewMoreBtn').addEventListener('click', function() {
-            currentPage++;
-            displayMembers();
-        });
-
-        // Load all members on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            loadAllMembers();
-        });
-
-        // Header background on scroll
-        const header = document.querySelector('header');
-        
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Newsletter form submission
-        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-           
-            const formContainer = this.parentElement;
-            const originalContent = formContainer.innerHTML;
-            
-            formContainer.innerHTML = `
-                <div style="padding: 20px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; backdrop-filter: blur(5px);">
-                    <i class="fas fa-check-circle" style="font-size: 2rem; margin-bottom: 1rem; color: #4CAF50;"></i>
-                    <h3>Terima Kasih!</h3>
-                    <p>Email ${email} telah terdaftar. Anda akan menerima update terbaru dari kami.</p>
-                </div>
-            `;
-            
-            // Reset form after 5 seconds
-            setTimeout(() => {
-                formContainer.innerHTML = originalContent;
-                // Re-attach event listener
-                document.querySelector('.newsletter-form').addEventListener('submit', arguments.callee);
-            }, 5000);
-        });
-
-        // Add animation to elements on scroll
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.structure-card, .program-card, .gallery-item, .stat-item, .tip-card, .news-card');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-
-        // Initialize animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial opacity for animated elements
-            const animatedElements = document.querySelectorAll('.structure-card, .program-card, .gallery-item, .stat-item, .tip-card, .news-card');
-            animatedElements.forEach(element => {
-                element.style.opacity = '0';
-                element.style.transform = 'translateY(30px)';
-                element.style.transition = 'all 0.6s ease';
-            });
-        });
-
-        // Auto-refresh news every 30 minutes
-        setInterval(() => {
-            if (document.visibilityState === 'visible') {
-                fetchNewsNewsData(currentCategory);
-            }
-        }, 1800000); // 30 minutes
-
-        // Add keyboard navigation for news filters
-        document.addEventListener('keydown', (e) => {
-            if (e.target.closest('.news-controls')) {
-                const activeButton = document.querySelector('.news-filter-btn.active');
-                const buttons = Array.from(filterButtons);
-                const currentIndex = buttons.indexOf(activeButton);
-                
-                if (e.key === 'ArrowLeft' && currentIndex > 0) {
-                    buttons[currentIndex - 1].click();
-                } else if (e.key === 'ArrowRight' && currentIndex < buttons.length - 1) {
-                    buttons[currentIndex + 1].click();
-                }
-            }
-        });
-
-        // Add touch swipe support for mobile news navigation
-        let touchStartX = 0;
-        let touchEndX = 0;
-
-        const newsSection = document.getElementById('berita');
-        
-        newsSection.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        newsSection.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
-
-        function handleSwipe() {
-            const activeButton = document.querySelector('.news-filter-btn.active');
-            const buttons = Array.from(filterButtons);
-            const currentIndex = buttons.indexOf(activeButton);
-            
-            if (touchEndX < touchStartX - 50 && currentIndex < buttons.length - 1) {
-                // Swipe left - next category
-                buttons[currentIndex + 1].click();
-            } else if (touchEndX > touchStartX + 50 && currentIndex > 0) {
-                // Swipe right - previous category
-                buttons[currentIndex - 1].click();
-            }
-        }
-
-        // Add share functionality for news articles
-        function shareNews(article) {
-            if (navigator.share) {
-                navigator.share({
-                    title: article.title,
-                    text: article.description,
-                    url: article.link
-                }).catch(err => console.log('Error sharing:', err));
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                const shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(article.link)}`;
-                window.open(shareUrl, '_blank');
-            }
-        }
-
-        // Add print functionality for news articles
-        function printNews(article) {
-            const printWindow = window.open('', '_blank');
-            printWindow.document.write(`
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>${article.title}</title>
-                    <style>
-                        body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 20px; }
-                        h1 { color: #2E8B57; }
-                        .meta { color: #666; margin-bottom: 20px; }
-                        img { max-width: 100%; height: auto; }
-                    </style>
-                </head>
-                <body>
-                    <h1>${article.title}</h1>
-                    <div class="meta">
-                        <p>Sumber: ${article.source_id}</p>
-                        <p>Tanggal: ${new Date(article.pubDate).toLocaleDateString('id-ID')}</p>
-                    </div>
-                    ${article.image_url ? `<img src="${article.image_url}" alt="${article.title}">` : ''}
-                    <p>${article.description}</p>
-                    <p><a href="${article.link}">Baca artikel lengkap</a></p>
-                </body>
-                </html>
-            `);
-            printWindow.document.close();
-            printWindow.print();
-        }
-
-        // Add accessibility improvements
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add ARIA labels to dynamic content
-            const newsGrid = document.getElementById('newsGrid');
-            newsGrid.setAttribute('aria-live', 'polite');
-            newsGrid.setAttribute('aria-busy', 'true');
-            
-            // Update ARIA attributes when news is loaded
-            const originalDisplayNews = displayNews;
-            displayNews = function(articles) {
-                originalDisplayNews(articles);
-                newsGrid.setAttribute('aria-busy', 'false');
-                newsGrid.setAttribute('aria-label', `Menampilkan ${articles.length} berita lingkungan terkini`);
-            };
-            
-            // Add keyboard navigation for member cards
-            document.addEventListener('keydown', (e) => {
-                if (e.target.closest('.member-card')) {
-                    const card = e.target.closest('.member-card');
-                    const allCards = Array.from(document.querySelectorAll('.member-card'));
-                    const currentIndex = allCards.indexOf(card);
-                    
-                    if (e.key === 'ArrowDown' && currentIndex < allCards.length - 1) {
-                        allCards[currentIndex + 1].focus();
-                    } else if (e.key === 'ArrowUp' && currentIndex > 0) {
-                        allCards[currentIndex - 1].focus();
-                    }
-                }
-            });
-            
-            // Add skip to content link for better accessibility
-            const skipLink = document.createElement('a');
-            skipLink.href = '#berita';
-            skipLink.textContent = 'Skip to content';
-            skipLink.style.cssText = `
-                position: absolute;
-                top: -40px;
-                left: 0;
-                background: var(--primary);
-                color: white;
-                padding: 8px;
-                text-decoration: none;
-                z-index: 100;
-            `;
-            skipLink.addEventListener('focus', () => {
-                skipLink.style.top = '0';
-            });
-            skipLink.addEventListener('blur', () => {
-                skipLink.style.top = '-40px';
-            });
-            document.body.insertBefore(skipLink, document.body.firstChild);
-        });
-
-        // Add performance optimization
-        let ticking = false;
-        function requestTick(callback) {
-            if (!ticking) {
-                requestAnimationFrame(callback);
-                ticking = true;
-                setTimeout(() => { ticking = false; }, 100);
-            }
-        }
-
-        // Optimize scroll event listeners
-        const optimizedScrollHandler = () => {
-            requestTick(() => {
-                // Update progress bar
-                const scrollPosition = window.scrollY;
-                const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-                const scrollPercentage = (scrollPosition / documentHeight) * 100;
-                document.getElementById('progressBar').style.width = scrollPercentage + '%';
-                
-                // Show/hide scroll to top button
+            window.addEventListener('scroll', () => {
                 if (window.pageYOffset > 300) {
                     scrollTopBtn.classList.add('visible');
                 } else {
                     scrollTopBtn.classList.remove('visible');
                 }
-                
-                // Update header background
-                if (window.scrollY > 60) {
-                    header.style.background = 'rgba(255, 255, 255, 0.98)';
-                    header.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.1)';
-                } else {
-                    header.style.background = 'rgba(255, 255, 255, 0.95)';
-                    header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                }
-                
-                // Animate elements on scroll
-                animateOnScroll();
             });
-        };
-
-        // Replace scroll event listener with optimized version
-        window.removeEventListener('scroll', animateOnScroll);
-        window.addEventListener('scroll', optimizedScrollHandler);
-
-        // Add error handling for images
-        document.addEventListener('error', function(e) {
-            if (e.target.tagName === 'IMG') {
-                e.target.src = 'https://picsum.photos/seed/fallback/400/200.jpg';
-                e.target.alt = 'Image not available';
-            }
-        }, true);
-
-        // Add service worker registration for offline support (optional)
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/sw.js').then(registration => {
-                    console.log('ServiceWorker registration successful');
-                }).catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
                 });
             });
-        }
 
-        // Dark mode toggle
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        
-        darkModeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-            localStorage.setItem('darkMode', isDark);
+            // FAB (Floating Action Button) for Social Sharing
+            const fabMain = document.getElementById('fabMain');
+            const fabOptions = document.getElementById('fabOptions');
+
+            fabMain.addEventListener('click', () => {
+                const isExpanded = fabMain.classList.toggle('active');
+                fabMain.setAttribute('aria-expanded', isExpanded);
+                fabOptions.classList.toggle('active');
+            });
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
             
-            // Add a subtle animation to indicate the mode change
-            darkModeToggle.style.transform = 'rotate(360deg)';
-            setTimeout(() => {
-                darkModeToggle.style.transform = 'rotate(0deg)';
-            }, 300);
-        });
+            // Check for saved dark mode preference or OS preference
+            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (currentTheme === 'dark') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                
+                // Update chart colors if chart exists
+                if (window.carbonChart) {
+                    window.carbonChart.options.plugins.legend.labels.color = isDark ? '#F5F5F5' : '#212121';
+                    window.carbonChart.update();
+                }
+            });
 
-        // Check for saved dark mode preference
-        if (localStorage.getItem('darkMode') === 'true') {
-            document.body.classList.add('dark-mode');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        }
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    const isActive = faqItem.classList.toggle('active');
+                    
+                    // Close other items
+                    faqQuestions.forEach(otherQuestion => {
+                        if (otherQuestion !== question) {
+                            otherQuestion.parentElement.classList.remove('active');
+                        }
+                    });
+                    
+                    // Update ARIA attributes
+                    question.setAttribute('aria-expanded', isActive);
+                });
+            });
+
+            // Carbon Calculator
+            const carbonForm = document.getElementById('carbonForm');
+            const resultContainer = document.getElementById('resultContainer');
+            const resultValue = document.getElementById('resultValue');
+            const resultText = document.getElementById('resultText');
+
+            carbonForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const transport = parseFloat(document.getElementById('transport').value) || 0;
+                const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+                const diet = parseFloat(document.getElementById('diet').value) || 0;
+                const consumption = parseFloat(document.getElementById('consumption').value) || 0;
+                
+                const transportCO2 = transport * 0.21;
+                const electricityCO2 = (electricity / 30) * 0.5;
+                const dietCO2 = diet;
+                const consumptionCO2 = consumption * 0.5;
+                
+                const totalCO2 = transportCO2 + electricityCO2 + dietCO2 + consumptionCO2;
+                
+                resultValue.textContent = `${totalCO2.toFixed(2)} kg CO₂/hari`;
+                
+                let impactText = '';
+                if (totalCO2 < 5) {
+                    impactText = 'Jejak karbon Anda RENDAH. Teruskan gaya hidup ramah lingkungan!';
+                } else if (totalCO2 < 10) {
+                    impactText = 'Jejak karbon Anda SEDANG. Ada ruang untuk perbaikan.';
+                } else {
+                    impactText = 'Jejak karbon Anda TINGGI. Segera kurangi emisi karbon Anda!';
+                }
+                resultText.textContent = impactText;
+                
+                resultContainer.classList.add('show');
+                
+                const ctx = document.getElementById('carbonChart').getContext('2d');
+                
+                if (window.carbonChart) {
+                    window.carbonChart.destroy();
+                }
+                
+                window.carbonChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Transportasi', 'Listrik', 'Makanan', 'Konsumsi'],
+                        datasets: [{
+                            data: [transportCO2, electricityCO2, dietCO2, consumptionCO2],
+                            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0'],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { 
+                                position: 'bottom',
+                                labels: {
+                                    color: document.body.classList.contains('dark-mode') ? '#F5F5F5' : '#212121'
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        return `${context.label}: ${context.parsed.toFixed(2)} kg CO₂`;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                resultContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+
+            // Daily Tips Rotation
+            const dailyTips = [
+                "Bawa botol minum sendiri untuk mengurangi penggunaan botol plastik sekali pakai!",
+                "Gunakan tas belanja kain saat berbelanja untuk mengurangi penggunaan plastik.",
+                "Matikan lampu dan peralatan elektronik saat tidak digunakan untuk hemat energi.",
+                "Pisahkan sampah organik dan anorganik di rumah untuk memudahkan daur ulang.",
+                "Tanam tanaman di rumah untuk meningkatkan kualitas udara dan keindahan."
+            ];
+            let currentTipIndex = 0;
+
+            function updateDailyTip() {
+                currentTipIndex = (currentTipIndex + 1) % dailyTips.length;
+                document.getElementById('dailyTipContent').textContent = dailyTips[currentTipIndex];
+                document.getElementById('tipCounter').textContent = '24';
+            }
+            // Update tip every 24 hours (for demo, every 10 seconds)
+            setInterval(updateDailyTip, 10000); 
+
+            // CSV URL
+            const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSVjlUDiSO3obszont2H4MXDXwhj6mQCbIGjC5Skwhlmq_zjq-_qyky2oFcdT7d56z-4-lAZgC2Mk0J/pub?output=csv';
+
+            // Global variables for member data and pagination
+            let allMembers = [];
+            let filteredMembers = [];
+            let currentPage = 1;
+            const membersPerPage = 6;
+            let isSearching = false;
+
+            // Function to create member card from CSV data
+            function createMemberCard(memberData, index) {
+                const card = document.createElement('div');
+                card.className = 'member-card';
+                card.setAttribute('data-aos', 'fade-up');
+                card.setAttribute('data-aos-delay', (index % 12) * 100);
+                
+                // Extract data from CSV
+                const timestamp = memberData['Timestamp'] || '';
+                const nama = memberData['Nama'] || '';
+                const kelas = memberData['Kelas'] || '';
+                const divisi = memberData['Divisi'] || '';
+                const keyakinan = memberData['Seberapa yakin kamu akan aktif di Green Generation?'] || '';
+                const tantangan = memberData['Apa tantangan yang menurut kamu bisa bikin kamu malas/mundur dari GG?'] || '';
+                const alasan = memberData['Apa alasan kamu bergabung di Green Generation?'] || '';
+                const waktu = memberData['Kalau ada kegiatan sekolah lain, bagaimana caramu membagi waktu agar tetap aktif di GG?'] || '';
+                const ide = memberData['Apa ide atau program lingkungan yang pengen banget kamu lakukan bersama GG?'] || '';
+                const janji = memberData['Tulis satu janji sederhana kamu untuk aktif berpartisipasi yang akan kamu lakukan bersama GG.'] || '';
+                const alasanYakin = memberData['Apa alasan kamu yakin bisa aktif di Green Generation?'] || '';
+                const kendala = memberData['Kalau kamu punya kendala, ide, atau kritik tentang kegiatan GG, apakah kamu bersedia menyampaikannya secara terbuka di grup (atau langsung ke pengurus)?'] || '';
+                const saran = memberData['Apakah kamu punya saran atau ide untuk membuat Green Generation lebih seru, aktif, dan bermanfaat ke depannya?'] || '';
+                
+                // Generate a unique ID for this member card
+                const memberId = `member-${index}`;
+                
+                card.innerHTML = `
+                    <div class="member-header">
+                        <div class="member-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="member-name">${nama}</div>
+                        <div class="member-class">${kelas}</div>
+                        <div class="member-division">${divisi}</div>
+                    </div>
+                    <div class="member-preview">
+                        <div class="member-preview-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>Keyakinan Aktif</h4>
+                                <p>${keyakinan}</p>
+                            </div>
+                        </div>
+                        <div class="member-preview-item">
+                            <i class="fas fa-lightbulb"></i>
+                            <div>
+                                <h4>Alasan Bergabung</h4>
+                                <p>${alasan.length > 80 ? alasan.substring(0, 80) + '...' : alasan}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="member-details" id="${memberId}">
+                        <div class="member-info">
+                            <h4><i class="fas fa-heart"></i> Tingkat Keyakinan Aktif</h4>
+                            <p>${keyakinan}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-exclamation-triangle"></i> Tantangan yang Dihadapi</h4>
+                            <p>${tantangan}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-question-circle"></i> Alasan Bergabung</h4>
+                            <p>${alasan}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-clock"></i> Pembagian Waktu</h4>
+                            <p>${waktu}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-lightbulb"></i> Ide Program</h4>
+                            <p>${ide}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-handshake"></i> Janji Partisipasi</h4>
+                            <p>${janji}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-check-circle"></i> Alasan Yakin Aktif</h4>
+                            <p>${alasanYakin}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-comments"></i> Kendala dan Kritik</h4>
+                            <p>${kendala}</p>
+                        </div>
+                        <div class="member-info">
+                            <h4><i class="fas fa-star"></i> Saran untuk GG</h4>
+                            <p>${saran}</p>
+                        </div>
+                    </div>
+                    <div class="member-footer">
+                        Bergabung pada: ${timestamp}
+                    </div>
+                    <button class="member-toggle-btn" id="toggle-${memberId}" onclick="toggleMemberDetails('${memberId}')">
+                        <span>Lihat Selengkapnya</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                `;
+                
+                return card;
+            }
+
+            // Function to toggle member details
+            window.toggleMemberDetails = function(memberId) {
+                const details = document.getElementById(memberId);
+                const toggleBtn = document.getElementById(`toggle-${memberId}`);
+                
+                if (details.classList.contains('expanded')) {
+                    details.classList.remove('expanded');
+                    toggleBtn.classList.remove('expanded');
+                    toggleBtn.querySelector('span').textContent = 'Lihat Selengkapnya';
+                    toggleBtn.setAttribute('aria-expanded', 'false');
+                } else {
+                    details.classList.add('expanded');
+                    toggleBtn.classList.add('expanded');
+                    toggleBtn.querySelector('span').textContent = 'Tampilkan Lebih Sedikit';
+                    toggleBtn.setAttribute('aria-expanded', 'true');
+                    
+                    // Smooth scroll to show the expanded content
+                    setTimeout(() => {
+                        const cardTop = toggleBtn.getBoundingClientRect().top + window.pageYOffset;
+                        const cardHeight = toggleBtn.offsetHeight;
+                        const windowHeight = window.innerHeight;
+                        
+                        if (cardTop + cardHeight > windowHeight + window.pageYOffset) {
+                            window.scrollTo({
+                                top: cardTop - windowHeight + cardHeight + 20,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }, 100);
+                }
+            }
+
+            // Function to load and display CSV data
+            function loadAllMembers() {
+                const grid = document.getElementById('membersGrid');
+                const loading = document.getElementById('loadingMembers');
+                
+                // Show loading indicator
+                loading.style.display = 'block';
+                grid.innerHTML = '';
+                
+                // Fetch CSV data
+                Papa.parse(csvUrl, {
+                    download: true,
+                    header: true,
+                    complete: function(results) {
+                        // Hide loading indicator
+                        loading.style.display = 'none';
+                        
+                        // Check if data is valid
+                        if (!results.data || results.data.length === 0) {
+                            grid.innerHTML = '<div class="no-search-result"><i class="fas fa-exclamation-triangle"></i><p>Tidak ada data anggota yang tersedia.</p></div>';
+                            return;
+                        }
+                        
+                                                // Store all data
+                        allMembers = results.data.filter(row => row['Nama'] && row['Nama'].trim() !== '');
+                        filteredMembers = [...allMembers];
+                        
+                        // Check if filtered members exist
+                        if (filteredMembers.length === 0) {
+                            grid.innerHTML = '<div class="no-search-result"><i class="fas fa-exclamation-triangle"></i><p>Tidak ada data anggota yang valid.</p></div>';
+                            return;
+                        }
+                        
+                        // Display first page
+                        currentPage = 1;
+                        displayMembers();
+                    },
+                    error: function(error) {
+                        loading.style.display = 'none';
+                        grid.innerHTML = '<div class="no-search-result"><i class="fas fa-exclamation-triangle"></i><p>Gagal memuat data. Silakan coba lagi nanti.</p></div>';
+                        console.error('Error parsing CSV:', error);
+                    }
+                });
+            }
+
+            // Function to display members with pagination
+            function displayMembers() {
+                const grid = document.getElementById('membersGrid');
+                const noResult = document.getElementById('anggotaNoResult');
+                const viewMoreBtn = document.getElementById('viewMoreBtn');
+                
+                // Clear grid but keep loading state if it's the first load
+                if (currentPage === 1) {
+                    grid.innerHTML = '';
+                } else {
+                    // Remove loading indicator if it exists
+                    const existingLoading = grid.querySelector('.loading');
+                    if (existingLoading) {
+                        existingLoading.remove();
+                    }
+                }
+                
+                // If no members
+                if (filteredMembers.length === 0) {
+                    noResult.style.display = 'block';
+                    viewMoreBtn.classList.add('hidden');
+                    return;
+                }
+                
+                noResult.style.display = 'none';
+                
+                // Calculate start and end index
+                const startIndex = (currentPage - 1) * membersPerPage;
+                const endIndex = isSearching ? filteredMembers.length : startIndex + membersPerPage;
+                const membersToShow = isSearching ? filteredMembers : filteredMembers.slice(startIndex, endIndex);
+                
+                // Create member cards
+                membersToShow.forEach((member, index) => {
+                    const card = createMemberCard(member, startIndex + index);
+                    grid.appendChild(card);
+                });
+                
+                // Refresh AOS for new elements
+                AOS.refresh();
+                
+                // Show/hide view more button
+                if (isSearching || endIndex >= filteredMembers.length) {
+                    viewMoreBtn.classList.add('hidden');
+                } else {
+                    viewMoreBtn.classList.remove('hidden');
+                }
+            }
+
+            // Search functionality
+            const searchInput = document.getElementById('anggotaSearchInput');
+            const searchBtn = document.getElementById('anggotaSearchBtn');
+            const noResult = document.getElementById('anggotaNoResult');
+            let searchTimeout;
+
+            function performSearch() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    // Reset to all members
+                    isSearching = false;
+                    filteredMembers = [...allMembers];
+                    currentPage = 1;
+                } else {
+                    // Filter members
+                    isSearching = true;
+                    filteredMembers = allMembers.filter(member => {
+                        // Check all fields for search term
+                        const searchableText = Object.values(member).join(' ').toLowerCase();
+                        return searchableText.includes(searchTerm);
+                    });
+                }
+                
+                displayMembers();
+            }
+            
+            // Debounce search input
+            searchInput.addEventListener('input', () => {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(performSearch, 300);
+            });
+
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    performSearch();
+                }
+            });
+
+            // View more button functionality
+            document.getElementById('viewMoreBtn').addEventListener('click', function() {
+                currentPage++;
+                displayMembers();
+            });
+
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('progressBar').style.width = scrolled + '%';
+            });
+
+            // Timeline animation on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            function checkTimelineItems() {
+                timelineItems.forEach(item => {
+                    const itemTop = item.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (itemTop < windowHeight * 0.8) {
+                        item.classList.add('show');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', checkTimelineItems);
+            checkTimelineItems(); // Check on load
+
+            // Load all members on page load
+            loadAllMembers();
+        });
     </script>
 </body>
 </html>
