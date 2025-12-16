@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk Green Generation | SMK Negeri 4 Banjarmasin</title>
+    <meta name="description" content="Jual berbagai produk ramah lingkungan hasil karya Green Generation SMK Negeri 4 Banjarmasin. Dapatkan produk berkualitas dengan harga terjangkau.">
+    <meta name="keywords" content="produk green generation, jual produk ramah lingkungan, eco product, smk negeri 4 banjarmasin, sabun hijau, lilin aromaterapi">
+    <meta name="author" content="Green Generation SMKN 4 Banjarmasin">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://green.wasmer.app/beli/produk.html">
+    <meta property="og:title" content="Produk Green Generation">
+    <meta property="og:description" content="Jual berbagai produk ramah lingkungan hasil karya Green Generation SMK Negeri 4 Banjarmasin.">
+    <meta property="og:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760445380/gg_sruzxq.png">
+    
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght=700;800&display=swap">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="../aset/css/gaya.css">
+    
+    <style>
+        /* Additional styles for products page */
+        .products-header {
+            padding: 8rem 0 4rem;
+            background: var(--gradient-1);
+            color: white;
+            text-align: center;
+        }
+        
+        .products-header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .products-header p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .products-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 30px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .category-btn:hover, .category-btn:focus,         .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .product-highlight {
+            background: var(--bg-alt);
+            padding: 3rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .highlight-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .highlight-text h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .highlight-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .highlight-features {
+            list-style: none;
+        }
+        
+        .highlight-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .highlight-features i {
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .highlight-image {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .highlight-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .product-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .showcase-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+        }
+        
+        .showcase-item:hover, .showcase-item:focus-within {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .showcase-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .showcase-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .showcase-item:hover .showcase-image img {
+            transform: scale(1.1);
+        }
+        
+        .showcase-content {
+            padding: 1.5rem;
+        }
+        
+        .showcase-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+        
+        .showcase-description {
+            color: var(--text);
+            line-height: 1.6;
+            margin-bottom: 1.2rem;
+        }
+        
+        .showcase-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+        }
+        
+        .showcase-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+        }
+        
+        .showcase-btn:hover, .showcase-btn:focus {
+            background: #128C7E;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .testimonials {
+            background: var(--bg-dark);
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.2;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        .order-info {
+            background: var(--gradient-1);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .order-info h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .order-info p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .order-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .order-step {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(10px);
+        }
+        
+        .order-step i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .order-step h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .order-step p {
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: var(--transition);
+        }
+        
+        .back-to-home:hover, .back-to-home:focus {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        /* Dark mode styles for products page */
+        body.dark-mode .products-header {
+            background: linear-gradient(135deg, rgba(22, 41, 30, 0.95), rgba(35, 56, 47, 0.9));
+        }
+        
+        body.dark-mode .product-highlight {
+            background: var(--bg-alt);
+        }
+        
+        body.dark-mode .highlight-text h2 {
+            color: var(--primary);
+        }
+        
+        body.dark-mode .testimonials {
+            background: var(--bg-alt);
+        }
+        
+        body.dark-mode .testimonial-card {
+            background: var(--bg-alt);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        body.dark-mode .category-btn {
+            background: var(--bg-alt);
+            color: var(--text);
+            border-color: var(--primary);
+        }
+        
+        body.dark-mode .category-btn:hover, 
+        body.dark-mode .category-btn:focus,
+        body.dark-mode .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        body.dark-mode .showcase-item {
+            background: var(--bg-alt);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        body.dark-mode .order-step {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .highlight-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .order-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader" role="status" aria-label="Loading content">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="../index.html" class="logo" aria-label="Green Generation Home">
+                <i class="fas fa-leaf" aria-hidden="true"></i>
+                <div class="logo-text">
+                    <span class="main-logo-text">Green Generation</span>
+                    <span class="ligo">By SMK Negeri 4 Banjarmasin</span>
+                </div>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="../index.html#tentang">Tentang</a></li>
+                    <li><a href="../index.html#struktur">Struktur</a></li>
+                    <li><a href="../index.html#divisi">Divisi</a></li>
+                    <li><a href="../index.html#kegiatan">Kegiatan</a></li>
+                    <li><a href="../index.html#produk">Produk</a></li>
+                    <li><a href="../index.html#member">Anggota</a></li>
+                    <li><a href="../index.html#daftar">Daftar</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Products Header -->
+    <div class="products-header">
+        <div class="container">
+            <h1 data-aos="fade-up">Produk Green Generation</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Temukan berbagai produk inovatif ramah lingkungan hasil karya siswa SMKN 4 Banjarmasin. Setiap pembelian Anda mendukung gerakan pelestarian lingkungan.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="products">
+            <div class="container">
+                <!-- Product Categories -->
+                <div class="products-categories" data-aos="fade-up">
+                    <button class="category-btn active" data-category="all">Semua Produk</button>
+                    <button class="category-btn" data-category="sabun">Sabun & Lilin</button>
+                    <button class="category-btn" data-category="kain">Kain & Fashion</button>
+                    <button class="category-btn" data-category="sayuran">Sayuran Hidroponik</button>
+                    <button class="category-btn" data-category="craft">Kerajinan</button>
+                </div>
+
+                <!-- Product Highlight -->
+                <div class="product-highlight" data-aos="fade-up">
+                    <div class="container">
+                        <div class="highlight-content">
+                            <div class="highlight-text">
+                                <h2>Mengapa Memilih Produk Kami?</h2>
+                                <p>Setiap produk Green Generation dibuat dengan cinta untuk lingkungan dan kualitas terbaik untuk Anda.</p>
+                                <ul class="highlight-features">
+                                    <li><i class="fas fa-leaf"></i> 100% Ramah Lingkungan</li>
+                                    <li><i class="fas fa-recycle"></i> Dari Bahan Daur Ulang</li>
+                                    <li><i class="fas fa-hand-holding-heart"></i> Dibuat dengan Tangan</li>
+                                    <li><i class="fas fa-graduation-cap"></i> Karya Siswa Berprestasi</li>
+                                    <li><i class="fas fa-dollar-sign"></i> Harga Terjangkau</li>
+                                </ul>
+                            </div>
+                            <div class="highlight-image">
+                                <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Produk Green Generation" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Showcase -->
+                <div class="product-showcase" id="productGrid">
+                    <!-- Product 1 -->
+                    <div class="showcase-item" data-category="sabun" data-aos="zoom-in">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Sabun Hijau" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Sabun Hijau</h3>
+                            <p class="showcase-description">Sabun ramah lingkungan yang terbuat dari minyak jelantah berkualitas tinggi. Aman untuk kulit dan membantu mengurangi limbah minyak.</p>
+                            <div class="showcase-price">Rp 15.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20sabun%20hijau%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="showcase-item" data-category="sabun" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Lilin Aromaterapi" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Lilin Aromaterapi</h3>
+                            <p class="showcase-description">Lilin aromaterapi dari minyak jelantah dengan berbagai pilihan wangi. Menciptakan suasana nyaman dan membantu relaksasi.</p>
+                            <div class="showcase-price">Rp 20.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20lilin%20aromaterapi%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="showcase-item" data-category="kain" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Kain Eco-Print" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Kain Eco-Print</h3>
+                            <p class="showcase-description">Kain dengan motif eco-print dari bahan alami. Setiap produk unik karena motifnya dihasilkan langsung dari daun dan bunga asli.</p>
+                            <div class="showcase-price">Rp 75.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20kain%20eco-print%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="showcase-item" data-category="sayuran" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Sayuran Hidroponik" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Sayuran Hidroponik</h3>
+                            <p class="showcase-description">Sayuran segar hasil budidaya hidroponik tanpa pestisida. Sehat, bersih, dan bernutrisi tinggi untuk keluarga Anda.</p>
+                            <div class="showcase-price">Mulai Rp 10.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20saya%20mau%20pesan%20sayuran%20hidroponik%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="showcase-item" data-category="craft" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Kursi Eco-Brick" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Kursi Eco-Brick</h3>
+                            <p class="showcase-description">Kursi unik yang terbuat dari eco-brick (botol plastik padat). Kuat, tahan lama, dan ramah lingkungan.</p>
+                            <div class="showcase-price">Rp 150.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20kursi%20eco-brick%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="showcase-item" data-category="sabun" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="showcase-image">
+                            <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Paket Sabun Lengkap" loading="lazy">
+                        </div>
+                        <div class="showcase-content">
+                            <h3 class="showcase-title">Paket Sabun Lengkap</h3>
+                            <p class="showcase-description">Paket hemat berisi 3 sabun hijau dan 2 lilin aromaterapi. Cocok untuk hadiah atau penggunaan pribadi.</p>
+                            <div class="showcase-price">Rp 50.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20paket%20sabun%20lengkap%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="showcase-btn">
+                                <i class="fab fa-whatsapp"></i> Beli Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonials -->
+                <div class="testimonials">
+                    <div class="container">
+                        <h2 data-aos="fade-up">Apa Kata Mereka?</h2>
+                        <div class="testimonial-grid">
+                            <div class="testimonial-card" data-aos="zoom-in">
+                                <p class="testimonial-text">"Sabun hijau dari Green Generation sangat bagus untuk kulit saya. Wanginya alami dan tidak membuat kulit kering. Puas sekali!"</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Siti Nurhaliza</h4>
+                                        <p>Pelanggan Setia</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+                                <p class="testimonial-text">"Sayuran hidroponiknya segar sekali! Tidak ada pestisida dan rasanya lebih enak dari sayuran biasa. Recommended!"</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Budi Santoso</h4>
+                                        <p>Pelanggan Hidroponik</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="200">
+                                <p class="testimonial-text">"Kain eco-printnya unik banget! Motifnya tidak ada yang sama karena memang dari bahan alami. Saya jadi bangga pakai produk lokal."</p>
+                                <div class="testimonial-author">
+                                    <div class="author-avatar">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <div class="author-info">
+                                        <h4>Maya Putri</h4>
+                                        <p>Pecinta Fashion</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Information -->
+                <div class="order-info">
+                    <div class="container">
+                        <h2 data-aos="fade-up">Cara Pemesanan</h2>
+                        <p data-aos="fade-up" data-aos-delay="100">Mudah sekali untuk mendapatkan produk kami. Ikuti langkah sederhana berikut:</p>
+                        <div class="order-steps">
+                            <div class="order-step" data-aos="zoom-in">
+                                <i class="fas fa-search"></i>
+                                <h3>Pilih Produk</h3>
+                                <p>Pilih produk yang Anda inginkan dari katalog kami</p>
+                            </div>
+                            <div class="order-step" data-aos="zoom-in" data-aos-delay="100">
+                                <i class="fab fa-whatsapp"></i>
+                                <h3>Hubungi Kami</h3>
+                                <p>Klik tombol WhatsApp untuk menghubungi admin kami</p>
+                            </div>
+                            <div class="order-step" data-aos="zoom-in" data-aos-delay="200">
+                                <i class="fas fa-comment-dots"></i>
+                                <h3>Konfirmasi Pesanan</h3>
+                                <p>Konfirmasi pesanan dan alamat pengiriman Anda</p>
+                            </div>
+                            <div class="order-step" data-aos="zoom-in" data-aos-delay="300">
+                                <i class="fas fa-truck"></i>
+                                <h3>Pengiriman</h3>
+                                <p>Kami akan mengirimkan pesanan Anda dengan aman</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="../index.html" class="back-to-home" data-aos="fade-up">
+                        <i class="fas fa-arrow-left"></i> Kembali ke Halaman Utama
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-leaf"></i> Green Generation
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html#tentang">Tentang</a>
+                    <a href="../index.html#struktur">Struktur</a>
+                    <a href="../index.html#divisi">Program</a>
+                    <a href="../index.html#produk">Produk</a>
+                    <a href="../index.html#daftar">Daftar</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram Green Generation">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@greengenerationsmkn4" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok Green Generation">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Green Generation SMKN 4 Banjarmasin. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to top button -->
+    <button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" aria-label="Aktifkan mode gelap">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="../aset/js/produk.js"></script>
+    <script src="../aset/js/otak.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+                offset: 100
+            });
+
+            // Preloader
+            const preloader = document.getElementById('preloader');
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                }, 1000);
+            });
+
+            // Product Categories Filter
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const showcaseItems = document.querySelectorAll('.showcase-item');
+
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const category = btn.getAttribute('data-category');
+                    
+                    // Show/hide products based on category
+                    showcaseItems.forEach(item => {
+                        if (category === 'all' || item.getAttribute('data-category') === category) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const navLinks = document.querySelector('nav ul');
+            
+            mobileMenuToggle.addEventListener('click', () => {
+                const isOpen = mobileMenuToggle.classList.toggle('open');
+                mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+                
+                if (isOpen) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.backgroundColor = 'white';
+                    navLinks.style.padding = '1.5rem';
+                    navLinks.style.boxShadow = 'var(--shadow-md)';
+                    navLinks.style.borderRadius = '0 0 var(--radius-lg) var(--radius-lg)';
+                    navLinks.style.zIndex = '1000';
+                } else {
+                    navLinks.style.display = 'none';
+                }
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!mobileMenuToggle.contains(e.target) && !navLinks.contains(e.target) && window.innerWidth <= 768 && navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                    mobileMenuToggle.classList.remove('open');
+                    mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'static';
+                    navLinks.style.flexDirection = 'row';
+                    navLinks.style.backgroundColor = 'transparent';
+                    navLinks.style.padding = '0';
+                    navLinks.style.boxShadow = 'none';
+                    navLinks.style.borderRadius = '0';
+                    navLinks.style.zIndex = 'auto';
+                } else if (navLinks.style.display === 'flex' && !mobileMenuToggle.classList.contains('open')) {
+                    navLinks.style.display = 'none';
+                }
+            });
+
+            // Progress bar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('progressBar').style.width = scrolled + '%';
+            });
+
+            // Scroll to top functionality
+            const scrollTopBtn = document.getElementById('scrollTop');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    scrollTopBtn.classList.add('visible');
+                } else {
+                    scrollTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+            
+            // Check for saved dark mode preference or OS preference
+            const currentTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (currentTheme === 'dark') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDark = body.classList.contains('dark-mode');
+                darkModeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            });
+        });
+    </script>
+</body>
+</html>
