@@ -1,71 +1,59 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Generation - Bersama Menjaga Bumi | SMK Negeri 4 Banjarmasin</title>
-    <meta name="description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi. Bergabunglah dengan kami dalam gerakan hijau!">
-    <meta name="keywords" content="green generation, lingkungan hidup, smk negeri 4 banjarmasin, organisasi lingkungan, daur ulang, bank sampah, hidroponik">
-    <meta name="author" content="Green Generation SMKN 4 Banjarmasin">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://green.wasmer.app/">
-    <meta property="og:title" content="Green Generation - Bersama Menjaga Bumi">
-    <meta property="og:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
-    <meta property="og:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://green.wasmer.app/">
-    <meta property="twitter:title" content="Green Generation - Bersama Menjaga Bumi">
-    <meta property="twitter:description" content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
-    <meta property="twitter:image" content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
-    
+    <meta name="description"
+        content="Organisasi lingkungan hidup SMK Negeri 4 Banjarmasin yang fokus pada edukasi dan aksi nyata untuk menjaga bumi.">
+    <meta name="keywords" content="green generation, lingkungan hidup, smk negeri 4 banjarmasin, organisasi lingkungan">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Green Generation - Cartoonish Pop Style">
+    <meta property="og:image"
+        content="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760445380/gg_sruzxq.png">
-    
-    <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap">
-    
+    <link rel="icon" type="image/png"
+        href="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760445380/gg_sruzxq.png">
+
+    <!-- Google Fonts: Fredoka (Headings) & Quicksand (Body) for Cartoonish look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- PapaParse for CSV parsing -->
-    <script src="https://unpkg.com/papaparse@latest/papaparse.min.js"></script>
-    
-    <!-- Chart.js for Carbon Footprint Calculator -->
+
+    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="/aset/css/gaya.css">
+
+    <!-- Grenerfy-UI CSS -->
+    <link rel="stylesheet" href="../aset/css/grenerfy-ui.thio.css">
 </head>
+
 <body>
-    <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Preloader -->
-    <div class="preloader" id="preloader" role="status" aria-label="Loading content">
-        <div class="loader"></div>
-    </div>
-
-    <!-- Progress Bar -->
-    <div class="progress-bar" id="progressBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 
     <!-- Header -->
     <header>
         <div class="header-container">
-            <a href="https://skenpat.pages.dev/green" class="logo" aria-label="Green Generation Home">
-                <i class="fas fa-leaf" aria-hidden="true"></i>
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>
                 <div class="logo-text">
                     <span class="main-logo-text">Green Generation</span>
-                    <span class="ligo">By SMK Negeri 4 Banjarmasin</span>
+                    <span class="ligo">SMKN 4 Banjarmasin</span>
                 </div>
             </a>
-            <nav>
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="mainNav">
                 <ul>
                     <li><a href="#tentang">Tentang</a></li>
                     <li><a href="#struktur">Struktur</a></li>
@@ -73,56 +61,49 @@
                     <li><a href="#kegiatan">Kegiatan</a></li>
                     <li><a href="#produk">Produk</a></li>
                     <li><a href="#member">Anggota</a></li>
-                    <li><a href="#daftar">Daftar</a></li>
+                    <li><a href="https://forms.gle/ynrUonQzr9Nxbg2d9"
+                            style="background:var(--accent); padding: 5px 15px; border-radius: 20px; border: 2px solid var(--text-main);">Daftar</a>
+                    </li>
                 </ul>
             </nav>
-            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="main-content">
-        <div class="floating floating-1" aria-hidden="true"><i class="fas fa-seedling"></i></div>
-        <div class="floating floating-2" aria-hidden="true"><i class="fas fa-tree"></i></div>
-        <div class="floating floating-3" aria-hidden="true"><i class="fas fa-recycle"></i></div>
-        <div class="hero-content" data-aos="fade-up">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="floating floating-1"><i class="fas fa-seedling"></i></div>
+        <div class="floating floating-2"><i class="fas fa-tree"></i></div>
+        <div class="floating floating-3"><i class="fas fa-recycle"></i></div>
+
+        <div class="container hero-content" data-aos="zoom-in">
             <div class="hero-badge">Organisasi Lingkungan Hidup</div>
             <h1>Green Generation</h1>
             <p>"Bersama menjaga bumi, mulai dari sekolah kita."</p>
-            <a href="#daftar" class="cta-button">Daftar Jadi Member</a>
+            <a href="#daftar" class="btn">Daftar Jadi Member <i class="fas fa-arrow-right"></i></a>
         </div>
     </section>
 
     <!-- Environmental Tips Section -->
     <section id="tips" class="eco-tips">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Tips Lingkungan Hari Ini</h2>
+            <h2 class="section-title" data-aos="fade-up">Tips Hari Ini</h2>
             <div class="tips-container">
                 <div class="tip-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="tip-icon"><i class="fas fa-water"></i></div>
-                    <h3 class="tip-title">Hemat Air</h3>
-                    <p class="tip-description">Matikan keran saat menyikat gigi dan gunakan shower daripada bak mandi untuk menghemat air hingga 50%.</p>
+                    <h3>Hemat Air</h3>
+                    <p>Matikan keran saat menyikat gigi dan gunakan shower hemat air.</p>
                 </div>
                 <div class="tip-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3 class="tip-title">Energi Efisien</h3>
-                    <p class="tip-description">Gunakan lampu LED dan matikan peralatan elektronik saat tidak digunakan untuk mengurangi konsumsi energi.</p>
+                    <h3>Energi Efisien</h3>
+                    <p>Ganti lampu rumah dengan LED yang lebih hemat energi.</p>
                 </div>
                 <div class="tip-card" data-aos="fade-up" data-aos-delay="300">
                     <div class="tip-icon"><i class="fas fa-recycle"></i></div>
-                    <h3 class="tip-title">Daur Ulang</h3>
-                    <p class="tip-description">Pisahkan sampah organik dan anorganik. Kertas, plastik, dan logam dapat didaur ulang menjadi produk baru.</p>
-                </div>
-            </div>
-            <div class="daily-tip" data-aos="fade-up" data-aos-delay="400">
-                <h3><i class="fas fa-star"></i> Tip Harian</h3>
-                <p id="dailyTipContent">Bawa botol minum sendiri untuk mengurangi penggunaan botol plastik sekali pakai!</p>
-                <div class="tip-counter">
-                    <i class="fas fa-refresh"></i> Tip berikutnya dalam <span id="tipCounter">24</span> jam
+                    <h3>Daur Ulang</h3>
+                    <p>Pisahkan sampah organik dan anorganik sejak dari rumah.</p>
                 </div>
             </div>
         </div>
@@ -132,17 +113,14 @@
     <section id="kalkulator" class="carbon-calculator">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Kalkulator Jejak Karbon</h2>
-            <div class="calculator-container" data-aos="fade-up" data-aos-delay="100">
-                <h3 style="text-align: center; margin-bottom: 1.5rem; color: var(--primary);">
-                    <i class="fas fa-calculator"></i> Hitung Jejak Karbon Harian Anda
-                </h3>
+            <div class="calculator-container" data-aos="fade-up">
                 <form class="calculator-form" id="carbonForm">
                     <div class="form-group">
                         <label for="transport"><i class="fas fa-car"></i> Transportasi (km/hari)</label>
                         <input type="number" id="transport" min="0" step="0.1" placeholder="Contoh: 10" required>
                     </div>
                     <div class="form-group">
-                        <label for="electricity"><i class="fas fa-bolt"></i> Konsumsi Listrik (kWh/bulan)</label>
+                        <label for="electricity"><i class="fas fa-bolt"></i> Listrik (kWh/bulan)</label>
                         <input type="number" id="electricity" min="0" step="0.1" placeholder="Contoh: 150" required>
                     </div>
                     <div class="form-group">
@@ -154,17 +132,11 @@
                             <option value="3.5">Banyak daging</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="consumption"><i class="fas fa-shopping-bag"></i> Konsumsi (barang/bulan)</label>
-                        <input type="number" id="consumption" min="0" placeholder="Contoh: 5" required>
-                    </div>
-                    <button type="submit" class="calculate-btn">
-                        <i class="fas fa-chart-line"></i> Hitung Jejak Karbon
-                    </button>
+                    <button type="submit" class="btn" style="width: 100%;">Hitung Jejak Karbon</button>
                 </form>
                 <div class="result-container" id="resultContainer">
                     <div class="result-value" id="resultValue">0 kg CO₂</div>
-                    <div class="result-text" id="resultText">Jejak karbon harian Anda</div>
+                    <div class="result-text">Jejak karbon harian Anda</div>
                     <div class="chart-container">
                         <canvas id="carbonChart"></canvas>
                     </div>
@@ -176,32 +148,50 @@
     <!-- Tentang Section -->
     <section id="tentang" class="about">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Tentang Green Generation</h2>
+            <h2 class="section-title" data-aos="fade-up">Tentang Kami</h2>
             <div class="about-content">
                 <div class="about-text" data-aos="fade-right">
-                    <p>Green Generation atau sering disingkat GG, adalah organisasi lingkungan hidup di sekolah yang beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi. GG menjadi tempat belajar, berkarya, dan bergerak bersama demi menciptakan lingkungan sekolah yang sehat, hijau, dan berkelanjutan.</p>
-                    <h3>Apa Itu Green Generation?</h3>
-                    <p>Tujuan Green Generation adalah membentuk siswa/siswi yang peduli lingkungan, menciptakan lingkungan sekolah yang bersih dan hijau, dan menjadi contoh perubahan positif.</p>
-                    <div class="vision-mission" data-aos="fade-right" data-aos-delay="100">
+                    <p style="margin-bottom: 1rem;">Green Generation (GG) adalah organisasi lingkungan hidup di SMK
+                        Negeri 4 Banjarmasin. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi.<br> <br>Green
+                        Generation atau sering disingkat GG, adalah organisasi lingkungan hidup di sekolah yang
+                        beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk
+                        menjaga bumi. GG menjadi tempat belajar, berkarya, dan bergerak bersama demi menciptakan
+                        lingkungan sekolah yang sehat, hijau, dan berkelanjutan.<br> <br>Tujuan Green Generation adalah
+                        membentuk siswa/siswi yang peduli lingkungan, menciptakan lingkungan sekolah yang bersih dan
+                        hijau, dan menjadi contoh perubahan positif.</p>
+                    <div class="vision-mission">
                         <h4><i class="fas fa-eye"></i> Visi</h4>
-                        <p>"Menjadi pelopor gerakan pelestarian lingkungan di sekolah yang membentuk generasi muda yang sadar, peduli, dan bertanggung jawab terhadap bumi melalui aksi nyata, inovasi dan kolaborasi".</p>
-                        <h4><i class="fas fa-bullseye"></i> Misi</h4>
-                        <ul>
-                            <li>Meningkatkan kesadaran lingkungan di kalangan siswa melalui edukasi rutin dan kampanye kreatif.</li>
-                            <li>Mendorong perubahan perilaku positif, seperti memilah sampah, hemat energi, dan tidak membuang sampah sembarangan.</li>
-                            <li>Mengelola program berkelanjutan seperti bank sampah, hidroponik, dan daur ulang, untuk mengurangi limbah dan menciptakan lingkungan yang lebih hijau.</li>
-                            <li>Membangun kolaborasi dengan pihak sekolah, organisasi lain, dan komunitas luar untuk memperluas dampak kegiatan.</li>
-                            <li>Menumbuhkan jiwa kepemimpinan dan tanggung jawab lingkungan dalam diri setiap anggota.</li>
-                            <li>Menghadirkan inovasi-inovasi lingkungan dari siswa, seperti kreasi daur ulang, edukasi digital, hingga aksi tanam massal.</li>
-                            <li>Mewujudkan sekolah berbudaya lingkungan, yang jadi contoh nyata bagi masyarakat luas.</li>
-                            <li>Mengaktifkan partisipasi siswa dalam peringatan hari lingkungan, seperti HPSN dan HLH, lewat lomba, aksi nyata, dan sosialisasi.</li>
-                            <li>Mengajak siswa terlibat dalam aksi lingkungan di luar sekolah, seperti Clean The City, bersih-bersih masjid, atau berbagi goodie bag.</li>
-                            <li>Mengembangkan keterampilan kreatif dan wirausaha lingkungan, lewat pelatihan eco print, sabun, lilin, hingga pengolahan eco enzyme.</li>
+                        <p style="font-style: italic; margin-bottom: 1rem;">"Menjadi pelopor gerakan pelestarian
+                            lingkungan di sekolah yang membentuk generasi muda yang sadar, peduli, dan bertanggung jawab
+                            terhadap bumi melalui aksi nyata, inovasi dan kolaborasi".</p>
+                        <h4><i class="fas fa-bullseye"></i> Misi Utama</h4>
+                        <ul style="list-style: disc; padding-left: 20px;">
+                            <li>Meningkatkan kesadaran lingkungan di kalangan siswa melalui edukasi rutin dan kampanye
+                                kreatif.</li>
+                            <li>Mendorong perubahan perilaku positif, seperti memilah sampah, hemat energi, dan tidak
+                                membuang sampah sembarangan.</li>
+                            <li>Mengelola program berkelanjutan seperti bank sampah, hidroponik, dan daur ulang, untuk
+                                mengurangi limbah dan menciptakan lingkungan yang lebih hijau.</li>
+                            <li>Membangun kolaborasi dengan pihak sekolah, organisasi lain, dan komunitas luar untuk
+                                memperluas dampak kegiatan.</li>
+                            <li>Menumbuhkan jiwa kepemimpinan dan tanggung jawab lingkungan dalam diri setiap anggota.
+                            </li>
+                            <li>Menghadirkan inovasi-inovasi lingkungan dari siswa, seperti kreasi daur ulang, edukasi
+                                digital, hingga aksi tanam massal.</li>
+                            <li>Mewujudkan sekolah berbudaya lingkungan, yang jadi contoh nyata bagi masyarakat luas.
+                            </li>
+                            <li>Mengaktifkan partisipasi siswa dalam peringatan hari lingkungan, seperti HPSN dan HLH,
+                                lewat lomba, aksi nyata, dan sosialisasi.</li>
+                            <li>Mengajak siswa terlibat dalam aksi lingkungan di luar sekolah, seperti Clean The City,
+                                bersih-bersih masjid, atau berbagi goodie bag.</li>
+                            <li>Mengembangkan keterampilan kreatif dan wirausaha lingkungan, lewat pelatihan eco print,
+                                sabun, lilin, hingga pengolahan eco enzyme.</li>
                         </ul>
                     </div>
                 </div>
                 <div class="about-visual" data-aos="fade-left">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760645705/Pi7_Gif_1_hlwram.gif" alt="Foto Bersama" loading="lazy">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760645705/Pi7_Gif_1_hlwram.gif"
+                        alt="Foto Bersama">
                 </div>
             </div>
         </div>
@@ -215,7 +205,7 @@
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="100">
                     <i class="fas fa-user-tie"></i>
                     <h4>Ketua Lingkungan Hidup</h4>
-                    <p>Silvia Najemi, M. Pd</p>
+                    <p>Silvia Najemi</p>
                 </div>
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="200">
                     <i class="fas fa-file-alt"></i>
@@ -244,22 +234,22 @@
                 </div>
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="700">
                     <i class="fas fa-crown"></i>
-                    <h4>Ketua GG</h4>
+                    <h4>Ketua Green Generation</h4>
                     <p>Gaura Gryzfa</p>
                 </div>
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="800">
                     <i class="fas fa-user-friends"></i>
-                    <h4>Wakil Ketua</h4>
+                    <h4>Wakil Ketua Green Generation</h4>
                     <p>Khairunisa</p>
                 </div>
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="900">
                     <i class="fas fa-clipboard-list"></i>
-                    <h4>Sekretaris</h4>
+                    <h4>Sekretaris Green Generation</h4>
                     <p>Kirana Azzahra</p>
                 </div>
                 <div class="structure-card" data-aos="zoom-in" data-aos-delay="1000">
                     <i class="fas fa-map-marked-alt"></i>
-                    <h4>Koordinator Lapangan</h4>
+                    <h4>Koordinator Lapangan Green Generation</h4>
                     <p>Nadilla Aisyah</p>
                 </div>
             </div>
@@ -269,7 +259,7 @@
     <!-- Programs Section -->
     <section id="divisi" class="programs">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Divisi & Program</h2>
+            <h2 class="section-title" data-aos="fade-up">Divisi Kami</h2>
             <div class="program-cards">
                 <div class="program-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="program-card-header">
@@ -277,7 +267,10 @@
                         <h3>Divisi Hidroponik</h3>
                     </div>
                     <div class="program-card-body">
-                        <p>Divisi yang fokus pada budidaya tanaman tanpa tanah sebagai solusi pertanian modern dan penghijauan sekolah dengan efisien.</p>
+                        <p>Budidaya tanaman tanpa tanah sebagai solusi pertanian modern dan penghijauan sekolah.<br>
+                            <br>Divisi yang fokus pada budidaya tanaman tanpa tanah sebagai solusi pertanian modern dan
+                            penghijauan sekolah dengan efisien.
+                        </p>
                     </div>
                 </div>
                 <div class="program-card" data-aos="zoom-in" data-aos-delay="200">
@@ -286,7 +279,10 @@
                         <h3>Divisi Bank Sampah</h3>
                     </div>
                     <div class="program-card-body">
-                        <p>Divisi yang mengelola pengumpulan dan penyetoran sampah anorganik untuk didaur ulang dan menghasilkan nilai ekonomi.</p>
+                        <p>Pengumpulan sampah anorganik untuk didaur ulang dan menghasilkan nilai ekonomi.<br>
+                            <br>Divisi yang mengelola pengumpulan dan penyetoran sampah anorganik untuk didaur ulang dan
+                            menghasilkan nilai ekonomi.
+                        </p>
                     </div>
                 </div>
                 <div class="program-card" data-aos="zoom-in" data-aos-delay="300">
@@ -295,7 +291,10 @@
                         <h3>Divisi Daur Ulang</h3>
                     </div>
                     <div class="program-card-body">
-                        <p>Divisi yang mengolah sampah menjadi produk bermanfaat seperti eco enzyme, sabun, dan lilin aromaterapi.</p>
+                        <p>Mengolah sampah menjadi produk bermanfaat seperti eco enzyme, sabun, dan lilin.<br>
+                            <br>Divisi yang mengolah sampah menjadi produk bermanfaat seperti eco enzyme, sabun, dan
+                            lilin aromaterapi.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -308,132 +307,102 @@
             <h2 class="section-title" data-aos="fade-up">Galeri Kegiatan</h2>
             <div class="gallery-grid">
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Pembuatan Lilin Dari Minyak Jelantah" loading="lazy">
-                    <div class="gallery-item-caption">
-                        <p>Pembuatan Lilin Dari Minyak Jelantah Bersama Mahasiswa Poliban</p>
-                    </div>
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg"
+                        alt="Lilin">
+                    <div class="gallery-item-caption">Pembuatan Lilin</div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Hasil Eco-Print" loading="lazy">
-                    <div class="gallery-item-caption">
-                        <p>Hasil Eco-Print Dari Bahan Alam</p>
-                    </div>
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg"
+                        alt="Eco-Print">
+                    <div class="gallery-item-caption">Eco-Print</div>
                 </div>
                 <div class="gallery-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Green Soap" loading="lazy">
-                    <div class="gallery-item-caption">
-                        <p>Pembuatan Green Soap Dari Minyak Jelantah</p>
-                    </div>
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg"
+                        alt="Green Soap">
+                    <div class="gallery-item-caption">Green Soap</div>
                 </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440114/press_vvg0fh.jpg" alt="Eco-Press" loading="lazy">
-                    <div class="gallery-item-caption">
-                        <p>Sosialisasi Pembuatan Eco-Brick Menggunakan Alat Press</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="500">
-                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Kursi Eco-Brick" loading="lazy">
-                    <div class="gallery-item-caption">
-                        <p>Proses Pembuatan Kursi Dari Eco-Brick</p>
-                    </div>
-                </div>
-                <div class="gallery-item" data-aos="zoom-in" data-aos-delay="600">
-                    <a href="/smkn4bjm/arsip/galeri">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Panen Hidroponik" loading="lazy">
-                        <div class="gallery-item-caption">
-                            <p>Selengkapnya...</p>
-                        </div>
-                    </a>
-                </div>
+                <a href="/smkn4bjm/arsip/galeri" class="gallery-item" data-aos="zoom-in" data-aos-delay="400">
+                    <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg"
+                        alt="Hidroponik" style="position: relative; top: 10px; filter: blur(6px);">
+                    <h1 style="color: #47ff8b; text-align: center; position: relative; top: -130px;">Selengkapnya..
+                        (Klik aku)</h1>
+                    <div class="gallery-item-caption">Kumpulan Foto Kegiatan</div>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- Products Section -->
     <section id="produk" class="products">
-        <div class="products-container">
+        <div class="container">
             <h2 class="section-title" data-aos="fade-up">Produk Kami</h2>
             <div class="products-grid">
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="100">
                     <div class="product-image">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440111/jel_hqrcwr.jpg" alt="Sabun Hijau" loading="lazy">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760880585/memetik_hidro_ipkh50.jpg"
+                            alt="Hidroponik">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">Sabun Hijau</h3>
-                        <p class="product-description">Sabun ramah lingkungan yang terbuat dari minyak jelantah berkualitas tinggi. Aman untuk kulit dan membantu mengurangi limbah minyak.</p>
-                        <div class="product-price">Rp 15.000</div>
-                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20sabun%20hijau%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
-                            <i class="fab fa-whatsapp"></i> Beli Sekarang
-                        </a>
+                        <div>
+                            <h3 class="product-title">Sayuran Hidroponik</h3>
+                            <p class="product-description">Sayuran hidroponik yang dijual oleh SMKN 4 Banjarmasin.</p>
+                        </div>
+                        <div>
+                            <div class="product-price">Rp 15.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20sayuran%20hidroponik%20nya%20satu%20ya%20ka"
+                                class="product-buy-btn"><i class="fab fa-whatsapp"></i> Beli</a>
+                        </div>
                     </div>
                 </div>
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="200">
                     <div class="product-image">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440095/satu_j0drqt.jpg" alt="Lilin Aromaterapi" loading="lazy">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1767662107/a72d7592-b5e9-48b5-87db-d80ff0c360da_v5jcy2.jpg"
+                            alt="Lilin Aromaterapi">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">Lilin Aromaterapi</h3>
-                        <p class="product-description">Lilin aromaterapi dari minyak jelantah dengan berbagai pilihan wangi. Menciptakan suasana nyaman dan membantu relaksasi.</p>
-                        <div class="product-price">Rp 20.000</div>
-                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20lilin%20aromaterapi%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
-                            <i class="fab fa-whatsapp"></i> Beli Sekarang
-                        </a>
+                        <div>
+                            <h3 class="product-title">Lilin Aromaterapi</h3>
+                            <p class="product-description">Menciptakan suasana nyaman.</p>
+                        </div>
+                        <div>
+                            <div class="product-price">Rp 20.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20lilin%20aromaterapi%20nya%20satu%20ya%20ka"
+                                class="product-buy-btn"><i class="fab fa-whatsapp"></i> Beli</a>
+                        </div>
                     </div>
                 </div>
                 <div class="product-card" data-aos="zoom-in" data-aos-delay="300">
                     <div class="product-image">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440158/ekoprin_kc4jxk.jpg" alt="Eco-Print" loading="lazy">
+                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1767662328/47ed9b04-49d8-46da-9dfb-c0e847646e89_g8bcii.jpg"
+                            alt="Minyak Jelantah">
                     </div>
                     <div class="product-content">
-                        <h3 class="product-title">Kain Eco-Print</h3>
-                        <p class="product-description">Kain dengan motif eco-print dari bahan alami. Setiap produk unik karena motifnya dihasilkan langsung dari daun dan bunga asli.</p>
-                        <div class="product-price">Rp 75.000</div>
-                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20kain%20eco-print%20nya%20satu%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
-                            <i class="fab fa-whatsapp"></i> Beli Sekarang
-                        </a>
-                    </div>
-                </div>
-                <div class="product-card" data-aos="zoom-in" data-aos-delay="400">
-                    <div class="product-image">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440106/hidrop_n86yi3.jpg" alt="Sayuran Hidroponik" loading="lazy">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Sayuran Hidroponik</h3>
-                        <p class="product-description">Sayuran segar hasil budidaya hidroponik tanpa pestisida. Sehat, bersih, dan bernutrisi tinggi untuk keluarga Anda.</p>
-                        <div class="product-price">Mulai Rp 10.000</div>
-                        <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20saya%20mau%20pesan%20sayuran%20hidroponik%20ya%20ka" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
-                            <i class="fab fa-whatsapp"></i> Beli Sekarang
-                        </a>
-                    </div>
-                </div>
-                <div class="product-card" data-aos="zoom-in" data-aos-delay="500">
-                    <div class="product-image">
-                        <img src="https://res.cloudinary.com/dahcxjdbl/image/upload/v1760440123/ekobrik_eyw4nm.jpg" alt="Eco-Brick" loading="lazy">
-                    </div>
-                    <div class="product-content">
-                        <h3 class="product-title">Lihat Semua Produk</h3>
-                        <p class="product-description">Temukan berbagai produk inovatif ramah lingkungan hasil karya Green Generation SMKN 4 Banjarmasin.</p>
-                        <div class="product-price">Mulai Rp 10.000</div>
-                        <a href="/smkn4bjm/beli/produk" target="_blank" rel="noopener noreferrer" class="product-buy-btn">
-                            <i class="fab fa-whatsapp"></i> Selengkapnya...
-                        </a>
+                        <div>
+                            <h3 class="product-title">Minyak Jelantah</h3>
+                            <p class="product-description">Minyak jelantah yang diolah menjadi pensteril.</p>
+                        </div>
+                        <div>
+                            <div class="product-price">Rp 25.000</div>
+                            <a href="https://wa.me/6281350446126?text=Permisi%20ka,%20minyak%20jelantah%20nya%20satu%20ya%20ka"
+                                class="product-buy-btn"><i class="fab fa-whatsapp"></i> Beli</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Achievement Timeline Section -->
+    <!-- Timeline Section -->
     <section id="timeline" class="timeline">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Timeline Prestasi Green Generation</h2>
+            <h2 class="section-title" data-aos="fade-up">Timeline Kami</h2>
             <div class="timeline-container">
                 <div class="timeline-item" data-aos="fade-up">
                     <div class="timeline-content">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">Januari 2024</div>
-                        <h3 class="timeline-title">Program Penghijauan Sekolah</h3>
-                        <p class="timeline-description">Berhasil menanam 200 pohon baru di area sekolah dan membangun taman hijau edukatif.</p>
+                        <h3 class="timeline-title">Penghijauan Sekolah</h3>
+                        <p>Menanam 200 pohon baru di area sekolah.</p>
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-up">
@@ -441,15 +410,15 @@
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">Maret 2024</div>
                         <h3 class="timeline-title">Inovasi Eco-Brick</h3>
-                        <p class="timeline-description">Mengembangkan kursi dan meja dari eco-brick hasil karya siswa, mengurangi 500kg sampah plastik.</p>
+                        <p>Mengembangkan kursi dari eco-brick siswa.</p>
                     </div>
                 </div>
                 <div class="timeline-item" data-aos="fade-up">
                     <div class="timeline-content">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">Juni 2024</div>
-                        <h3 class="timeline-title">Juara Lomba Lingkungan Kota</h3>
-                        <p class="timeline-description">Meraih juara 1 dalam lomba sekolah adiwiyata tingkat kota Banjarmasin.</p>
+                        <h3 class="timeline-title">Juara 1 Adiwiyata</h3>
+                        <p>Meraih juara 1 lomba lingkungan kota.</p>
                     </div>
                 </div>
             </div>
@@ -459,49 +428,39 @@
     <!-- FAQ Section -->
     <section id="faq" class="faq">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+            <h2 class="section-title" data-aos="fade-up">FAQ</h2>
             <div class="faq-container">
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
                     <button class="faq-question">
                         <span>Apa itu Green Generation?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Green Generation adalah organisasi lingkungan hidup di SMK Negeri 4 Banjarmasin yang beranggotakan siswa/siswi peduli lingkungan. Kami fokus pada edukasi dan aksi nyata untuk menjaga bumi melalui berbagai program seperti bank sampah, hidroponik, dan daur ulang.
+                            Green Generation adalah organisasi lingkungan hidup di SMK Negeri 4 Banjarmasin yang
+                            beranggotakan siswa/siswi peduli lingkungan.
                         </div>
                     </div>
                 </div>
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
                     <button class="faq-question">
-                        <span>Bagaimana cara bergabung dengan Green Generation?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
+                        <span>Bagaimana cara bergabung?</span>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Anda dapat bergabung dengan mengisi formulir pendaftaran online yang tersedia di website kami. Setelah itu, Anda akan dihubungi untuk mengikuti proses seleksi dan orientasi program.
+                            Isi formulir pendaftaran di bagian "Daftar" pada website ini.
                         </div>
                     </div>
                 </div>
                 <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
                     <button class="faq-question">
-                        <span>Apa saja kegiatan yang dilakukan Green Generation?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
+                        <span>Produk apa saja yang dijual?</span>
+                        <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
                         <div class="faq-answer-content">
-                            Kegiatan kami meliputi pengelolaan bank sampah, budidaya hidroponik, workshop daur ulang, aksi bersih-bersih, penanaman pohon, edukasi lingkungan, dan berbagai program inovasi lainnya.
-                        </div>
-                    </div>
-                </div>
-                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
-                    <button class="faq-question">
-                        <span>Bagaimana cara membeli produk Green Generation?</span>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Anda dapat membeli produk kami dengan mengklik tombol "Beli Sekarang" pada halaman Produk. Anda akan langsung diarahkan ke WhatsApp untuk melakukan pemesanan dengan format pesan yang sudah disiapkan.
+                            Kami menjual Sabun Hijau, Lilin Aromaterapi, Kain Eco-Print, dan Sayuran Hidroponik.
                         </div>
                     </div>
                 </div>
@@ -509,198 +468,73 @@
         </div>
     </section>
 
-    <!-- Instagram Section -->
-    <section class="instagram-section">
-        <div class="instagram-container">
-            <h2 class="instagram-title" data-aos="fade-up">Ikuti Kami di Instagram</h2>
-            <p class="instagram-subtitle" data-aos="fade-up" data-aos-delay="100">Dapatkan update terkini tentang kegiatan dan program Green Generation</p>
-            
-            <div class="instagram-embed" data-aos="fade-up" data-aos-delay="200">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DOAfgqPEuh4/" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                    <div style="padding:16px;"> <a href="https://www.instagram.com/p/DOAfgqPEuh4/" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                        <div style=" display: flex; flex-direction: row; align-items: center;">
-                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                            </div>
-                        </div>
-                        <div style="padding: 19% 0;"></div>
-                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
-                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                        <g>
-                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,37.852 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.994,74.552 541,74.552 C533.006,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.756,65.022 516.622,62.101 C516.476,58.943 516.445,57.993 516.445,50 C516.445,42.007 516.476,41.057 516.622,37.899 C516.756,34.978 517.244,33.394 517.654,32.337 C518.197,30.94 518.846,29.943 519.894,28.894 C520.942,27.846 521.94,27.197 523.338,26.653 C524.393,26.243 525.979,25.756 528.898,25.622 C532.056,25.479 533.006,25.448 541,25.448 C548.994,25.448 549.944,25.479 553.102,25.622 C556.021,25.756 557.607,26.243 558.662,26.653 C560.06,27.197 561.058,27.846 562.106,28.894 C563.154,29.943 563.803,30.94 564.346,32.337 C564.756,33.394 565.244,34.978 565.378,37.899 C565.524,41.057 565.555,42.007 565.555,50 C565.555,57.993 565.524,58.943 565.378,62.101"></path>
-                                        </g>
-                                    </g>
-                                </g>
-                            </svg>
-                        </div>
-                        <div style="padding-top: 8px;">
-                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;"> View this post on Instagram</div>
-                        </div>
-                        <div style="padding: 12.5% 0;"></div>
-                        <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
-                            <div>
-                                <div style="background-color: #f4f4f4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
-                                <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
-                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
-                            </div>
-                            <div style="margin-left: 8px;">
-                                <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
-                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
-                                <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
-                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
-                            </div>
-                        </div>
-                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
-                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
-                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 224px;"></div>
-                        </div>
-                    </a>
-                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/Cn0X6m7vJd_/" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by Green Generation SMKN 4 BJM (@greengeneration.smkn4bjm)</a></p>
-                </div>
-            </blockquote>
-            <script async src="//www.instagram.com/embed.js"></script>
-            </div>
-            
-            <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank" class="instagram-link" data-aos="fade-up" data-aos-delay="300">
-                <i class="fab fa-instagram"></i> Kunjungi Instagram Kami
-            </a>
-        </div>
-    </section>
-
-    <!-- Impact Section -->
-    <section id="impact" class="impact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Impact Green Generation SMKN 4 Banjarmasin</h2>
-            <div class="stats-grid">
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                    <i class="fas fa-lightbulb"></i>
-                    <div class="stat-number">9+</div>
-                    <p>Inovasi Lingkungan (Eco Print, Green Soap, Green VR, Sumur Resapan, dll.)</p>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                    <i class="fas fa-tree"></i>
-                    <div class="stat-number">200+</div>
-                    <p>Pohon & Tanaman ditanam dan dirawat di area sekolah</p>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                    <i class="fas fa-oil-can"></i>
-                    <div class="stat-number">50 Kg</div>
-                    <p>Minyak Jelantah berhasil diolah jadi sabun & lilin ramah lingkungan</p>
-                </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
-                    <i class="fas fa-recycle"></i>
-                    <div class="stat-number">100%</div>
-                    <p>Siswa Terlibat dalam program Jumat Bersih & aksi pemilahan sampah</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Members Section - Redesigned -->
+    <!-- Members Section -->
     <section id="member" class="members">
         <div class="container">
-            <div class="members-header" data-aos="fade-up">
-                <h2 class="section-title">Daftar Anggota Aktif</h2>
-                <p class="members-subtitle">Temukan anggota Green Generation yang berdedikasi dalam menjaga lingkungan</p>
-            </div>
-            
-            <!-- Search Box -->
+            <h2 class="section-title" data-aos="fade-up">Anggota Aktif</h2>
+
             <div class="anggota-search-box" data-aos="fade-up" data-aos-delay="100">
-                <input type="text" id="anggotaSearchInput" placeholder="Cari anggota...">
-                <button type="button" id="anggotaSearchBtn" aria-label="Cari anggota"><i class="fas fa-search"></i></button>
+                <input type="text" id="anggotaSearchInput" placeholder="Cari nama anggota...">
+                <button id="anggotaSearchBtn" class="btn" style="padding: 10px 20px;"><i
+                        class="fas fa-search"></i></button>
             </div>
-            
-            <!-- All Members Grid -->
+
+            <div id="loadingMembers" class="loading-members">
+                <div class="loading-spinner"></div>
+                <p>Memuat data anggota...</p>
+            </div>
+
+            <div id="anggotaNoResult" class="no-search-result" style="display: none;">
+                <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 15px; color: #ccc;"></i>
+                <p>Tidak ada anggota yang cocok dengan pencarian Anda.</p>
+            </div>
+
             <div class="member-grid" id="membersGrid">
-                <div class="loading" id="loadingMembers">
-                    <i class="fas fa-spinner"></i>
-                    <p>Memuat data anggota...</p>
-                </div>
+                <!-- Member cards will be injected here via JS -->
             </div>
-            <div class="no-search-result" id="anggotaNoResult" style="display:none;">
-                <i class="fas fa-search"></i>
-                <p>Tidak ada anggota ditemukan.</p>
-            </div>
-            
-            <!-- View More Button -->
-            <div class="view-more-container" data-aos="fade-up" data-aos-delay="200">
-                <button id="viewMoreBtn" class="view-more-btn hidden">Lihat Lebih Banyak Anggota</button>
+
+            <div class="view-more-container">
+                <button id="viewMoreBtn" class="btn hidden">
+                    Lihat Lebih Banyak <i class="fas fa-chevron-down"></i>
+                </button>
             </div>
         </div>
     </section>
 
     <!-- Registration Section -->
-    <section id="daftar" class="registration">
+    <section id="daftar" class="registration"
+        style="background: url('https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExZ2M4M3Q0bHY4ZHJwMnZvOTZhbHVzNDJwaXh0OG5hd3hwdnN4endwOCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/kimPrHNUDksc14FXCB/giphy.webp') center/cover no-repeat var(--accent-blue); text-align: center; border-top: 3px solid var(--text-main); border-bottom: 3px solid var(--text-main);">
         <div class="container">
-            <h2 data-aos="fade-up">Jadilah Bagian dari Green Generation</h2>
-            <p data-aos="fade-up" data-aos-delay="100">Daftar sekarang dan ikut bergerak bersama kami menjaga bumi untuk masa depan yang lebih baik.</p>
-            <a href="https://forms.gle/ynrUonQzr9Nxbg2d9" target="_blank" rel="noopener noreferrer" class="cta-button" data-aos="fade-up" data-aos-delay="200">Isi Formulir Pendaftaran</a>
+            <h2 style="font-size: 2.5rem; margin-bottom: 1rem; color: #fff; text-shadow: 3px 3px 0px var(--text-main);"
+                data-aos="zoom-in">Jadilah Bagian dari Kami!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #fff; font-weight: 600;" data-aos="fade-up"
+                data-aos-delay="100">Mari bersama menjaga bumi untuk masa depan yang lebih baik.</p>
+            <a href="https://forms.gle/ynrUonQzr9Nxbg2d9" target="_blank" class="btn" data-aos="fade-up"
+                data-aos-delay="200">Isi Formulir Pendaftaran</a>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <i class="fas fa-leaf"></i> Green Generation
-                </div>
-                <div class="footer-links">
-                    <a href="#tentang">Tentang</a>
-                    <a href="#struktur">Struktur</a>
-                    <a href="#divisi">Program</a>
-                    <a href="#produk">Produk</a>
-                    <a href="#daftar">Daftar</a>
-                </div>
-                <div class="footer-social">
-                    <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram Green Generation">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.tiktok.com/@greengenerationsmkn4" target="_blank" rel="noopener noreferrer" title="TikTok" aria-label="TikTok Green Generation">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                </div>
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <i class="fas fa-leaf"></i> Green Generation
+            </div>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/greengnrsmkn4bjm/" target="_blank"><i
+                        class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@greengenerationsmkn4" target="_blank"><i class="fab fa-tiktok"></i></a>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Green Generation SMKN 4 Banjarmasin. All rights reserved.</p>
+                <p>&copy; 2026 Green Generation SMKN 4 Banjarmasin.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Floating Action Button for Social Sharing -->
-    <div class="fab-container">
-        <button class="fab-main" id="fabMain" aria-label="Bagikan" aria-expanded="false">
-            <i class="fas fa-share-alt"></i>
-        </button>
-        <div class="fab-options" id="fabOptions">
-            <a href="https://www.facebook.com/sharer/sharer.php?u=https://green.wasmer.app/" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on Facebook" aria-label="Bagikan ke Facebook">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://twitter.com/intent/tweet?url=https://green.wasmer.app/&text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on Twitter" aria-label="Bagikan ke Twitter">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="https://api.whatsapp.com/send?text=Green%20Generation%20-%20Bersama%20Menjaga%20Bumi%20https://green.wasmer.app/" target="_blank" rel="noopener noreferrer" class="fab-option" title="Share on WhatsApp" aria-label="Bagikan ke WhatsApp">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Scroll to top button -->
-    <button class="scroll-top" id="scrollTop" aria-label="Kembali ke atas">
-        <i class="fas fa-arrow-up"></i>
-    </button>
-
-    <!-- Dark Mode Toggle -->
-    <button id="darkModeToggle" aria-label="Aktifkan mode gelap">
-        <i class="fas fa-moon"></i>
-    </button>
-
     <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="/aset/js/otak.js"></script>
+    <script src="../aset/js/otak.js"></script>
 </body>
+
 </html>
